@@ -1,0 +1,998 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		31738EA81B3E87750099A9F2 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EA71B3E87750099A9F2 /* IndexViewController.swift */; };
+		31738EAC1B3E87F80099A9F2 /* IndexViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31738EAB1B3E87F80099A9F2 /* IndexViewController.storyboard */; };
+		31738EB11B3E885B0099A9F2 /* NavigationControllerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EB01B3E885B0099A9F2 /* NavigationControllerUtil.swift */; };
+		31738EB41B3E88A80099A9F2 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EB31B3E88A80099A9F2 /* AppAppearance.swift */; };
+		31738EB71B3E88F90099A9F2 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EB61B3E88F90099A9F2 /* UIColorExtension.swift */; };
+		31738EBD1B3E8A650099A9F2 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EBC1B3E8A650099A9F2 /* SettingViewController.swift */; };
+		31738EC01B3E8AC30099A9F2 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EBF1B3E8AC30099A9F2 /* FeedController.swift */; };
+		31738EC31B3E8B180099A9F2 /* IndexTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EC21B3E8B180099A9F2 /* IndexTableViewCell.swift */; };
+		31738EC61B3E8B8B0099A9F2 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EC51B3E8B8B0099A9F2 /* ModelManager.swift */; };
+		31738EC91B3E8C910099A9F2 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EC81B3E8C910099A9F2 /* Channel.swift */; };
+		31738ECB1B3E8CEA0099A9F2 /* MyBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738ECA1B3E8CEA0099A9F2 /* MyBookmarks.swift */; };
+		31738ECD1B3E8D580099A9F2 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738ECC1B3E8D580099A9F2 /* Bookmark.swift */; };
+		318045C91B3E820F00F331FF /* HBRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318045C81B3E820F00F331FF /* HBRTests.swift */; };
+		31949AE21B3E855900D063E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31949AE11B3E855900D063E8 /* AppDelegate.swift */; };
+		31C92F3D1B418157000C20DE /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C92F3C1B418157000C20DE /* Setting.swift */; };
+		31C92F401B4183A8000C20DE /* Setting.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 31C92F3F1B4183A8000C20DE /* Setting.xcconfig */; };
+		31C92F441B418D89000C20DE /* reportActivity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31C92F421B418D89000C20DE /* reportActivity@2x.png */; };
+		31C92F451B418D89000C20DE /* reportActivity@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31C92F431B418D89000C20DE /* reportActivity@3x.png */; };
+		31C92F471B418DD4000C20DE /* IconCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31C92F461B418DD4000C20DE /* IconCheckmark@2x.png */; };
+		31C92F491B418F13000C20DE /* IconBookmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31C92F481B418F13000C20DE /* IconBookmark@2x.png */; };
+		31EFF1FC1B3E90FD00EBBF72 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF1FB1B3E90FD00EBBF72 /* Item.swift */; };
+		31EFF1FE1B3E912F00EBBF72 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF1FD1B3E912F00EBBF72 /* DateUtil.swift */; };
+		31EFF2001B3E915F00EBBF72 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF1FF1B3E915F00EBBF72 /* AppConstant.swift */; };
+		31EFF2021B3E920700EBBF72 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2011B3E920700EBBF72 /* Logger.swift */; };
+		31EFF2041B3E934D00EBBF72 /* Hatena.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2031B3E934D00EBBF72 /* Hatena.swift */; };
+		31EFF2061B3E938300EBBF72 /* FeedURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2051B3E938300EBBF72 /* FeedURLBuilder.swift */; };
+		31EFF2081B3E93C700EBBF72 /* BookmarkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2071B3E93C700EBBF72 /* BookmarkItem.swift */; };
+		31EFF20A1B3E941700EBBF72 /* FeedParserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2091B3E941700EBBF72 /* FeedParserUtil.swift */; };
+		31EFF20C1B3F167C00EBBF72 /* SelectChannelTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF20B1B3F167C00EBBF72 /* SelectChannelTypeViewController.swift */; };
+		31EFF20F1B3F16F800EBBF72 /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF20E1B3F16F800EBBF72 /* FeedParser.swift */; };
+		31EFF2111B3F178900EBBF72 /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2101B3F178900EBBF72 /* SelectCategoryViewController.swift */; };
+		31EFF2131B3F17E600EBBF72 /* AddNewChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2121B3F17E600EBBF72 /* AddNewChannelViewController.swift */; };
+		31EFF2151B3F183A00EBBF72 /* SelectBookmarkNumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2141B3F183A00EBBF72 /* SelectBookmarkNumController.swift */; };
+		31EFF2171B3F18C200EBBF72 /* UnreadItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2161B3F18C200EBBF72 /* UnreadItemTableViewController.swift */; };
+		31EFF21A1B3F18FC00EBBF72 /* BaseItemListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2191B3F18FC00EBBF72 /* BaseItemListTableViewController.swift */; };
+		31EFF21C1B3F191B00EBBF72 /* SegmentedDisplayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF21B1B3F191B00EBBF72 /* SegmentedDisplayTableViewController.swift */; };
+		31EFF21E1B3F1A7200EBBF72 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF21D1B3F1A7200EBBF72 /* FeedTableViewCell.swift */; };
+		31EFF2201B3F1AA700EBBF72 /* FeedWithChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF21F1B3F1AA700EBBF72 /* FeedWithChannelTableViewCell.swift */; };
+		31EFF2221B3F1AF900EBBF72 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2211B3F1AF900EBBF72 /* WebViewController.swift */; };
+		31EFF2241B3F1B2600EBBF72 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2231B3F1B2600EBBF72 /* BookmarkViewController.swift */; };
+		31EFF2261B3F1BBA00EBBF72 /* BookmarkReadMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2251B3F1BBA00EBBF72 /* BookmarkReadMoreCell.swift */; };
+		31EFF2291B3F1C0100EBBF72 /* BookmarkNoDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2271B3F1C0100EBBF72 /* BookmarkNoDataCell.swift */; };
+		31EFF22A1B3F1C0100EBBF72 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2281B3F1C0100EBBF72 /* BookmarkTableViewCell.swift */; };
+		31EFF22C1B3F1C5F00EBBF72 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF22B1B3F1C5F00EBBF72 /* UserManager.swift */; };
+		31EFF22E1B3F1D1000EBBF72 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF22D1B3F1D1000EBBF72 /* PurchaseManager.swift */; };
+		31EFF2311B3F1DCC00EBBF72 /* ReportSpamActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2301B3F1DCC00EBBF72 /* ReportSpamActivity.swift */; };
+		31EFF2331B3F201E00EBBF72 /* AllItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2321B3F201E00EBBF72 /* AllItemTableViewController.swift */; };
+		31EFF2351B3F208200EBBF72 /* MyBookmarksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2341B3F208200EBBF72 /* MyBookmarksTableViewController.swift */; };
+		31EFF2371B3F20D500EBBF72 /* MyBookmarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2361B3F20D500EBBF72 /* MyBookmarksTableViewCell.swift */; };
+		31EFF2391B3F211800EBBF72 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2381B3F211800EBBF72 /* FeedTableViewController.swift */; };
+		31EFF23C1B3F215900EBBF72 /* ExpireSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF23A1B3F215900EBBF72 /* ExpireSettingViewController.swift */; };
+		31EFF23D1B3F215900EBBF72 /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF23B1B3F215900EBBF72 /* LicensesViewController.swift */; };
+		31EFF23F1B3F22D600EBBF72 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EFF23E1B3F22D600EBBF72 /* libGoogleAnalyticsServices.a */; };
+		31EFF2411B3F22E300EBBF72 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EFF2401B3F22E300EBBF72 /* libz.dylib */; };
+		31EFF2431B3F22EC00EBBF72 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EFF2421B3F22EC00EBBF72 /* libsqlite3.dylib */; };
+		31EFF2451B3F230300EBBF72 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EFF2441B3F230300EBBF72 /* SystemConfiguration.framework */; };
+		31EFF2471B3F230A00EBBF72 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EFF2461B3F230A00EBBF72 /* CoreData.framework */; };
+		31EFF24B1B3F23E900EBBF72 /* IconSearch@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2491B3F23E900EBBF72 /* IconSearch@2x.png */; };
+		31EFF24C1B3F23E900EBBF72 /* IconSettings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF24A1B3F23E900EBBF72 /* IconSettings@2x.png */; };
+		31EFF24F1B3F242600EBBF72 /* HBR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF24D1B3F242600EBBF72 /* HBR.xcdatamodeld */; };
+		31EFF2521B3F249E00EBBF72 /* IndexTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2511B3F249E00EBBF72 /* IndexTableViewCell.xib */; };
+		31EFF2541B3F24D200EBBF72 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EFF2531B3F24D200EBBF72 /* iAd.framework */; };
+		31EFF2571B3F26CA00EBBF72 /* IconInbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2551B3F26CA00EBBF72 /* IconInbox@2x.png */; };
+		31EFF2581B3F26CA00EBBF72 /* IconInboxes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2561B3F26CA00EBBF72 /* IconInboxes@2x.png */; };
+		31EFF25D1B4034CF00EBBF72 /* SelectChannelTypeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF25C1B4034CF00EBBF72 /* SelectChannelTypeViewController.storyboard */; };
+		31EFF25F1B40355B00EBBF72 /* SelectCategoryViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF25E1B40355B00EBBF72 /* SelectCategoryViewController.storyboard */; };
+		31EFF2611B40358B00EBBF72 /* AddNewChannelViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2601B40358B00EBBF72 /* AddNewChannelViewController.storyboard */; };
+		31EFF2631B4035EF00EBBF72 /* SelectBookmarkNumController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2621B4035EF00EBBF72 /* SelectBookmarkNumController.storyboard */; };
+		31EFF2661B40364000EBBF72 /* SettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2651B40364000EBBF72 /* SettingViewController.storyboard */; };
+		31EFF26A1B4036A000EBBF72 /* ExpireSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2671B4036A000EBBF72 /* ExpireSettingViewController.storyboard */; };
+		31EFF26B1B4036A000EBBF72 /* LicensesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2681B4036A000EBBF72 /* LicensesViewController.storyboard */; };
+		31EFF26C1B4036A000EBBF72 /* TermsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2691B4036A000EBBF72 /* TermsViewController.storyboard */; };
+		31EFF2711B4039DC00EBBF72 /* IconTag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF26F1B4039DC00EBBF72 /* IconTag@2x.png */; };
+		31EFF2721B4039DC00EBBF72 /* IconTitle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2701B4039DC00EBBF72 /* IconTitle@2x.png */; };
+		31EFF2751B4039FA00EBBF72 /* IconHotEntry@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2731B4039FA00EBBF72 /* IconHotEntry@2x.png */; };
+		31EFF2761B4039FA00EBBF72 /* IconNewEntry@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2741B4039FA00EBBF72 /* IconNewEntry@2x.png */; };
+		31EFF2781B404AEE00EBBF72 /* FeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2771B404AEE00EBBF72 /* FeedTableViewCell.xib */; };
+		31EFF27A1B404BCB00EBBF72 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2791B404BCB00EBBF72 /* WebViewController.xib */; };
+		31EFF27C1B404C1700EBBF72 /* IconBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF27B1B404C1700EBBF72 /* IconBack@2x.png */; };
+		31EFF27E1B404C5B00EBBF72 /* BookmarkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF27D1B404C5B00EBBF72 /* BookmarkViewController.xib */; };
+		31EFF2821B404C8E00EBBF72 /* BookmarkNoDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF27F1B404C8E00EBBF72 /* BookmarkNoDataCell.xib */; };
+		31EFF2831B404C8E00EBBF72 /* BookmarkReadMoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2801B404C8E00EBBF72 /* BookmarkReadMoreCell.xib */; };
+		31EFF2841B404C8E00EBBF72 /* BookmarkTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2811B404C8E00EBBF72 /* BookmarkTableViewCell.xib */; };
+		31EFF2861B40544E00EBBF72 /* FeedWithChannelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2851B40544E00EBBF72 /* FeedWithChannelTableViewCell.xib */; };
+		31EFF2881B40550000EBBF72 /* MyBookmarksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2871B40550000EBBF72 /* MyBookmarksTableViewCell.xib */; };
+		568CBC93F1FBC6B80C0756DD /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F0B1909FABF551575B4F7A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		318045C31B3E820F00F331FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 318045A51B3E820E00F331FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 318045AC1B3E820E00F331FF;
+			remoteInfo = HBR;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01542B63AA6AC5E9873D9ED3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		31738EA71B3E87750099A9F2 /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IndexViewController.swift; path = Classes/ViewController/IndexViewController.swift; sourceTree = "<group>"; };
+		31738EAB1B3E87F80099A9F2 /* IndexViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = IndexViewController.storyboard; path = Assets/ViewController/IndexViewController.storyboard; sourceTree = "<group>"; };
+		31738EB01B3E885B0099A9F2 /* NavigationControllerUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationControllerUtil.swift; path = Classes/Util/NavigationControllerUtil.swift; sourceTree = "<group>"; };
+		31738EB31B3E88A80099A9F2 /* AppAppearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppAppearance.swift; path = Classes/Appearance/AppAppearance.swift; sourceTree = "<group>"; };
+		31738EB61B3E88F90099A9F2 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorExtension.swift; path = Classes/Extension/UIColorExtension.swift; sourceTree = "<group>"; };
+		31738EBC1B3E8A650099A9F2 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingViewController.swift; path = Classes/ViewController/Setting/SettingViewController.swift; sourceTree = "<group>"; };
+		31738EBF1B3E8AC30099A9F2 /* FeedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedController.swift; path = Classes/Controller/FeedController.swift; sourceTree = "<group>"; };
+		31738EC21B3E8B180099A9F2 /* IndexTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IndexTableViewCell.swift; path = Classes/View/IndexTableViewCell.swift; sourceTree = "<group>"; };
+		31738EC51B3E8B8B0099A9F2 /* ModelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelManager.swift; path = Classes/Model/ModelManager.swift; sourceTree = "<group>"; };
+		31738EC81B3E8C910099A9F2 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Channel.swift; path = Classes/Model/Channel.swift; sourceTree = "<group>"; };
+		31738ECA1B3E8CEA0099A9F2 /* MyBookmarks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyBookmarks.swift; path = Classes/Model/MyBookmarks.swift; sourceTree = "<group>"; };
+		31738ECC1B3E8D580099A9F2 /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bookmark.swift; path = Classes/Model/Bookmark.swift; sourceTree = "<group>"; };
+		318045AD1B3E820E00F331FF /* HBR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HBR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		318045C21B3E820F00F331FF /* HBRTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HBRTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		318045C71B3E820F00F331FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		318045C81B3E820F00F331FF /* HBRTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HBRTests.swift; sourceTree = "<group>"; };
+		31949AE11B3E855900D063E8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Classes/AppDelegate.swift; sourceTree = "<group>"; };
+		31C92F391B418071000C20DE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
+		31C92F3C1B418157000C20DE /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Setting.swift; path = Classes/Model/Setting.swift; sourceTree = "<group>"; };
+		31C92F3F1B4183A8000C20DE /* Setting.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Setting.xcconfig; path = Config/Setting.xcconfig; sourceTree = "<group>"; };
+		31C92F421B418D89000C20DE /* reportActivity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "reportActivity@2x.png"; path = "Resources/Images/Activity/reportActivity@2x.png"; sourceTree = "<group>"; };
+		31C92F431B418D89000C20DE /* reportActivity@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "reportActivity@3x.png"; path = "Resources/Images/Activity/reportActivity@3x.png"; sourceTree = "<group>"; };
+		31C92F461B418DD4000C20DE /* IconCheckmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IconCheckmark@2x.png"; path = "Resources/Images/IconCheckmark@2x.png"; sourceTree = "<group>"; };
+		31C92F481B418F13000C20DE /* IconBookmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IconBookmark@2x.png"; path = "Resources/Images/IconBookmark@2x.png"; sourceTree = "<group>"; };
+		31EFF1FB1B3E90FD00EBBF72 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Item.swift; path = Classes/Model/Item.swift; sourceTree = "<group>"; };
+		31EFF1FD1B3E912F00EBBF72 /* DateUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateUtil.swift; path = Classes/Util/DateUtil.swift; sourceTree = "<group>"; };
+		31EFF1FF1B3E915F00EBBF72 /* AppConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppConstant.swift; path = Classes/Model/AppConstant.swift; sourceTree = "<group>"; };
+		31EFF2011B3E920700EBBF72 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Logger.swift; path = Classes/Util/Logger.swift; sourceTree = "<group>"; };
+		31EFF2031B3E934D00EBBF72 /* Hatena.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Hatena.swift; path = Classes/Model/Hatena.swift; sourceTree = "<group>"; };
+		31EFF2051B3E938300EBBF72 /* FeedURLBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedURLBuilder.swift; path = Classes/Util/FeedURLBuilder.swift; sourceTree = "<group>"; };
+		31EFF2071B3E93C700EBBF72 /* BookmarkItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarkItem.swift; path = Classes/Model/BookmarkItem.swift; sourceTree = "<group>"; };
+		31EFF2091B3E941700EBBF72 /* FeedParserUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedParserUtil.swift; path = Classes/Util/FeedParserUtil.swift; sourceTree = "<group>"; };
+		31EFF20B1B3F167C00EBBF72 /* SelectChannelTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectChannelTypeViewController.swift; path = Classes/ViewController/AddChannel/SelectChannelTypeViewController.swift; sourceTree = "<group>"; };
+		31EFF20E1B3F16F800EBBF72 /* FeedParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedParser.swift; path = Classes/Parser/FeedParser.swift; sourceTree = "<group>"; };
+		31EFF2101B3F178900EBBF72 /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectCategoryViewController.swift; path = Classes/ViewController/AddChannel/SelectCategoryViewController.swift; sourceTree = "<group>"; };
+		31EFF2121B3F17E600EBBF72 /* AddNewChannelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddNewChannelViewController.swift; path = Classes/ViewController/AddChannel/AddNewChannelViewController.swift; sourceTree = "<group>"; };
+		31EFF2141B3F183A00EBBF72 /* SelectBookmarkNumController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectBookmarkNumController.swift; path = Classes/ViewController/AddChannel/SelectBookmarkNumController.swift; sourceTree = "<group>"; };
+		31EFF2161B3F18C200EBBF72 /* UnreadItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UnreadItemTableViewController.swift; path = Classes/ViewController/UnreadItemTableViewController.swift; sourceTree = "<group>"; };
+		31EFF2191B3F18FC00EBBF72 /* BaseItemListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseItemListTableViewController.swift; path = Classes/ViewController/Base/BaseItemListTableViewController.swift; sourceTree = "<group>"; };
+		31EFF21B1B3F191B00EBBF72 /* SegmentedDisplayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentedDisplayTableViewController.swift; path = Classes/ViewController/Base/SegmentedDisplayTableViewController.swift; sourceTree = "<group>"; };
+		31EFF21D1B3F1A7200EBBF72 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedTableViewCell.swift; path = Classes/View/FeedTableViewCell.swift; sourceTree = "<group>"; };
+		31EFF21F1B3F1AA700EBBF72 /* FeedWithChannelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedWithChannelTableViewCell.swift; path = Classes/View/FeedWithChannelTableViewCell.swift; sourceTree = "<group>"; };
+		31EFF2211B3F1AF900EBBF72 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = Classes/ViewController/WebViewController.swift; sourceTree = "<group>"; };
+		31EFF2231B3F1B2600EBBF72 /* BookmarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarkViewController.swift; path = Classes/ViewController/BookmarkViewController.swift; sourceTree = "<group>"; };
+		31EFF2251B3F1BBA00EBBF72 /* BookmarkReadMoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarkReadMoreCell.swift; path = Classes/View/BookmarkReadMoreCell.swift; sourceTree = "<group>"; };
+		31EFF2271B3F1C0100EBBF72 /* BookmarkNoDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarkNoDataCell.swift; path = Classes/View/BookmarkNoDataCell.swift; sourceTree = "<group>"; };
+		31EFF2281B3F1C0100EBBF72 /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarkTableViewCell.swift; path = Classes/View/BookmarkTableViewCell.swift; sourceTree = "<group>"; };
+		31EFF22B1B3F1C5F00EBBF72 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Classes/Model/UserManager.swift; sourceTree = "<group>"; };
+		31EFF22D1B3F1D1000EBBF72 /* PurchaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PurchaseManager.swift; path = Classes/Model/PurchaseManager.swift; sourceTree = "<group>"; };
+		31EFF2301B3F1DCC00EBBF72 /* ReportSpamActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportSpamActivity.swift; path = Classes/Activity/ReportSpamActivity.swift; sourceTree = "<group>"; };
+		31EFF2321B3F201E00EBBF72 /* AllItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AllItemTableViewController.swift; path = Classes/ViewController/AllItemTableViewController.swift; sourceTree = "<group>"; };
+		31EFF2341B3F208200EBBF72 /* MyBookmarksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyBookmarksTableViewController.swift; path = Classes/ViewController/MyBookmarksTableViewController.swift; sourceTree = "<group>"; };
+		31EFF2361B3F20D500EBBF72 /* MyBookmarksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyBookmarksTableViewCell.swift; path = Classes/View/MyBookmarksTableViewCell.swift; sourceTree = "<group>"; };
+		31EFF2381B3F211800EBBF72 /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedTableViewController.swift; path = Classes/ViewController/FeedTableViewController.swift; sourceTree = "<group>"; };
+		31EFF23A1B3F215900EBBF72 /* ExpireSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpireSettingViewController.swift; path = Classes/ViewController/Setting/ExpireSettingViewController.swift; sourceTree = "<group>"; };
+		31EFF23B1B3F215900EBBF72 /* LicensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LicensesViewController.swift; path = Classes/ViewController/Setting/LicensesViewController.swift; sourceTree = "<group>"; };
+		31EFF23E1B3F22D600EBBF72 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = "Pods/GoogleAnalytics-iOS-SDK/libGoogleAnalyticsServices.a"; sourceTree = "<group>"; };
+		31EFF2401B3F22E300EBBF72 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		31EFF2421B3F22EC00EBBF72 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		31EFF2441B3F230300EBBF72 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		31EFF2461B3F230A00EBBF72 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		31EFF2491B3F23E900EBBF72 /* IconSearch@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IconSearch@2x.png"; path = "Resources/Images/IconSearch@2x.png"; sourceTree = "<group>"; };
+		31EFF24A1B3F23E900EBBF72 /* IconSettings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IconSettings@2x.png"; path = "Resources/Images/IconSettings@2x.png"; sourceTree = "<group>"; };
+		31EFF24E1B3F242600EBBF72 /* HBR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HBR.xcdatamodel; sourceTree = "<group>"; };
+		31EFF2511B3F249E00EBBF72 /* IndexTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IndexTableViewCell.xib; path = Assets/View/IndexTableViewCell.xib; sourceTree = "<group>"; };
+		31EFF2531B3F24D200EBBF72 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		31EFF2551B3F26CA00EBBF72 /* IconInbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IconInbox@2x.png"; path = "Resources/Images/IconInbox@2x.png"; sourceTree = "<group>"; };
+		31EFF2561B3F26CA00EBBF72 /* IconInboxes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IconInboxes@2x.png"; path = "Resources/Images/IconInboxes@2x.png"; sourceTree = "<group>"; };
+		31EFF25C1B4034CF00EBBF72 /* SelectChannelTypeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SelectChannelTypeViewController.storyboard; path = Assets/ViewController/AddChannel/SelectChannelTypeViewController.storyboard; sourceTree = "<group>"; };
+		31EFF25E1B40355B00EBBF72 /* SelectCategoryViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SelectCategoryViewController.storyboard; path = Assets/ViewController/AddChannel/SelectCategoryViewController.storyboard; sourceTree = "<group>"; };
+		31EFF2601B40358B00EBBF72 /* AddNewChannelViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddNewChannelViewController.storyboard; path = Assets/ViewController/AddChannel/AddNewChannelViewController.storyboard; sourceTree = "<group>"; };
+		31EFF2621B4035EF00EBBF72 /* SelectBookmarkNumController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SelectBookmarkNumController.storyboard; path = Assets/ViewController/AddChannel/SelectBookmarkNumController.storyboard; sourceTree = "<group>"; };
+		31EFF2651B40364000EBBF72 /* SettingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SettingViewController.storyboard; path = Assets/ViewController/Setting/SettingViewController.storyboard; sourceTree = "<group>"; };
+		31EFF2671B4036A000EBBF72 /* ExpireSettingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ExpireSettingViewController.storyboard; path = Assets/ViewController/Setting/ExpireSettingViewController.storyboard; sourceTree = "<group>"; };
+		31EFF2681B4036A000EBBF72 /* LicensesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LicensesViewController.storyboard; path = Assets/ViewController/Setting/LicensesViewController.storyboard; sourceTree = "<group>"; };
+		31EFF2691B4036A000EBBF72 /* TermsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TermsViewController.storyboard; path = Assets/ViewController/Setting/TermsViewController.storyboard; sourceTree = "<group>"; };
+		31EFF26F1B4039DC00EBBF72 /* IconTag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IconTag@2x.png"; path = "Resources/Images/IconTag@2x.png"; sourceTree = "<group>"; };
+		31EFF2701B4039DC00EBBF72 /* IconTitle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IconTitle@2x.png"; path = "Resources/Images/IconTitle@2x.png"; sourceTree = "<group>"; };
+		31EFF2731B4039FA00EBBF72 /* IconHotEntry@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IconHotEntry@2x.png"; path = "Resources/Images/IconHotEntry@2x.png"; sourceTree = "<group>"; };
+		31EFF2741B4039FA00EBBF72 /* IconNewEntry@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IconNewEntry@2x.png"; path = "Resources/Images/IconNewEntry@2x.png"; sourceTree = "<group>"; };
+		31EFF2771B404AEE00EBBF72 /* FeedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FeedTableViewCell.xib; path = Assets/View/FeedTableViewCell.xib; sourceTree = "<group>"; };
+		31EFF2791B404BCB00EBBF72 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WebViewController.xib; path = Assets/ViewController/WebViewController.xib; sourceTree = "<group>"; };
+		31EFF27B1B404C1700EBBF72 /* IconBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IconBack@2x.png"; path = "Resources/Images/IconBack@2x.png"; sourceTree = "<group>"; };
+		31EFF27D1B404C5B00EBBF72 /* BookmarkViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BookmarkViewController.xib; path = Assets/ViewController/BookmarkViewController.xib; sourceTree = "<group>"; };
+		31EFF27F1B404C8E00EBBF72 /* BookmarkNoDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BookmarkNoDataCell.xib; path = Assets/View/BookmarkNoDataCell.xib; sourceTree = "<group>"; };
+		31EFF2801B404C8E00EBBF72 /* BookmarkReadMoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BookmarkReadMoreCell.xib; path = Assets/View/BookmarkReadMoreCell.xib; sourceTree = "<group>"; };
+		31EFF2811B404C8E00EBBF72 /* BookmarkTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BookmarkTableViewCell.xib; path = Assets/View/BookmarkTableViewCell.xib; sourceTree = "<group>"; };
+		31EFF2851B40544E00EBBF72 /* FeedWithChannelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FeedWithChannelTableViewCell.xib; path = Assets/View/FeedWithChannelTableViewCell.xib; sourceTree = "<group>"; };
+		31EFF2871B40550000EBBF72 /* MyBookmarksTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyBookmarksTableViewCell.xib; path = Assets/View/MyBookmarksTableViewCell.xib; sourceTree = "<group>"; };
+		A0F0B1909FABF551575B4F7A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6C5927BC050807B0DD23B9C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		318045AA1B3E820E00F331FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31EFF2541B3F24D200EBBF72 /* iAd.framework in Frameworks */,
+				31EFF2471B3F230A00EBBF72 /* CoreData.framework in Frameworks */,
+				31EFF2451B3F230300EBBF72 /* SystemConfiguration.framework in Frameworks */,
+				31EFF2431B3F22EC00EBBF72 /* libsqlite3.dylib in Frameworks */,
+				31EFF2411B3F22E300EBBF72 /* libz.dylib in Frameworks */,
+				31EFF23F1B3F22D600EBBF72 /* libGoogleAnalyticsServices.a in Frameworks */,
+				568CBC93F1FBC6B80C0756DD /* Pods.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		318045BF1B3E820F00F331FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		31738EA51B3E86EA0099A9F2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				31C92F391B418071000C20DE /* Info.plist */,
+				31EFF24D1B3F242600EBBF72 /* HBR.xcdatamodeld */,
+				31EFF2481B3F23CF00EBBF72 /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		31738EA61B3E87600099A9F2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				31EFF2321B3F201E00EBBF72 /* AllItemTableViewController.swift */,
+				31EFF2231B3F1B2600EBBF72 /* BookmarkViewController.swift */,
+				31EFF2381B3F211800EBBF72 /* FeedTableViewController.swift */,
+				31738EA71B3E87750099A9F2 /* IndexViewController.swift */,
+				31EFF2341B3F208200EBBF72 /* MyBookmarksTableViewController.swift */,
+				31EFF2161B3F18C200EBBF72 /* UnreadItemTableViewController.swift */,
+				31EFF2211B3F1AF900EBBF72 /* WebViewController.swift */,
+				31738EB81B3E89E70099A9F2 /* AddChannel */,
+				31EFF2181B3F18DF00EBBF72 /* Base */,
+				31738EBB1B3E8A590099A9F2 /* Setting */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		31738EA91B3E87E00099A9F2 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				31EFF2501B3F249300EBBF72 /* View */,
+				31738EAA1B3E87ED0099A9F2 /* ViewController */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		31738EAA1B3E87ED0099A9F2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				31738EAB1B3E87F80099A9F2 /* IndexViewController.storyboard */,
+				31EFF27D1B404C5B00EBBF72 /* BookmarkViewController.xib */,
+				31EFF2791B404BCB00EBBF72 /* WebViewController.xib */,
+				31EFF25B1B4034C300EBBF72 /* AddChannel */,
+				31EFF2641B40363200EBBF72 /* Setting */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		31738EAD1B3E883E0099A9F2 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				31EFF1FD1B3E912F00EBBF72 /* DateUtil.swift */,
+				31EFF2091B3E941700EBBF72 /* FeedParserUtil.swift */,
+				31EFF2051B3E938300EBBF72 /* FeedURLBuilder.swift */,
+				31EFF2011B3E920700EBBF72 /* Logger.swift */,
+				31738EB01B3E885B0099A9F2 /* NavigationControllerUtil.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		31738EB21B3E88970099A9F2 /* Appearance */ = {
+			isa = PBXGroup;
+			children = (
+				31738EB31B3E88A80099A9F2 /* AppAppearance.swift */,
+			);
+			name = Appearance;
+			sourceTree = "<group>";
+		};
+		31738EB51B3E88EE0099A9F2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				31738EB61B3E88F90099A9F2 /* UIColorExtension.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		31738EB81B3E89E70099A9F2 /* AddChannel */ = {
+			isa = PBXGroup;
+			children = (
+				31EFF2121B3F17E600EBBF72 /* AddNewChannelViewController.swift */,
+				31EFF2141B3F183A00EBBF72 /* SelectBookmarkNumController.swift */,
+				31EFF2101B3F178900EBBF72 /* SelectCategoryViewController.swift */,
+				31EFF20B1B3F167C00EBBF72 /* SelectChannelTypeViewController.swift */,
+			);
+			name = AddChannel;
+			sourceTree = "<group>";
+		};
+		31738EBB1B3E8A590099A9F2 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				31EFF23A1B3F215900EBBF72 /* ExpireSettingViewController.swift */,
+				31EFF23B1B3F215900EBBF72 /* LicensesViewController.swift */,
+				31738EBC1B3E8A650099A9F2 /* SettingViewController.swift */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		31738EBE1B3E8AB30099A9F2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				31738EBF1B3E8AC30099A9F2 /* FeedController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		31738EC11B3E8B0E0099A9F2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				31EFF2271B3F1C0100EBBF72 /* BookmarkNoDataCell.swift */,
+				31EFF2251B3F1BBA00EBBF72 /* BookmarkReadMoreCell.swift */,
+				31EFF2281B3F1C0100EBBF72 /* BookmarkTableViewCell.swift */,
+				31EFF21D1B3F1A7200EBBF72 /* FeedTableViewCell.swift */,
+				31EFF21F1B3F1AA700EBBF72 /* FeedWithChannelTableViewCell.swift */,
+				31738EC21B3E8B180099A9F2 /* IndexTableViewCell.swift */,
+				31EFF2361B3F20D500EBBF72 /* MyBookmarksTableViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		31738EC41B3E8B810099A9F2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				31EFF1FF1B3E915F00EBBF72 /* AppConstant.swift */,
+				31738ECC1B3E8D580099A9F2 /* Bookmark.swift */,
+				31EFF2071B3E93C700EBBF72 /* BookmarkItem.swift */,
+				31738EC81B3E8C910099A9F2 /* Channel.swift */,
+				31EFF2031B3E934D00EBBF72 /* Hatena.swift */,
+				31EFF1FB1B3E90FD00EBBF72 /* Item.swift */,
+				31738EC51B3E8B8B0099A9F2 /* ModelManager.swift */,
+				31738ECA1B3E8CEA0099A9F2 /* MyBookmarks.swift */,
+				31EFF22D1B3F1D1000EBBF72 /* PurchaseManager.swift */,
+				31C92F3C1B418157000C20DE /* Setting.swift */,
+				31EFF22B1B3F1C5F00EBBF72 /* UserManager.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		318045A41B3E820E00F331FF = {
+			isa = PBXGroup;
+			children = (
+				318045AF1B3E820E00F331FF /* HBR */,
+				318045C51B3E820F00F331FF /* HBRTests */,
+				318045AE1B3E820E00F331FF /* Products */,
+				70B21B9A3F2665DD13B8D5E5 /* Pods */,
+				89461E604EC2D6980B7F4817 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		318045AE1B3E820E00F331FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				318045AD1B3E820E00F331FF /* HBR.app */,
+				318045C21B3E820F00F331FF /* HBRTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		318045AF1B3E820E00F331FF /* HBR */ = {
+			isa = PBXGroup;
+			children = (
+				31738EA91B3E87E00099A9F2 /* Assets */,
+				31949AE01B3E851F00D063E8 /* Classes */,
+				31C92F3E1B41839B000C20DE /* Config */,
+				31738EA51B3E86EA0099A9F2 /* Resources */,
+			);
+			path = HBR;
+			sourceTree = "<group>";
+		};
+		318045C51B3E820F00F331FF /* HBRTests */ = {
+			isa = PBXGroup;
+			children = (
+				318045C81B3E820F00F331FF /* HBRTests.swift */,
+				318045C61B3E820F00F331FF /* Supporting Files */,
+			);
+			path = HBRTests;
+			sourceTree = "<group>";
+		};
+		318045C61B3E820F00F331FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				318045C71B3E820F00F331FF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		31949AE01B3E851F00D063E8 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				31949AE11B3E855900D063E8 /* AppDelegate.swift */,
+				31EFF22F1B3F1DBF00EBBF72 /* Activity */,
+				31738EB21B3E88970099A9F2 /* Appearance */,
+				31738EBE1B3E8AB30099A9F2 /* Controller */,
+				31738EB51B3E88EE0099A9F2 /* Extension */,
+				31738EC41B3E8B810099A9F2 /* Model */,
+				31EFF20D1B3F16EB00EBBF72 /* Parser */,
+				31738EAD1B3E883E0099A9F2 /* Util */,
+				31738EC11B3E8B0E0099A9F2 /* View */,
+				31738EA61B3E87600099A9F2 /* ViewController */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		31C92F3E1B41839B000C20DE /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				31C92F3F1B4183A8000C20DE /* Setting.xcconfig */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		31C92F411B418D7F000C20DE /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				31C92F421B418D89000C20DE /* reportActivity@2x.png */,
+				31C92F431B418D89000C20DE /* reportActivity@3x.png */,
+			);
+			name = Activity;
+			sourceTree = "<group>";
+		};
+		31EFF20D1B3F16EB00EBBF72 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				31EFF20E1B3F16F800EBBF72 /* FeedParser.swift */,
+			);
+			name = Parser;
+			sourceTree = "<group>";
+		};
+		31EFF2181B3F18DF00EBBF72 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				31EFF2191B3F18FC00EBBF72 /* BaseItemListTableViewController.swift */,
+				31EFF21B1B3F191B00EBBF72 /* SegmentedDisplayTableViewController.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		31EFF22F1B3F1DBF00EBBF72 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				31EFF2301B3F1DCC00EBBF72 /* ReportSpamActivity.swift */,
+			);
+			name = Activity;
+			sourceTree = "<group>";
+		};
+		31EFF2481B3F23CF00EBBF72 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				31C92F411B418D7F000C20DE /* Activity */,
+				31EFF27B1B404C1700EBBF72 /* IconBack@2x.png */,
+				31C92F481B418F13000C20DE /* IconBookmark@2x.png */,
+				31C92F461B418DD4000C20DE /* IconCheckmark@2x.png */,
+				31EFF2731B4039FA00EBBF72 /* IconHotEntry@2x.png */,
+				31EFF2551B3F26CA00EBBF72 /* IconInbox@2x.png */,
+				31EFF2561B3F26CA00EBBF72 /* IconInboxes@2x.png */,
+				31EFF2741B4039FA00EBBF72 /* IconNewEntry@2x.png */,
+				31EFF2491B3F23E900EBBF72 /* IconSearch@2x.png */,
+				31EFF24A1B3F23E900EBBF72 /* IconSettings@2x.png */,
+				31EFF26F1B4039DC00EBBF72 /* IconTag@2x.png */,
+				31EFF2701B4039DC00EBBF72 /* IconTitle@2x.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		31EFF2501B3F249300EBBF72 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				31EFF27F1B404C8E00EBBF72 /* BookmarkNoDataCell.xib */,
+				31EFF2801B404C8E00EBBF72 /* BookmarkReadMoreCell.xib */,
+				31EFF2811B404C8E00EBBF72 /* BookmarkTableViewCell.xib */,
+				31EFF2771B404AEE00EBBF72 /* FeedTableViewCell.xib */,
+				31EFF2851B40544E00EBBF72 /* FeedWithChannelTableViewCell.xib */,
+				31EFF2511B3F249E00EBBF72 /* IndexTableViewCell.xib */,
+				31EFF2871B40550000EBBF72 /* MyBookmarksTableViewCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		31EFF25B1B4034C300EBBF72 /* AddChannel */ = {
+			isa = PBXGroup;
+			children = (
+				31EFF2601B40358B00EBBF72 /* AddNewChannelViewController.storyboard */,
+				31EFF2621B4035EF00EBBF72 /* SelectBookmarkNumController.storyboard */,
+				31EFF25E1B40355B00EBBF72 /* SelectCategoryViewController.storyboard */,
+				31EFF25C1B4034CF00EBBF72 /* SelectChannelTypeViewController.storyboard */,
+			);
+			name = AddChannel;
+			sourceTree = "<group>";
+		};
+		31EFF2641B40363200EBBF72 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				31EFF2671B4036A000EBBF72 /* ExpireSettingViewController.storyboard */,
+				31EFF2681B4036A000EBBF72 /* LicensesViewController.storyboard */,
+				31EFF2651B40364000EBBF72 /* SettingViewController.storyboard */,
+				31EFF2691B4036A000EBBF72 /* TermsViewController.storyboard */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		70B21B9A3F2665DD13B8D5E5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F6C5927BC050807B0DD23B9C /* Pods.debug.xcconfig */,
+				01542B63AA6AC5E9873D9ED3 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		89461E604EC2D6980B7F4817 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31EFF2531B3F24D200EBBF72 /* iAd.framework */,
+				31EFF2461B3F230A00EBBF72 /* CoreData.framework */,
+				31EFF2441B3F230300EBBF72 /* SystemConfiguration.framework */,
+				31EFF2421B3F22EC00EBBF72 /* libsqlite3.dylib */,
+				31EFF2401B3F22E300EBBF72 /* libz.dylib */,
+				31EFF23E1B3F22D600EBBF72 /* libGoogleAnalyticsServices.a */,
+				A0F0B1909FABF551575B4F7A /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		318045AC1B3E820E00F331FF /* HBR */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 318045CC1B3E820F00F331FF /* Build configuration list for PBXNativeTarget "HBR" */;
+			buildPhases = (
+				B4447FE06E454A33DAE6EEEA /* Check Pods Manifest.lock */,
+				318045A91B3E820E00F331FF /* Sources */,
+				318045AA1B3E820E00F331FF /* Frameworks */,
+				318045AB1B3E820E00F331FF /* Resources */,
+				F647363962F893706622999F /* Embed Pods Frameworks */,
+				375D7FD0A1E282D1468DFCA3 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HBR;
+			productName = HBR;
+			productReference = 318045AD1B3E820E00F331FF /* HBR.app */;
+			productType = "com.apple.product-type.application";
+		};
+		318045C11B3E820F00F331FF /* HBRTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 318045CF1B3E820F00F331FF /* Build configuration list for PBXNativeTarget "HBRTests" */;
+			buildPhases = (
+				318045BE1B3E820F00F331FF /* Sources */,
+				318045BF1B3E820F00F331FF /* Frameworks */,
+				318045C01B3E820F00F331FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				318045C41B3E820F00F331FF /* PBXTargetDependency */,
+			);
+			name = HBRTests;
+			productName = HBRTests;
+			productReference = 318045C21B3E820F00F331FF /* HBRTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		318045A51B3E820E00F331FF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = envoixapp;
+				TargetAttributes = {
+					318045AC1B3E820E00F331FF = {
+						CreatedOnToolsVersion = 6.3.2;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					318045C11B3E820F00F331FF = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = 318045AC1B3E820E00F331FF;
+					};
+				};
+			};
+			buildConfigurationList = 318045A81B3E820E00F331FF /* Build configuration list for PBXProject "HBR" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 318045A41B3E820E00F331FF;
+			productRefGroup = 318045AE1B3E820E00F331FF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				318045AC1B3E820E00F331FF /* HBR */,
+				318045C11B3E820F00F331FF /* HBRTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		318045AB1B3E820E00F331FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31EFF2711B4039DC00EBBF72 /* IconTag@2x.png in Resources */,
+				31EFF2781B404AEE00EBBF72 /* FeedTableViewCell.xib in Resources */,
+				31EFF2661B40364000EBBF72 /* SettingViewController.storyboard in Resources */,
+				31C92F471B418DD4000C20DE /* IconCheckmark@2x.png in Resources */,
+				31EFF27A1B404BCB00EBBF72 /* WebViewController.xib in Resources */,
+				31EFF2821B404C8E00EBBF72 /* BookmarkNoDataCell.xib in Resources */,
+				31EFF2761B4039FA00EBBF72 /* IconNewEntry@2x.png in Resources */,
+				31EFF26B1B4036A000EBBF72 /* LicensesViewController.storyboard in Resources */,
+				31EFF2721B4039DC00EBBF72 /* IconTitle@2x.png in Resources */,
+				31EFF2861B40544E00EBBF72 /* FeedWithChannelTableViewCell.xib in Resources */,
+				31C92F451B418D89000C20DE /* reportActivity@3x.png in Resources */,
+				31EFF2581B3F26CA00EBBF72 /* IconInboxes@2x.png in Resources */,
+				31EFF2751B4039FA00EBBF72 /* IconHotEntry@2x.png in Resources */,
+				31EFF26A1B4036A000EBBF72 /* ExpireSettingViewController.storyboard in Resources */,
+				31EFF27E1B404C5B00EBBF72 /* BookmarkViewController.xib in Resources */,
+				31C92F491B418F13000C20DE /* IconBookmark@2x.png in Resources */,
+				31EFF25F1B40355B00EBBF72 /* SelectCategoryViewController.storyboard in Resources */,
+				31EFF2831B404C8E00EBBF72 /* BookmarkReadMoreCell.xib in Resources */,
+				31EFF24C1B3F23E900EBBF72 /* IconSettings@2x.png in Resources */,
+				31EFF25D1B4034CF00EBBF72 /* SelectChannelTypeViewController.storyboard in Resources */,
+				31EFF26C1B4036A000EBBF72 /* TermsViewController.storyboard in Resources */,
+				31EFF2881B40550000EBBF72 /* MyBookmarksTableViewCell.xib in Resources */,
+				31EFF2571B3F26CA00EBBF72 /* IconInbox@2x.png in Resources */,
+				31C92F441B418D89000C20DE /* reportActivity@2x.png in Resources */,
+				31EFF27C1B404C1700EBBF72 /* IconBack@2x.png in Resources */,
+				31EFF2611B40358B00EBBF72 /* AddNewChannelViewController.storyboard in Resources */,
+				31EFF2631B4035EF00EBBF72 /* SelectBookmarkNumController.storyboard in Resources */,
+				31738EAC1B3E87F80099A9F2 /* IndexViewController.storyboard in Resources */,
+				31EFF2521B3F249E00EBBF72 /* IndexTableViewCell.xib in Resources */,
+				31EFF24B1B3F23E900EBBF72 /* IconSearch@2x.png in Resources */,
+				31C92F401B4183A8000C20DE /* Setting.xcconfig in Resources */,
+				31EFF2841B404C8E00EBBF72 /* BookmarkTableViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		318045C01B3E820F00F331FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		375D7FD0A1E282D1468DFCA3 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4447FE06E454A33DAE6EEEA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F647363962F893706622999F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		318045A91B3E820E00F331FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				31949AE21B3E855900D063E8 /* AppDelegate.swift in Sources */,
+				31EFF20C1B3F167C00EBBF72 /* SelectChannelTypeViewController.swift in Sources */,
+				31EFF22E1B3F1D1000EBBF72 /* PurchaseManager.swift in Sources */,
+				31EFF2151B3F183A00EBBF72 /* SelectBookmarkNumController.swift in Sources */,
+				31EFF23D1B3F215900EBBF72 /* LicensesViewController.swift in Sources */,
+				31738EC91B3E8C910099A9F2 /* Channel.swift in Sources */,
+				31C92F3D1B418157000C20DE /* Setting.swift in Sources */,
+				31EFF22A1B3F1C0100EBBF72 /* BookmarkTableViewCell.swift in Sources */,
+				31738EC31B3E8B180099A9F2 /* IndexTableViewCell.swift in Sources */,
+				31EFF1FC1B3E90FD00EBBF72 /* Item.swift in Sources */,
+				31EFF2131B3F17E600EBBF72 /* AddNewChannelViewController.swift in Sources */,
+				31738EA81B3E87750099A9F2 /* IndexViewController.swift in Sources */,
+				31EFF24F1B3F242600EBBF72 /* HBR.xcdatamodeld in Sources */,
+				31EFF1FE1B3E912F00EBBF72 /* DateUtil.swift in Sources */,
+				31EFF2001B3E915F00EBBF72 /* AppConstant.swift in Sources */,
+				31EFF20A1B3E941700EBBF72 /* FeedParserUtil.swift in Sources */,
+				31EFF2351B3F208200EBBF72 /* MyBookmarksTableViewController.swift in Sources */,
+				31EFF2021B3E920700EBBF72 /* Logger.swift in Sources */,
+				31EFF2241B3F1B2600EBBF72 /* BookmarkViewController.swift in Sources */,
+				31EFF20F1B3F16F800EBBF72 /* FeedParser.swift in Sources */,
+				31738EB71B3E88F90099A9F2 /* UIColorExtension.swift in Sources */,
+				31EFF2081B3E93C700EBBF72 /* BookmarkItem.swift in Sources */,
+				31EFF2171B3F18C200EBBF72 /* UnreadItemTableViewController.swift in Sources */,
+				31EFF2371B3F20D500EBBF72 /* MyBookmarksTableViewCell.swift in Sources */,
+				31EFF22C1B3F1C5F00EBBF72 /* UserManager.swift in Sources */,
+				31738EB11B3E885B0099A9F2 /* NavigationControllerUtil.swift in Sources */,
+				31EFF2201B3F1AA700EBBF72 /* FeedWithChannelTableViewCell.swift in Sources */,
+				31738EBD1B3E8A650099A9F2 /* SettingViewController.swift in Sources */,
+				31EFF2311B3F1DCC00EBBF72 /* ReportSpamActivity.swift in Sources */,
+				31EFF2061B3E938300EBBF72 /* FeedURLBuilder.swift in Sources */,
+				31EFF2041B3E934D00EBBF72 /* Hatena.swift in Sources */,
+				31EFF2331B3F201E00EBBF72 /* AllItemTableViewController.swift in Sources */,
+				31738EC61B3E8B8B0099A9F2 /* ModelManager.swift in Sources */,
+				31738ECD1B3E8D580099A9F2 /* Bookmark.swift in Sources */,
+				31EFF2391B3F211800EBBF72 /* FeedTableViewController.swift in Sources */,
+				31EFF21A1B3F18FC00EBBF72 /* BaseItemListTableViewController.swift in Sources */,
+				31738EB41B3E88A80099A9F2 /* AppAppearance.swift in Sources */,
+				31EFF2291B3F1C0100EBBF72 /* BookmarkNoDataCell.swift in Sources */,
+				31EFF2111B3F178900EBBF72 /* SelectCategoryViewController.swift in Sources */,
+				31EFF21C1B3F191B00EBBF72 /* SegmentedDisplayTableViewController.swift in Sources */,
+				31EFF21E1B3F1A7200EBBF72 /* FeedTableViewCell.swift in Sources */,
+				31EFF2261B3F1BBA00EBBF72 /* BookmarkReadMoreCell.swift in Sources */,
+				31EFF2221B3F1AF900EBBF72 /* WebViewController.swift in Sources */,
+				31EFF23C1B3F215900EBBF72 /* ExpireSettingViewController.swift in Sources */,
+				31738EC01B3E8AC30099A9F2 /* FeedController.swift in Sources */,
+				31738ECB1B3E8CEA0099A9F2 /* MyBookmarks.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		318045BE1B3E820F00F331FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				318045C91B3E820F00F331FF /* HBRTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		318045C41B3E820F00F331FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 318045AC1B3E820E00F331FF /* HBR */;
+			targetProxy = 318045C31B3E820F00F331FF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		318045CA1B3E820F00F331FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31C92F3F1B4183A8000C20DE /* Setting.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		318045CB1B3E820F00F331FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31C92F3F1B4183A8000C20DE /* Setting.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		318045CD1B3E820F00F331FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6C5927BC050807B0DD23B9C /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HBR/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/GoogleAnalytics-iOS-SDK",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		318045CE1B3E820F00F331FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01542B63AA6AC5E9873D9ED3 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HBR/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/GoogleAnalytics-iOS-SDK",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		318045D01B3E820F00F331FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HBRTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HBR.app/HBR";
+			};
+			name = Debug;
+		};
+		318045D11B3E820F00F331FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HBRTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HBR.app/HBR";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		318045A81B3E820E00F331FF /* Build configuration list for PBXProject "HBR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				318045CA1B3E820F00F331FF /* Debug */,
+				318045CB1B3E820F00F331FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		318045CC1B3E820F00F331FF /* Build configuration list for PBXNativeTarget "HBR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				318045CD1B3E820F00F331FF /* Debug */,
+				318045CE1B3E820F00F331FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		318045CF1B3E820F00F331FF /* Build configuration list for PBXNativeTarget "HBRTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				318045D01B3E820F00F331FF /* Debug */,
+				318045D11B3E820F00F331FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		31EFF24D1B3F242600EBBF72 /* HBR.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				31EFF24E1B3F242600EBBF72 /* HBR.xcdatamodel */,
+			);
+			currentVersion = 31EFF24E1B3F242600EBBF72 /* HBR.xcdatamodel */;
+			name = HBR.xcdatamodeld;
+			path = Resources/HBR.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 318045A51B3E820E00F331FF /* Project object */;
+}
