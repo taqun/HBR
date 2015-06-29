@@ -25,13 +25,7 @@ class ModelManager: NSObject {
     /*
      * Initialize
      */
-    class var sharedInstance: ModelManager {
-        struct Static {
-            static let instance: ModelManager = ModelManager()
-        }
-
-        return Static.instance
-    }
+    static var sharedInstance: ModelManager = ModelManager()
     
     override init(){
         super.init()

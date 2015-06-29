@@ -23,12 +23,7 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
     /*
      * Initialize
      */
-    class var sharedInstance : FeedController {
-        struct Static {
-            static let instance : FeedController = FeedController()
-        }
-        return Static.instance
-    }
+    static var sharedInstance: FeedController = FeedController()
     
     override init() {
         super.init()

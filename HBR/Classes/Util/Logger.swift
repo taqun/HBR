@@ -19,13 +19,7 @@ class Logger: NSObject {
     /*
      * Initialize
      */
-    class var sharedInstance: Logger {
-        struct Static {
-            static let instance: Logger = Logger()
-        }
-        
-        return Static.instance
-    }
+    static var sharedInstance: Logger = Logger()
     
     override init() {
         super.init()

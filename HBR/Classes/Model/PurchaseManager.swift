@@ -20,13 +20,7 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
     /*
      * Initialize
      */
-    class var sharedInstance: PurchaseManager {
-        struct Static {
-            static let instance: PurchaseManager = PurchaseManager()
-        }
-        
-        return Static.instance
-    }
+    static var sharedInstance: PurchaseManager = PurchaseManager()
     
     override init() {
         super.init()

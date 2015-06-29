@@ -20,12 +20,7 @@ class UserManager: NSObject {
     /*
      * Initialize
      */
-    class var sharedInstance : UserManager {
-        struct Static {
-            static let instance : UserManager = UserManager()
-        }
-        return Static.instance
-    }
+    static var sharedInstance: UserManager = UserManager()
     
     override init() {
         super.init()
