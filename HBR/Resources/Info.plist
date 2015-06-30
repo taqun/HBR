@@ -20,12 +20,6 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>GATrackingId</key>
-	<string>$(GA_TRACKING_ID)</string>
-	<key>HBConsumerKey</key>
-	<string>$(HB_CONSUMER_KEY)</string>
-	<key>HBConsumerSecret</key>
-	<string>$(HB_CONSUMER_SECRET)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>ProductId</key>

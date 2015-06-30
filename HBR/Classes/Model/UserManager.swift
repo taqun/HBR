@@ -53,7 +53,7 @@ class UserManager: NSObject {
     
     func loadMyBookmarks() {
         let url = NSURL(string: "http://b.hatena.ne.jp")
-        let client = HTBAFOAuth1Client(baseURL: url, key: Setting.HB_CONSUMER_KEY, secret: Setting.HB_CONSUMER_SECRET)
+        let client = HTBAFOAuth1Client(baseURL: url, key: Setting.hbConsumerKey(), secret: Setting.hbConsumerSecret())
         client.accessToken = HTBHatenaBookmarkManager.sharedManager().apiClient.accessToken
         
         let request = client.requestWithMethod("GET", path: "/atom/feed", parameters: nil)

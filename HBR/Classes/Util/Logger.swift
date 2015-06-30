@@ -28,7 +28,7 @@ class Logger: NSObject {
         GAI.sharedInstance().dispatchInterval = 20
         GAI.sharedInstance().logger.logLevel = .Warning
 
-        self.tracker = GAI.sharedInstance().trackerWithTrackingId(Setting.GA_TRACKING_ID)
+        self.tracker = GAI.sharedInstance().trackerWithTrackingId(Setting.gaTrackingId())
     }
     
     

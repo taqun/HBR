@@ -55,7 +55,7 @@ class HBRAppDelegate: UIResponder, UIApplicationDelegate {
     func configureLibraries() {
         MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("HBR.sqlite")
 
-        HTBHatenaBookmarkManager.sharedManager().setConsumerKey(Setting.HB_CONSUMER_KEY, consumerSecret: Setting.HB_CONSUMER_SECRET)
+        HTBHatenaBookmarkManager.sharedManager().setConsumerKey(Setting.hbConsumerKey(), consumerSecret: Setting.hbConsumerSecret())
         
         //Fabric.with([Crashlytics()])
     }

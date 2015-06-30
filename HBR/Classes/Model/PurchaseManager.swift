@@ -49,7 +49,7 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        let set = NSSet(object: Setting.PRODUCT_ID)
+        let set = NSSet(object: Setting.iapProductId())
         let request = SKProductsRequest(productIdentifiers: set as Set<NSObject>)
         request.delegate = self
         request.start()
