@@ -15,6 +15,7 @@ enum ChannelType: String {
     case Tag    = "tag"
     case Title  = "title"
     case Text   = "text"
+    case Mine   = "mine"
 }
 
 @objc(Channel)
@@ -98,11 +99,14 @@ class Channel: NSManagedObject {
     var title: String {
         get {
             switch self.type {
-                case ChannelType.Hot:
+                case .Hot:
                     return "人気エントリー (\(self.categoryValue))"
                 
-                case ChannelType.New:
+                case .New:
                     return "新着エントリー (\(self.categoryValue))"
+                
+                case .Mine:
+                    return "マイブックマーク"
                 
                 default:
                     return self.keyword
@@ -113,15 +117,15 @@ class Channel: NSManagedObject {
     var shortTitle: String {
         get {
             switch self.type {
-            case ChannelType.Hot:
-                return "人気 (\(self.categoryValue))"
+                case .Hot:
+                    return "人気 (\(self.categoryValue))"
                 
-            case ChannelType.New:
-                return "新着 (\(self.categoryValue))"
+                case .New:
+                    return "新着 (\(self.categoryValue))"
                 
-            default:
-                return self.keyword
-            }
+                default:
+                    return self.keyword
+                }
         }
     }
     

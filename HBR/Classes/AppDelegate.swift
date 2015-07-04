@@ -49,6 +49,8 @@ class HBRAppDelegate: UIResponder, UIApplicationDelegate {
         
         PurchaseManager.sharedInstance.fetchProductInfo()
         
+        Logger.log("[AppDelegate] didFinishLaunching")
+        
         return true
     }
     
@@ -71,7 +73,6 @@ class HBRAppDelegate: UIResponder, UIApplicationDelegate {
     
     func configureDebugTools() {
         iConsole.sharedConsole().deviceTouchesToShow = 2
-        Logger.log("[AppDelegate] didFinishLaunching")
     }
     
     

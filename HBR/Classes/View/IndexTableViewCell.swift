@@ -8,13 +8,10 @@
 
 import UIKit
 
-enum HBRIndexTableViewCellType: String {
+enum IndexTableViewCellType: String {
     case UnreadItems    = "未読の記事"
     case AllItems       = "すべての記事"
-    case HotEntry       = "人気エントリー"
-    case NewEntry       = "新着エントリー"
     case Feed           = "フィード"
-    case MyBookmarks    = "マイブックマーク"
 }
 
 class IndexTableViewCell: UITableViewCell {
@@ -23,20 +20,12 @@ class IndexTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var numberLabel: UILabel!
     
-    var channel: Channel!
-    var type: HBRIndexTableViewCellType = HBRIndexTableViewCellType.Feed
+    var type: IndexTableViewCellType!
     
     
     /*
      * Public Method
      */
-    func setType(type: HBRIndexTableViewCellType, channel:Channel!) {
-        self.type = type
-        self.channel = channel
-        
-        self.updateCell()
-    }
-    
     func updateView() {
         self.updateCell()
     }
@@ -45,51 +34,76 @@ class IndexTableViewCell: UITableViewCell {
     /*
      * Private Method
      */
-    private func updateCell() {
-        
-        if contains([HBRIndexTableViewCellType.HotEntry, HBRIndexTableViewCellType.NewEntry, HBRIndexTableViewCellType.Feed], type) {
-            titleLabel.text = channel.title
+    private func updateCell() {        
+        if self.type == IndexTableViewCellType.Feed {
+            self.updateFeedCell()
         } else {
-            titleLabel.text = self.type.rawValue
+            self.updateItemsCell()
         }
+    }
+    
+    private func updateFeedCell() {
+        titleLabel.text = _channel.title
+        numberLabel.text = String(_channel.getUnreaditemCount())
         
-        switch type {
-            case HBRIndexTableViewCellType.UnreadItems:
-                iconView.image = UIImage(named: "IconInbox")
-                numberLabel.text = String(ModelManager.sharedInstance.getAllUnreadItemCount())
-            
-            case HBRIndexTableViewCellType.AllItems:
-                iconView.image = UIImage(named: "IconInboxes")
-                numberLabel.hidden = true
-            
-            case HBRIndexTableViewCellType.HotEntry:
+        switch _channel.type {
+            case .Hot:
                 iconView.image = UIImage(named: "IconHotEntry")
-                numberLabel.text = String(channel.getUnreaditemCount())
             
-            case HBRIndexTableViewCellType.NewEntry:
+            case .New:
                 iconView.image = UIImage(named: "IconNewEntry")
-                numberLabel.text = String(channel.getUnreaditemCount())
             
-            case HBRIndexTableViewCellType.Feed:
-                switch channel.type {
-                    case ChannelType.Tag:
-                        iconView.image = UIImage(named: "IconTag")
-                    case ChannelType.Title:
-                        iconView.image = UIImage(named: "IconTitle")
-                    case ChannelType.Text:
-                        iconView.image = UIImage(named: "IconSearch")
-                    default:
-                        break
-                }
-                
-                numberLabel.text = String(channel.getUnreaditemCount())
+            case .Tag:
+                iconView.image = UIImage(named: "IconTag")
             
-            case HBRIndexTableViewCellType.MyBookmarks:
+            case .Title:
+                iconView.image = UIImage(named: "IconTitle")
+            
+            case .Text:
+                iconView.image = UIImage(named: "IconSearch")
+            
+            case .Mine:
                 iconView.image = UIImage(named: "IconBookmark")
                 numberLabel.hidden = true
             
             default:
                 break
+        }
+    }
+    
+    private func updateItemsCell() {
+        if let type = self.type {
+            titleLabel.text = type.rawValue
+            
+            switch type {
+                case .UnreadItems:
+                    iconView.image = UIImage(named: "IconInbox")
+                    numberLabel.text = String(ModelManager.sharedInstance.getAllUnreadItemCount())
+                
+                case .AllItems:
+                    iconView.image = UIImage(named: "IconInboxes")
+                    numberLabel.hidden = true
+                    
+                default:
+                    break
+            }
+        }
+    }
+    
+    
+    /*
+     * Getter, Setter
+     */
+    private var _channel: Channel!
+    var channel: Channel! {
+        set {
+            self._channel = newValue
+            
+            self.updateCell()
+        }
+        
+        get {
+            return self._channel
         }
     }
 }

@@ -43,6 +43,7 @@ class ModelManager: NSObject {
         let myBookmarksChannels = MyBookmarks.MR_findAll() as! [MyBookmarks]
         if myBookmarksChannels.count == 0 {
             myBookmarksChannel = MyBookmarks.MR_createEntity() as! MyBookmarks
+            myBookmarksChannel.type = .Mine
             
             self.save()
         } else {

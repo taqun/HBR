@@ -9,8 +9,6 @@
 import UIKit
 import iAd
 
-//import GoogleAnalytics_iOS_SDK
-
 class IndexViewController: UITableViewController {
     
     @IBOutlet var btnAdd: UIBarButtonItem!
@@ -114,7 +112,7 @@ class IndexViewController: UITableViewController {
         }
         
         var cells = self.tableView.visibleCells() as! [IndexTableViewCell]
-        for cell: IndexTableViewCell in cells {
+        for cell in cells {
             cell.updateView()
         }
         
@@ -124,7 +122,7 @@ class IndexViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("feedLoaded"), name: "FeedLoadedNotification", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("viewWillAppear:"), name: UIApplicationWillEnterForegroundNotification, object: nil)
         
-        //Logger.sharedInstance.track("IndexView")
+        Logger.sharedInstance.track("IndexView")
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -166,49 +164,38 @@ class IndexViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("IndexTableViewCell") as! IndexTableViewCell!
-        
-        if cell == nil {
-            cell = IndexTableViewCell()
-        }
+        var cell = tableView.dequeueReusableCellWithIdentifier("IndexTableViewCell") as! IndexTableViewCell
         
         let section = indexPath.indexAtPosition(0)
         let index = indexPath.indexAtPosition(1)
-        
+
         switch section {
             case 0:
                 switch index {
                     case 0:
-                        cell.setType(HBRIndexTableViewCellType.UnreadItems, channel: nil)
+                        cell.type = IndexTableViewCellType.UnreadItems
                     
                     case 1:
-                        cell.setType(HBRIndexTableViewCellType.AllItems, channel: nil)
+                        cell.type = IndexTableViewCellType.AllItems
                     
                     case 2:
-                        cell.setType(HBRIndexTableViewCellType.MyBookmarks, channel: nil)
-                    
+                        let channel = ModelManager.sharedInstance.myBookmarksChannel
+                        cell.type = IndexTableViewCellType.Feed
+                        cell.channel = channel
+
                     default:
                         break
                 }
             
             case 1:
                 let channel = ModelManager.sharedInstance.getChannel(index)
-                
-                switch channel.type {
-                    case ChannelType.Hot:
-                        cell.setType(HBRIndexTableViewCellType.HotEntry, channel: channel)
-                    
-                    case ChannelType.New:
-                        cell.setType(HBRIndexTableViewCellType.NewEntry, channel: channel)
-                    
-                    default:
-                        cell.setType(HBRIndexTableViewCellType.Feed, channel: channel)
-                }
+                cell.type = IndexTableViewCellType.Feed
+                cell.channel = channel
 
             default:
                 break
         }
-        
+
         return cell
     }
     
@@ -253,6 +240,7 @@ class IndexViewController: UITableViewController {
                 case 2:
                     let myBookmarksTableViewController = MyBookmarksTableViewController()
                     self.navigationController?.pushViewController(myBookmarksTableViewController, animated: true)
+                    
                 default:
                     break
             }
