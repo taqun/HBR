@@ -22,7 +22,7 @@ class FeedURLBuilder: NSObject {
         HatenaCategory.Anime            : "game"
     ]
     
-    static func getHotEntryFeedURL(category: HatenaCategory) -> (String) {
+    static func buildHotEntryFeedURL(category: HatenaCategory) -> (String) {
         if category == HatenaCategory.All {
             return "http://b.hatena.ne.jp/hotentry.rss"
         } else {
@@ -31,13 +31,20 @@ class FeedURLBuilder: NSObject {
         }
     }
     
-    static func getNewEntryFeedURL(category: HatenaCategory) -> (String) {
+    static func buildNewEntryFeedURL(category: HatenaCategory) -> (String) {
         if category == HatenaCategory.All {
             return "http://b.hatena.ne.jp/entrylist?sort=hot&threshold=3&mode=rss"
         } else {
             let path = HATENA_CATEGORY_PATH[category]!
             return "http://b.hatena.ne.jp/entrylist/\(path)?sort=hot&threshold=3&mode=rss"
         }
+    }
+    
+    static func buildKeywordFeedURL(type: ChannelType, keyword: String, bookmarkNum: NSNumber) -> (String) {
+        let escapedKeyword = keyword.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        let typeString = type.rawValue
+        
+        return "http://b.hatena.ne.jp/search/\(typeString)?safe=on&q=\(escapedKeyword)&users=\(bookmarkNum)&mode=rss"
     }
     
 }

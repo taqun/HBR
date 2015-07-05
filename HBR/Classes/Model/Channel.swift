@@ -76,22 +76,6 @@ class Channel: NSManagedObject {
         }
     }
     
-    func getFeedURL() -> (String) {
-        switch self.type {
-            case ChannelType.Hot:
-                return FeedURLBuilder.getHotEntryFeedURL(self.category)
-            
-            case ChannelType.New:
-                return FeedURLBuilder.getNewEntryFeedURL(self.category)
-            
-            default:
-                let escapedKeyword = keyword.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-                let typeString = self.typeValue
-                
-                return "http://b.hatena.ne.jp/search/\(typeString)?safe=on&q=\(escapedKeyword)&users=\(bookmarkNum)&mode=rss"
-        }
-    }
-    
     
     /*
      * Getter, Setter
@@ -148,5 +132,20 @@ class Channel: NSManagedObject {
             self.categoryValue = newValue.rawValue
         }
     }
-
+    
+    var feedURL: String {
+        get {
+            switch self.type {
+                case ChannelType.Hot:
+                    return FeedURLBuilder.buildHotEntryFeedURL(self.category)
+                
+                case ChannelType.New:
+                    return FeedURLBuilder.buildNewEntryFeedURL(self.category)
+                
+                default:
+                    return FeedURLBuilder.buildKeywordFeedURL(self.type, keyword: self.keyword, bookmarkNum: self.bookmarkNum)
+                
+            }
+        }
+    }
 }

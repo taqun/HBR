@@ -55,7 +55,7 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
         let currentChannel = (channel != nil) ? channel : ModelManager.sharedInstance.getChannel(channelCounter)
-        let url = currentChannel.getFeedURL()
+        let url = currentChannel.feedURL
         
         Alamofire.request(.GET, url)
             .validate(statusCode: 200..<400)
@@ -186,7 +186,7 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
         
         Logger.log("[load rss] \(channel.title)")
         
-        var url = NSURL(string: channel.getFeedURL())
+        var url = NSURL(string: channel.feedURL)
         var request = NSMutableURLRequest(URL: url!)
         NSURLProtocol.setProperty(channel.objectID, forKey: "objectID", inRequest: request)
         
