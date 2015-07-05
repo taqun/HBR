@@ -8,7 +8,7 @@
 
 import UIKit
 
-import GoogleAnalytics_iOS_SDK
+import GoogleAnalytics
 import iConsole
 
 class Logger: NSObject {

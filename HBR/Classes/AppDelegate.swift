@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 
-import GoogleAnalytics_iOS_SDK
 import HatenaBookmarkSDK
 import MagicalRecord
 import iConsole

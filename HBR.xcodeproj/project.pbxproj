@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		315EDBA41B491F3900A0DC46 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 315EDBA31B491F3900A0DC46 /* libGoogleAnalytics.a */; };
 		31738EA81B3E87750099A9F2 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EA71B3E87750099A9F2 /* IndexViewController.swift */; };
 		31738EAC1B3E87F80099A9F2 /* IndexViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31738EAB1B3E87F80099A9F2 /* IndexViewController.storyboard */; };
 		31738EB11B3E885B0099A9F2 /* NavigationControllerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EB01B3E885B0099A9F2 /* NavigationControllerUtil.swift */; };
@@ -21,13 +22,11 @@
 		31738ECD1B3E8D580099A9F2 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738ECC1B3E8D580099A9F2 /* Bookmark.swift */; };
 		318045C91B3E820F00F331FF /* HBRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318045C81B3E820F00F331FF /* HBRTests.swift */; };
 		31949AE21B3E855900D063E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31949AE11B3E855900D063E8 /* AppDelegate.swift */; };
-		31C92F401B4183A8000C20DE /* Setting.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 31C92F3F1B4183A8000C20DE /* Setting.xcconfig */; };
 		31C92F441B418D89000C20DE /* reportActivity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31C92F421B418D89000C20DE /* reportActivity@2x.png */; };
 		31C92F451B418D89000C20DE /* reportActivity@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31C92F431B418D89000C20DE /* reportActivity@3x.png */; };
 		31C92F471B418DD4000C20DE /* IconCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31C92F461B418DD4000C20DE /* IconCheckmark@2x.png */; };
 		31C92F491B418F13000C20DE /* IconBookmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31C92F481B418F13000C20DE /* IconBookmark@2x.png */; };
 		31C92F4D1B42C768000C20DE /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C92F4C1B42C768000C20DE /* Setting.m */; };
-		31C92F531B42D051000C20DE /* Keys.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 31C92F521B42D051000C20DE /* Keys.xcconfig */; };
 		31EFF1FC1B3E90FD00EBBF72 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF1FB1B3E90FD00EBBF72 /* Item.swift */; };
 		31EFF1FE1B3E912F00EBBF72 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF1FD1B3E912F00EBBF72 /* DateUtil.swift */; };
 		31EFF2001B3E915F00EBBF72 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF1FF1B3E915F00EBBF72 /* AppConstant.swift */; };
@@ -60,7 +59,6 @@
 		31EFF2391B3F211800EBBF72 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2381B3F211800EBBF72 /* FeedTableViewController.swift */; };
 		31EFF23C1B3F215900EBBF72 /* ExpireSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF23A1B3F215900EBBF72 /* ExpireSettingViewController.swift */; };
 		31EFF23D1B3F215900EBBF72 /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF23B1B3F215900EBBF72 /* LicensesViewController.swift */; };
-		31EFF23F1B3F22D600EBBF72 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EFF23E1B3F22D600EBBF72 /* libGoogleAnalyticsServices.a */; };
 		31EFF2411B3F22E300EBBF72 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EFF2401B3F22E300EBBF72 /* libz.dylib */; };
 		31EFF2431B3F22EC00EBBF72 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EFF2421B3F22EC00EBBF72 /* libsqlite3.dylib */; };
 		31EFF2451B3F230300EBBF72 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EFF2441B3F230300EBBF72 /* SystemConfiguration.framework */; };
@@ -108,6 +106,7 @@
 
 /* Begin PBXFileReference section */
 		01542B63AA6AC5E9873D9ED3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		315EDBA31B491F3900A0DC46 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Pods/GoogleAnalytics/Libraries/libGoogleAnalytics.a; sourceTree = "<group>"; };
 		31738EA71B3E87750099A9F2 /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IndexViewController.swift; path = Classes/ViewController/IndexViewController.swift; sourceTree = "<group>"; };
 		31738EAB1B3E87F80099A9F2 /* IndexViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = IndexViewController.storyboard; path = Assets/ViewController/IndexViewController.storyboard; sourceTree = "<group>"; };
 		31738EB01B3E885B0099A9F2 /* NavigationControllerUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationControllerUtil.swift; path = Classes/Util/NavigationControllerUtil.swift; sourceTree = "<group>"; };
@@ -167,7 +166,6 @@
 		31EFF2381B3F211800EBBF72 /* FeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedTableViewController.swift; path = Classes/ViewController/FeedTableViewController.swift; sourceTree = "<group>"; };
 		31EFF23A1B3F215900EBBF72 /* ExpireSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpireSettingViewController.swift; path = Classes/ViewController/Setting/ExpireSettingViewController.swift; sourceTree = "<group>"; };
 		31EFF23B1B3F215900EBBF72 /* LicensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LicensesViewController.swift; path = Classes/ViewController/Setting/LicensesViewController.swift; sourceTree = "<group>"; };
-		31EFF23E1B3F22D600EBBF72 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = "Pods/GoogleAnalytics-iOS-SDK/libGoogleAnalyticsServices.a"; sourceTree = "<group>"; };
 		31EFF2401B3F22E300EBBF72 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		31EFF2421B3F22EC00EBBF72 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		31EFF2441B3F230300EBBF72 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -213,8 +211,8 @@
 				31EFF2471B3F230A00EBBF72 /* CoreData.framework in Frameworks */,
 				31EFF2451B3F230300EBBF72 /* SystemConfiguration.framework in Frameworks */,
 				31EFF2431B3F22EC00EBBF72 /* libsqlite3.dylib in Frameworks */,
+				315EDBA41B491F3900A0DC46 /* libGoogleAnalytics.a in Frameworks */,
 				31EFF2411B3F22E300EBBF72 /* libz.dylib in Frameworks */,
-				31EFF23F1B3F22D600EBBF72 /* libGoogleAnalyticsServices.a in Frameworks */,
 				568CBC93F1FBC6B80C0756DD /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,12 +557,12 @@
 		89461E604EC2D6980B7F4817 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				315EDBA31B491F3900A0DC46 /* libGoogleAnalytics.a */,
 				31EFF2531B3F24D200EBBF72 /* iAd.framework */,
 				31EFF2461B3F230A00EBBF72 /* CoreData.framework */,
 				31EFF2441B3F230300EBBF72 /* SystemConfiguration.framework */,
 				31EFF2421B3F22EC00EBBF72 /* libsqlite3.dylib */,
 				31EFF2401B3F22E300EBBF72 /* libz.dylib */,
-				31EFF23E1B3F22D600EBBF72 /* libGoogleAnalyticsServices.a */,
 				A0F0B1909FABF551575B4F7A /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -678,7 +676,6 @@
 				31EFF2831B404C8E00EBBF72 /* BookmarkReadMoreCell.xib in Resources */,
 				31EFF24C1B3F23E900EBBF72 /* IconSettings@2x.png in Resources */,
 				31EFF25D1B4034CF00EBBF72 /* SelectChannelTypeViewController.storyboard in Resources */,
-				31C92F531B42D051000C20DE /* Keys.xcconfig in Resources */,
 				31EFF26C1B4036A000EBBF72 /* TermsViewController.storyboard in Resources */,
 				31EFF2881B40550000EBBF72 /* MyBookmarksTableViewCell.xib in Resources */,
 				31EFF2571B3F26CA00EBBF72 /* IconInbox@2x.png in Resources */,
@@ -689,7 +686,6 @@
 				31738EAC1B3E87F80099A9F2 /* IndexViewController.storyboard in Resources */,
 				31EFF2521B3F249E00EBBF72 /* IndexTableViewCell.xib in Resources */,
 				31EFF24B1B3F23E900EBBF72 /* IconSearch@2x.png in Resources */,
-				31C92F401B4183A8000C20DE /* Setting.xcconfig in Resources */,
 				31EFF2841B404C8E00EBBF72 /* BookmarkTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -917,7 +913,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/GoogleAnalytics-iOS-SDK",
+					"$(PROJECT_DIR)/Pods/GoogleAnalytics/Libraries",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D DEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -936,7 +932,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/GoogleAnalytics-iOS-SDK",
+					"$(PROJECT_DIR)/Pods/GoogleAnalytics/Libraries",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "HBR/Classes/Bridge/HBR-Bridging-Header.h";
