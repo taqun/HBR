@@ -22,7 +22,29 @@ class FeedURLBuilder: NSObject {
         HatenaCategory.Anime            : "game"
     ]
     
-    static func buildHotEntryFeedURL(category: HatenaCategory) -> (String) {
+    
+    /*
+     * Public Method
+     */
+    static func buildFeedURL(channel: Channel) -> (String) {
+        switch channel.type {
+            case ChannelType.Hot:
+                return FeedURLBuilder.buildHotEntryFeedURL(channel.category)
+            
+            case ChannelType.New:
+                return FeedURLBuilder.buildNewEntryFeedURL(channel.category)
+            
+            default:
+                return FeedURLBuilder.buildKeywordFeedURL(channel.type, keyword: channel.keyword, bookmarkNum: channel.bookmarkNum)
+            
+            }
+    }
+    
+    
+    /*
+     * Private Method
+     */
+    private static func buildHotEntryFeedURL(category: HatenaCategory) -> (String) {
         if category == HatenaCategory.All {
             return "http://b.hatena.ne.jp/hotentry.rss"
         } else {
@@ -31,7 +53,7 @@ class FeedURLBuilder: NSObject {
         }
     }
     
-    static func buildNewEntryFeedURL(category: HatenaCategory) -> (String) {
+    private static func buildNewEntryFeedURL(category: HatenaCategory) -> (String) {
         if category == HatenaCategory.All {
             return "http://b.hatena.ne.jp/entrylist?sort=hot&threshold=3&mode=rss"
         } else {
@@ -40,7 +62,7 @@ class FeedURLBuilder: NSObject {
         }
     }
     
-    static func buildKeywordFeedURL(type: ChannelType, keyword: String, bookmarkNum: NSNumber) -> (String) {
+    private static func buildKeywordFeedURL(type: ChannelType, keyword: String, bookmarkNum: NSNumber) -> (String) {
         let escapedKeyword = keyword.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         let typeString = type.rawValue
         

@@ -21,7 +21,7 @@ enum ChannelType: String {
 @objc(Channel)
 class Channel: NSManagedObject {
     
-    @NSManaged private var keyword: String
+    @NSManaged var keyword: String
     @NSManaged var bookmarkNum: NSNumber
     @NSManaged var updatedAt: NSDate
     
@@ -135,17 +135,7 @@ class Channel: NSManagedObject {
     
     var feedURL: String {
         get {
-            switch self.type {
-                case ChannelType.Hot:
-                    return FeedURLBuilder.buildHotEntryFeedURL(self.category)
-                
-                case ChannelType.New:
-                    return FeedURLBuilder.buildNewEntryFeedURL(self.category)
-                
-                default:
-                    return FeedURLBuilder.buildKeywordFeedURL(self.type, keyword: self.keyword, bookmarkNum: self.bookmarkNum)
-                
-            }
+            return FeedURLBuilder.buildFeedURL(self)
         }
     }
 }

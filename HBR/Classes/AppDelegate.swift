@@ -25,6 +25,11 @@ class HBRAppDelegate: UIResponder, UIApplicationDelegate {
     */
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        let isInTests = (NSClassFromString("XCTest") != nil)
+        if isInTests {
+            return true
+        }
+        
         #if DEBUG
         self.window = iConsoleWindow(frame: UIScreen.mainScreen().bounds)
         #else
@@ -103,6 +108,11 @@ class HBRAppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillTerminate(application: UIApplication) {
+        let isInTests = (NSClassFromString("XCTest") != nil)
+        if isInTests {
+            return
+        }
+        
         MagicalRecord.cleanUp()
     }
     

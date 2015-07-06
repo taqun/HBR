@@ -13,3 +13,7 @@ pod 'MBProgressHUD', '~> 0.9'
 pod 'TUSafariActivity', '~> 1.0'
 pod 'iConsole', '~> 1.5'
 pod 'AEXML', '~> 1.2'
+
+target "HBRTests" do
+  pod 'MagicalRecord', '2.2'
+end
