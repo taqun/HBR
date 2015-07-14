@@ -16,12 +16,12 @@ class Item: NSManagedObject {
     
     @NSManaged var rawData: NSData
     @NSManaged var title: String
-    @NSManaged var desc: String
     @NSManaged var userNum: String!
     @NSManaged var date: NSDate
     @NSManaged var dateString: String
     @NSManaged var link: String
     @NSManaged var host: String
+    
     @NSManaged var read: NSNumber
     
     @NSManaged var channels: NSMutableSet
@@ -34,10 +34,8 @@ class Item: NSManagedObject {
         let rawData = data
         
         self.title      = String(rawData["title"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        self.desc       = String(rawData["description"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         self.userNum    = String(rawData["hatena:bookmarkcount"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
-        // 2014-09-13T18:20:42+09:00
         let dateString = String(rawData["dc:date"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         self.date       = DateUtil.dateFromDateString(dateString, inputFormat: "yyyy-MM-dd'T'HH:mm:ssZ")
         self.dateString = DateUtil.stringFromDateString(dateString, inputFormat: "yyyy-MM-dd'T'HH:mm:ssZ")
@@ -53,7 +51,6 @@ class Item: NSManagedObject {
             self.title = title
         }
         
-        // 2015-05-05T23:36:58"
         if let dateValue = entry["issued"].value {
             let dateString = dateValue.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
             self.date       = DateUtil.dateFromDateString(dateString, inputFormat: "yyyy-MM-dd'T'HH:mm:ss")

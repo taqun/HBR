@@ -51,7 +51,6 @@ class ItemTest: XCTestCase {
     func testParseData() {
         let data: [String: String!] = [
             "title" : "記事タイトル",
-            "description" : "記事デスクリプション",
             "link" : "http://example.jp/foo/bar",
             "dc:date" : "2015-07-14T07:31:29+09:00",
             "hatena:bookmarkcount" : "12345"
@@ -61,7 +60,6 @@ class ItemTest: XCTestCase {
         item.parseData(data)
         
         XCTAssertEqual(item.title, "記事タイトル")
-        XCTAssertEqual(item.desc, "記事デスクリプション")
         XCTAssertEqual(item.link, "http://example.jp/foo/bar")
         XCTAssertEqual(item.userNum, "12345")
         

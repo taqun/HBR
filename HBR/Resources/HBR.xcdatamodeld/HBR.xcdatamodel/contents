@@ -11,7 +11,6 @@
     <entity name="Item" representedClassName="Item" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dateString" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="host" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="read" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
@@ -22,7 +21,7 @@
     <entity name="MyBookmarks" representedClassName="MyBookmarks" parentEntity="Channel" syncable="YES"/>
     <elements>
         <element name="Channel" positionX="-63" positionY="-18" width="128" height="133"/>
-        <element name="Item" positionX="349" positionY="18" width="128" height="178"/>
-        <element name="MyBookmarks" positionX="-0" positionY="243" width="128" height="43"/>
+        <element name="Item" positionX="349" positionY="18" width="128" height="165"/>
+        <element name="MyBookmarks" positionX="-0" positionY="243" width="128" height="45"/>
     </elements>
 </model>
