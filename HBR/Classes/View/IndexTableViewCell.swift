@@ -44,7 +44,7 @@ class IndexTableViewCell: UITableViewCell {
     
     private func updateFeedCell() {
         titleLabel.text = _channel.title
-        numberLabel.text = String(_channel.getUnreaditemCount())
+        numberLabel.text = String(_channel.unreadItemCount)
         
         switch _channel.type {
             case .Hot:

@@ -91,9 +91,6 @@ class ChannelTest: XCTestCase {
     func testCreateEntity() {
         let channel = self.createChannel()
         XCTAssertNotNil(channel)
-        
-        channel.initKeyword("キーワード")
-        XCTAssertEqual(channel.keyword, "キーワード")
     }
     
     func testAddItems() {
@@ -111,7 +108,7 @@ class ChannelTest: XCTestCase {
         let items1 = self.createItems()
         channel1.addItems(items1)
         
-        XCTAssertEqual(channel1.getUnreaditemCount(), 3)
+        XCTAssertEqual(channel1.unreadItemCount, 3)
         
         let channel2 = self.createChannel()
         
@@ -121,17 +118,17 @@ class ChannelTest: XCTestCase {
         
         channel2.addItems(items2)
         
-        XCTAssertEqual(channel2.getUnreaditemCount(), 1)
+        XCTAssertEqual(channel2.unreadItemCount, 1)
     }
     
     func testMarkAsReadAllItems() {
         let channel = self.createChannel()
         let items = self.createItems()
         channel.addItems(items)
-        XCTAssertEqual(channel.getUnreaditemCount(), 3)
+        XCTAssertEqual(channel.unreadItemCount, 3)
         
         channel.markAsReadAllItems()
-        XCTAssertEqual(channel.getUnreaditemCount(), 0)
+        XCTAssertEqual(channel.unreadItemCount, 0)
     }
     
     func testChannelTitle() {

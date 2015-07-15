@@ -110,7 +110,7 @@ class FeedTableViewController: SegmentedDisplayTableViewController, NSFetchedRes
     }
     
     private func updateTitle() {
-        let unreadCount = channel.getUnreaditemCount()
+        let unreadCount = channel.unreadItemCount
         
         if unreadCount == 0 {
             self.title = channel.title

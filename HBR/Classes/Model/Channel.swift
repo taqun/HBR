@@ -34,10 +34,6 @@ class Channel: NSManagedObject {
     /*
      * Public Method
      */
-    func initKeyword(keyword: String) {
-        self.keyword = keyword
-    }
-    
     func addItems(newItems: [Item]) {
         var set = self.mutableSetValueForKey("items")
         
@@ -46,15 +42,6 @@ class Channel: NSManagedObject {
         }
         
         self.updatedAt = NSDate()
-    }
-    
-    func getUnreaditemCount() -> (Int) {
-        var fetchRequest = Item.MR_requestAll()
-        fetchRequest.predicate = NSPredicate(format: "ANY channels == %@ AND read = false", self)
-        
-        var items = Item.MR_executeFetchRequest(fetchRequest)
-        
-        return items.count
     }
     
     func markAsReadAllItems() {
@@ -125,6 +112,17 @@ class Channel: NSManagedObject {
     var feedURL: String {
         get {
             return FeedURLBuilder.buildFeedURL(self)
+        }
+    }
+    
+    var unreadItemCount: Int {
+        get {
+            var fetchRequest = Item.MR_requestAll()
+            fetchRequest.predicate = NSPredicate(format: "ANY channels == %@ AND read = false", self)
+            
+            var items = Item.MR_executeFetchRequest(fetchRequest)
+            
+            return items.count
         }
     }
 }

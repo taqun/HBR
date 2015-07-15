@@ -55,7 +55,7 @@ class AddNewChannelViewController: UITableViewController, UITextFieldDelegate{
             //self.onCancel()
         } else {
             var channel = ModelManager.sharedInstance.createChannel(ChannelType.Tag)
-            channel.initKeyword(channelKeyword)
+            channel.keyword = channelKeyword
             channel.type = channelType
             channel.bookmarkNum = bookmarkNum
             
