@@ -48,17 +48,6 @@ class Channel: NSManagedObject {
         self.updatedAt = NSDate()
     }
     
-    func getLatestItemDate() -> (NSDate) {
-        func feedSort(f1: Item, f2: Item) -> (Bool) {
-            return f1.date.timeIntervalSinceNow > f2.date.timeIntervalSinceNow
-        }
-        
-        var items = self.items.allObjects as! [Item]
-        items = sorted(items, feedSort)
-        
-        return items[0].date
-    }
-    
     func getUnreaditemCount() -> (Int) {
         var fetchRequest = Item.MR_requestAll()
         fetchRequest.predicate = NSPredicate(format: "ANY channels == %@ AND read = false", self)
