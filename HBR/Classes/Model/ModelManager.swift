@@ -18,7 +18,6 @@ class ModelManager: NSObject {
     
     private var bookmarks: [String: Bookmark] = Dictionary<String, Bookmark>()
     
-    private var currentUrl: String!
     private var currentUrlsBookmarkCount: Int! = 0
     
     
@@ -138,6 +137,10 @@ class ModelManager: NSObject {
         }
     }
     
+    
+    /*
+     * Bookmark
+     */
     func addBookmark(url: String, bookmark: Bookmark){
         self.bookmarks[url] = bookmark
     }
@@ -145,25 +148,26 @@ class ModelManager: NSObject {
     func getBookmark(url: String) -> (Bookmark!){
         return self.bookmarks[url]
     }
-
-    func setCurrentUrl(url: String!){
-        currentUrl = url
-    }
     
-    func getCurrentUrl() -> (String){
-        return currentUrl
-    }
-    
-    func updateCurrentUrl(url: String!){
-        if url != currentUrl {
-            currentUrl = url
-            
-            self.updateBookmarkCount(currentUrl)
+    private var _currentUrl: String!
+    var currentUrl: String {
+        set {
+            if _currentUrl != newValue {
+                _currentUrl = newValue
+                
+                self.updateBookmarkCount(_currentUrl)
+            }
+        }
+        
+        get {
+            return _currentUrl
         }
     }
     
-    func getCurrentBookmarkCount() -> (Int){
-        return self.currentUrlsBookmarkCount
+    var currentBookmarkCount: Int{
+        get {
+            return self.currentUrlsBookmarkCount
+        }
     }
     
     

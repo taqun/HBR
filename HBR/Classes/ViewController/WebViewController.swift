@@ -38,7 +38,7 @@ class WebViewController: UIViewController, UIWebViewDelegate {
      */
     init(item: Item){
         self.item = item
-        ModelManager.sharedInstance.setCurrentUrl(self.item.link)
+        ModelManager.sharedInstance.currentUrl = self.item.link
         
         super.init(nibName: "WebViewController", bundle: nil)
     }
@@ -60,7 +60,7 @@ class WebViewController: UIViewController, UIWebViewDelegate {
      * Private Method
      */
     @objc private func bookmarkCountUpdated() {
-        let bookmarkCount = ModelManager.sharedInstance.getCurrentBookmarkCount()
+        let bookmarkCount = ModelManager.sharedInstance.currentBookmarkCount
         
         if bookmarkCount == 0 {
             self.btnUserNum.enabled = false
@@ -123,7 +123,7 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     private func showBookmarkList(){
         self.bookmarkListIsShowed = true
         
-        self.bookmarkViewController.url = ModelManager.sharedInstance.getCurrentUrl()
+        self.bookmarkViewController.url = ModelManager.sharedInstance.currentUrl
         
         var frame = self.bookmarkViewController.view.frame
         frame.size.height = self.view.frame.height
@@ -253,7 +253,7 @@ class WebViewController: UIViewController, UIWebViewDelegate {
             if self.titleView.text != title && title != ""{
                 self.titleView.text = title
             }
-            ModelManager.sharedInstance.updateCurrentUrl(webView.stringByEvaluatingJavaScriptFromString("document.URL"))
+            ModelManager.sharedInstance.currentUrl = webView.stringByEvaluatingJavaScriptFromString("document.URL")!
         }
         
         if(self.startLoadCount == 1){

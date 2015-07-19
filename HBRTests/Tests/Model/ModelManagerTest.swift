@@ -137,9 +137,8 @@ class ModelManagerTest: XCTestCase {
     }
     
     func testCurrentURL() {
-        // TODO: Refactor
-        ModelManager.sharedInstance.setCurrentUrl("http://example.jp/foo/bar")
-        XCTAssertEqual(ModelManager.sharedInstance.getCurrentUrl(), "http://example.jp/foo/bar")
+        ModelManager.sharedInstance.currentUrl = "http://example.jp/foo/bar"
+        XCTAssertEqual(ModelManager.sharedInstance.currentUrl, "http://example.jp/foo/bar")
     }
     
     
