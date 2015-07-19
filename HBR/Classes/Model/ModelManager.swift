@@ -60,7 +60,7 @@ class ModelManager: NSObject {
     }
     
     func getChannel(index: Int) -> (Channel!){
-        var request = Channel.MR_requestAllSortedBy("keyword", ascending: true)
+        var request = Channel.MR_requestAllSortedBy("typeValue,categoryValue,keyword", ascending: true)
         request.predicate = NSPredicate(format: "self != %@", ModelManager.sharedInstance.myBookmarksChannel)
         
         if let channels = Channel.MR_executeFetchRequest(request) as? [Channel] {
