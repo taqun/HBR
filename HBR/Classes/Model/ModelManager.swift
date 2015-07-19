@@ -63,12 +63,10 @@ class ModelManager: NSObject {
         var request = Channel.MR_requestAllSortedBy("keyword", ascending: true)
         request.predicate = NSPredicate(format: "self != %@", ModelManager.sharedInstance.myBookmarksChannel)
         
-        let channels = Channel.MR_executeFetchRequest(request);
-        
-        if index >= channels.count {
-            return nil
+        if let channels = Channel.MR_executeFetchRequest(request) as? [Channel] {
+            return channels[index]
         } else {
-            return channels[index] as! Channel
+            return nil
         }
     }
 
@@ -85,9 +83,11 @@ class ModelManager: NSObject {
         var request = Channel.MR_requestAllSortedBy("updatedAt", ascending: true)
         request.predicate = NSPredicate(format: "self != %@", ModelManager.sharedInstance.myBookmarksChannel)
         
-        let channels = Channel.MR_executeFetchRequest(request)
-        
-        return channels[0] as! Channel
+        if let channels = Channel.MR_executeFetchRequest(request) as? [Channel] {
+            return channels[0]
+        } else {
+            return nil
+        }
     }
 
     var channelCount: Int {
