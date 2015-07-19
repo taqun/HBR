@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		315EDBA41B491F3900A0DC46 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 315EDBA31B491F3900A0DC46 /* libGoogleAnalytics.a */; };
+		3167D6691B5A4DBC0010EAE0 /* ModelManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6681B5A4DBC0010EAE0 /* ModelManagerTest.swift */; };
+		3167D66A1B5A4E220010EAE0 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EC51B3E8B8B0099A9F2 /* ModelManager.swift */; };
+		3167D66B1B5A4E3C0010EAE0 /* MyBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738ECA1B3E8CEA0099A9F2 /* MyBookmarks.swift */; };
+		3167D66C1B5A4E480010EAE0 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738ECC1B3E8D580099A9F2 /* Bookmark.swift */; };
+		3167D66D1B5A4E5D0010EAE0 /* BookmarkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2071B3E93C700EBBF72 /* BookmarkItem.swift */; };
+		3167D66E1B5A4E6A0010EAE0 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2011B3E920700EBBF72 /* Logger.swift */; };
+		3167D6701B5A4ED80010EAE0 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 315EDBA31B491F3900A0DC46 /* libGoogleAnalytics.a */; };
+		3167D6711B5A4EE10010EAE0 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EFF2441B3F230300EBBF72 /* SystemConfiguration.framework */; };
+		3167D6721B5A4EED0010EAE0 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EFF2401B3F22E300EBBF72 /* libz.dylib */; };
+		3167D6731B5A4EF80010EAE0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 31EFF2421B3F22EC00EBBF72 /* libsqlite3.dylib */; };
+		3167D6751B5A51200010EAE0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6741B5A51200010EAE0 /* CoreDataManager.swift */; };
+		3167D6761B5A526E0010EAE0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6741B5A51200010EAE0 /* CoreDataManager.swift */; };
+		3167D6771B5A52BD0010EAE0 /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C92F4C1B42C768000C20DE /* Setting.m */; };
 		31738EA81B3E87750099A9F2 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EA71B3E87750099A9F2 /* IndexViewController.swift */; };
 		31738EAC1B3E87F80099A9F2 /* IndexViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31738EAB1B3E87F80099A9F2 /* IndexViewController.storyboard */; };
 		31738EB11B3E885B0099A9F2 /* NavigationControllerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EB01B3E885B0099A9F2 /* NavigationControllerUtil.swift */; };
@@ -20,6 +33,9 @@
 		31738EC91B3E8C910099A9F2 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EC81B3E8C910099A9F2 /* Channel.swift */; };
 		31738ECB1B3E8CEA0099A9F2 /* MyBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738ECA1B3E8CEA0099A9F2 /* MyBookmarks.swift */; };
 		31738ECD1B3E8D580099A9F2 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738ECC1B3E8D580099A9F2 /* Bookmark.swift */; };
+		3189D0071B5BCB88004F2F72 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EC81B3E8C910099A9F2 /* Channel.swift */; };
+		3189D0091B5BD4CD004F2F72 /* BookmarkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189D0081B5BD4CD004F2F72 /* BookmarkTest.swift */; };
+		3189D00B1B5BD7A8004F2F72 /* BookmarkItemTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189D00A1B5BD7A8004F2F72 /* BookmarkItemTest.swift */; };
 		31949AE21B3E855900D063E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31949AE11B3E855900D063E8 /* AppDelegate.swift */; };
 		31C92F441B418D89000C20DE /* reportActivity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31C92F421B418D89000C20DE /* reportActivity@2x.png */; };
 		31C92F451B418D89000C20DE /* reportActivity@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31C92F431B418D89000C20DE /* reportActivity@3x.png */; };
@@ -93,7 +109,6 @@
 		402E06C21B560AAA002ABF48 /* ChannelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402E06C01B560AAA002ABF48 /* ChannelTest.swift */; };
 		402E06C31B560AAA002ABF48 /* ItemTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402E06C11B560AAA002ABF48 /* ItemTest.swift */; };
 		405D57791B4A2D7F009C9D56 /* FeedURLBuilderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D57781B4A2D7F009C9D56 /* FeedURLBuilderTest.swift */; };
-		405D577A1B4A2F3B009C9D56 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EC81B3E8C910099A9F2 /* Channel.swift */; };
 		405D577B1B4A2F41009C9D56 /* FeedURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2051B3E938300EBBF72 /* FeedURLBuilder.swift */; };
 		405D577C1B4A2FFD009C9D56 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF1FB1B3E90FD00EBBF72 /* Item.swift */; };
 		405D577D1B4A3010009C9D56 /* Hatena.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2031B3E934D00EBBF72 /* Hatena.swift */; };
@@ -119,6 +134,8 @@
 		14BBF0AD1F3A22A92C96683A /* Pods_HBRTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HBRTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		302E50EC42B1DAC3D542C4F5 /* Pods-HBRTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HBRTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HBRTests/Pods-HBRTests.release.xcconfig"; sourceTree = "<group>"; };
 		315EDBA31B491F3900A0DC46 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Pods/GoogleAnalytics/Libraries/libGoogleAnalytics.a; sourceTree = "<group>"; };
+		3167D6681B5A4DBC0010EAE0 /* ModelManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelManagerTest.swift; path = Tests/Model/ModelManagerTest.swift; sourceTree = "<group>"; };
+		3167D6741B5A51200010EAE0 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = Classes/Model/CoreDataManager.swift; sourceTree = "<group>"; };
 		31738EA71B3E87750099A9F2 /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IndexViewController.swift; path = Classes/ViewController/IndexViewController.swift; sourceTree = "<group>"; };
 		31738EAB1B3E87F80099A9F2 /* IndexViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = IndexViewController.storyboard; path = Assets/ViewController/IndexViewController.storyboard; sourceTree = "<group>"; };
 		31738EB01B3E885B0099A9F2 /* NavigationControllerUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationControllerUtil.swift; path = Classes/Util/NavigationControllerUtil.swift; sourceTree = "<group>"; };
@@ -134,6 +151,8 @@
 		318045AD1B3E820E00F331FF /* HBR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HBR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		318045C21B3E820F00F331FF /* HBRTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HBRTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		318045C71B3E820F00F331FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3189D0081B5BD4CD004F2F72 /* BookmarkTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarkTest.swift; path = Tests/Model/BookmarkTest.swift; sourceTree = "<group>"; };
+		3189D00A1B5BD7A8004F2F72 /* BookmarkItemTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarkItemTest.swift; path = Tests/Model/BookmarkItemTest.swift; sourceTree = "<group>"; };
 		31949AE11B3E855900D063E8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Classes/AppDelegate.swift; sourceTree = "<group>"; };
 		31C92F391B418071000C20DE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		31C92F3F1B4183A8000C20DE /* Setting.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Setting.xcconfig; path = HBR/Config/Setting.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -236,6 +255,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3167D6731B5A4EF80010EAE0 /* libsqlite3.dylib in Frameworks */,
+				3167D6721B5A4EED0010EAE0 /* libz.dylib in Frameworks */,
+				3167D6711B5A4EE10010EAE0 /* SystemConfiguration.framework in Frameworks */,
+				3167D6701B5A4ED80010EAE0 /* libGoogleAnalytics.a in Frameworks */,
 				51A16CBC827A2C65B3CD703E /* Pods_HBRTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +398,7 @@
 				31738ECA1B3E8CEA0099A9F2 /* MyBookmarks.swift */,
 				31EFF22D1B3F1D1000EBBF72 /* PurchaseManager.swift */,
 				31EFF22B1B3F1C5F00EBBF72 /* UserManager.swift */,
+				3167D6741B5A51200010EAE0 /* CoreDataManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -583,6 +607,9 @@
 			children = (
 				402E06C01B560AAA002ABF48 /* ChannelTest.swift */,
 				402E06C11B560AAA002ABF48 /* ItemTest.swift */,
+				3167D6681B5A4DBC0010EAE0 /* ModelManagerTest.swift */,
+				3189D0081B5BD4CD004F2F72 /* BookmarkTest.swift */,
+				3189D00A1B5BD7A8004F2F72 /* BookmarkItemTest.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -861,6 +888,7 @@
 				31EFF1FE1B3E912F00EBBF72 /* DateUtil.swift in Sources */,
 				31EFF2001B3E915F00EBBF72 /* AppConstant.swift in Sources */,
 				31EFF20A1B3E941700EBBF72 /* FeedParserUtil.swift in Sources */,
+				3167D6751B5A51200010EAE0 /* CoreDataManager.swift in Sources */,
 				31EFF2351B3F208200EBBF72 /* MyBookmarksTableViewController.swift in Sources */,
 				31EFF2021B3E920700EBBF72 /* Logger.swift in Sources */,
 				31EFF2241B3F1B2600EBBF72 /* BookmarkViewController.swift in Sources */,
@@ -900,13 +928,23 @@
 			files = (
 				402E06C31B560AAA002ABF48 /* ItemTest.swift in Sources */,
 				405D577D1B4A3010009C9D56 /* Hatena.swift in Sources */,
+				3189D00B1B5BD7A8004F2F72 /* BookmarkItemTest.swift in Sources */,
 				405D577C1B4A2FFD009C9D56 /* Item.swift in Sources */,
 				405D577B1B4A2F41009C9D56 /* FeedURLBuilder.swift in Sources */,
-				405D577A1B4A2F3B009C9D56 /* Channel.swift in Sources */,
+				3167D6761B5A526E0010EAE0 /* CoreDataManager.swift in Sources */,
+				3189D0091B5BD4CD004F2F72 /* BookmarkTest.swift in Sources */,
+				3167D66D1B5A4E5D0010EAE0 /* BookmarkItem.swift in Sources */,
+				3167D66C1B5A4E480010EAE0 /* Bookmark.swift in Sources */,
+				3189D0071B5BCB88004F2F72 /* Channel.swift in Sources */,
+				3167D6771B5A52BD0010EAE0 /* Setting.m in Sources */,
+				3167D66E1B5A4E6A0010EAE0 /* Logger.swift in Sources */,
+				3167D66A1B5A4E220010EAE0 /* ModelManager.swift in Sources */,
 				405D57811B4A3042009C9D56 /* FeedParserUtil.swift in Sources */,
+				3167D6691B5A4DBC0010EAE0 /* ModelManagerTest.swift in Sources */,
 				405D57791B4A2D7F009C9D56 /* FeedURLBuilderTest.swift in Sources */,
 				402E06C21B560AAA002ABF48 /* ChannelTest.swift in Sources */,
 				405D577E1B4A301F009C9D56 /* DateUtil.swift in Sources */,
+				3167D66B1B5A4E3C0010EAE0 /* MyBookmarks.swift in Sources */,
 				405D577F1B4A302E009C9D56 /* AppConstant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1056,7 +1094,12 @@
 				);
 				INFOPLIST_FILE = HBRTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/GoogleAnalytics/Libraries",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HBR/Classes/Bridge/HBR-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HBR.app/HBR";
 			};
 			name = Debug;
@@ -1072,7 +1115,12 @@
 				);
 				INFOPLIST_FILE = HBRTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/GoogleAnalytics/Libraries",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HBR/Classes/Bridge/HBR-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HBR.app/HBR";
 			};
 			name = Release;

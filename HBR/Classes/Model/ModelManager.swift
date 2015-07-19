@@ -33,17 +33,16 @@ class ModelManager: NSObject {
         var us = NSUserDefaults.standardUserDefaults()
         us.registerDefaults([
             "AdsEnabled" : true,
-            "isFirstLaunch" : true
+            "EntryExpireInterval" : EntryExpireInterval.OneWeek.rawValue
         ])
         
         self.initMyBookmarks()
     }
     
-    func initMyBookmarks() {
+    private func initMyBookmarks() {
         let myBookmarksChannels = MyBookmarks.MR_findAll() as! [MyBookmarks]
         if myBookmarksChannels.count == 0 {
-            myBookmarksChannel = MyBookmarks.MR_createEntity() as! MyBookmarks
-            myBookmarksChannel.type = .Mine
+            myBookmarksChannel = CoreDataManager.sharedInstance.createMyBookmarksChannel()
             
             self.save()
         } else {
@@ -55,8 +54,8 @@ class ModelManager: NSObject {
     /*
      * Channel
      */
-    func createChannel(channelType: ChannelType) -> (Channel){
-        let channel = Channel.MR_createEntity() as! Channel
+    func createChannel() -> (Channel){
+        let channel = CoreDataManager.sharedInstance.createChannel()
         return channel
     }
     
@@ -117,24 +116,27 @@ class ModelManager: NSObject {
     /*
      * Item
      */
-    func getAllItemCount() -> (Int) {
-        var fetchRequest = Item.MR_requestAll()
-        fetchRequest.predicate = NSPredicate(format: "NOT (ANY channels == %@)", ModelManager.sharedInstance.myBookmarksChannel)
-        
-        var items = Item.MR_executeFetchRequest(fetchRequest)
-        
-        return items.count
+    var allItemCount: Int {
+        get {
+            var fetchRequest = Item.MR_requestAll()
+            fetchRequest.predicate = NSPredicate(format: "NOT (ANY channels == %@)", ModelManager.sharedInstance.myBookmarksChannel)
+            
+            var items = Item.MR_executeFetchRequest(fetchRequest)
+            
+            return items.count
+        }
     }
     
-    func getAllUnreadItemCount() -> (Int) {
-        var fetchRequest = Item.MR_requestAll()
-        fetchRequest.predicate = NSPredicate(format: "NOT (ANY channels == %@) AND read = false", ModelManager.sharedInstance.myBookmarksChannel)
-        
-        var items = Item.MR_executeFetchRequest(fetchRequest)
-        
-        return items.count
+    var allUnreadItemCount: Int {
+        get {
+            var fetchRequest = Item.MR_requestAll()
+            fetchRequest.predicate = NSPredicate(format: "NOT (ANY channels == %@) AND read = false", ModelManager.sharedInstance.myBookmarksChannel)
+            
+            var items = Item.MR_executeFetchRequest(fetchRequest)
+            
+            return items.count
+        }
     }
-    
     
     func addBookmark(url: String, bookmark: Bookmark){
         self.bookmarks[url] = bookmark
@@ -169,24 +171,17 @@ class ModelManager: NSObject {
      * Setting
      */
     var entryExpireInterval: EntryExpireInterval {
+        set(newValue) {
+            var ud = NSUserDefaults.standardUserDefaults()
+            ud.setObject(newValue.rawValue, forKey: "EntryExpireInterval")
+            ud.synchronize()
+        }
+        
         get {
             var ud = NSUserDefaults.standardUserDefaults()
             var interval: AnyObject? = ud.objectForKey("EntryExpireInterval")
             
-            if interval == nil {
-                ud.setObject(EntryExpireInterval.OneWeek.rawValue, forKey: "EntryExpireInterval")
-                ud.synchronize()
-                
-                interval = ud.objectForKey("EntryExpireInterval")
-            }
-            
             return EntryExpireInterval(rawValue: interval as! String)!
-        }
-        
-        set {
-            var ud = NSUserDefaults.standardUserDefaults()
-            ud.setObject(newValue.rawValue, forKey: "EntryExpireInterval")
-            ud.synchronize()
         }
     }
     
@@ -198,12 +193,7 @@ class ModelManager: NSObject {
         }
         
         get {
-            let defaults = NSUserDefaults.standardUserDefaults()
-            if let adsEnabled = defaults.valueForKey("AdsEnabled") as? Bool {
-                return adsEnabled
-            } else {
-                return true
-            }
+            return NSUserDefaults.standardUserDefaults().boolForKey("AdsEnabled")
         }
     }
     
@@ -213,19 +203,6 @@ class ModelManager: NSObject {
      */
     func appVersion() -> (String){
         return NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as! String
-    }
-    
-    var isFirstLaunch: Bool {
-        get {
-            var us = NSUserDefaults.standardUserDefaults()
-            return us.boolForKey("isFirstLaunch")
-        }
-        
-        set {
-            var us = NSUserDefaults.standardUserDefaults()
-            us.setBool(newValue, forKey: "isFirstLaunch")
-            us.synchronize()
-        }
     }
     
     

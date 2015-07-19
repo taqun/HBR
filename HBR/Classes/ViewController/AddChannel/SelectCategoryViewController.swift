@@ -34,7 +34,7 @@ class SelectCategoryViewController: UITableViewController {
      * Private Method
      */
     @objc private func didDone() {
-        var channel = ModelManager.sharedInstance.createChannel(self.channelType)
+        var channel = ModelManager.sharedInstance.createChannel()
         channel.type = self.channelType
         channel.category = self.category
         

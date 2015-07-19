@@ -68,7 +68,7 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     @objc private func bookmarkLoaded(){
         self.bookmark = ModelManager.sharedInstance.getBookmark(url)
         
-        if self.bookmark != nil && self.bookmark.getCommentItemCount() == 0 {
+        if self.bookmark != nil && self.bookmark.commentItemCount == 0 {
             showOnlyComment = false
         }
         
@@ -111,7 +111,7 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.bookmark != nil {
             if showOnlyComment {
-                return bookmark.getCommentItemCount() + 1
+                return bookmark.commentItemCount + 1
             } else {
                 if bookmark.items.count == 0 {
                     return 1
@@ -130,7 +130,7 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         
         if showOnlyComment {
             let index = indexPath.indexAtPosition(1)
-            let count = bookmark.getCommentItemCount()
+            let count = bookmark.commentItemCount
           
             if index == count {
                 cell = tableView.dequeueReusableCellWithIdentifier("BookmarkReadMoreCell") as! UITableViewCell
@@ -178,7 +178,7 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
         if showOnlyComment {
             
             let index = indexPath.indexAtPosition(1)
-            let count = bookmark.getCommentItemCount()
+            let count = bookmark.commentItemCount
             
             if index == count {
                 return 44
@@ -201,7 +201,7 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if showOnlyComment {
             let index = indexPath.indexAtPosition(1)
-            let count = bookmark.getCommentItemCount()
+            let count = bookmark.commentItemCount
             
             if index == count {
                 showOnlyComment = false

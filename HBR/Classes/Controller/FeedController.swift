@@ -268,7 +268,7 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
             Logger.log("---------------------------------")
             Logger.log("fetch success")
             
-            UIApplication.sharedApplication().applicationIconBadgeNumber = ModelManager.sharedInstance.getAllUnreadItemCount()
+            UIApplication.sharedApplication().applicationIconBadgeNumber = ModelManager.sharedInstance.allUnreadItemCount
             
             ModelManager.sharedInstance.save()
             

@@ -29,22 +29,6 @@ class ChannelTest: XCTestCase {
     /*
      * Private Method
      */
-    private func createChannel() -> (Channel) {
-        let context = NSManagedObjectContext.MR_defaultContext()
-        let entity = NSEntityDescription.entityForName("Channel", inManagedObjectContext: context)!
-        let channel = Channel(entity: entity, insertIntoManagedObjectContext: context)
-        
-        return channel
-    }
-    
-    private func createItem() -> (Item) {
-        let context = NSManagedObjectContext.MR_defaultContext()
-        let entity = NSEntityDescription.entityForName("Item", inManagedObjectContext: context)!
-        let item = Item(entity: entity, insertIntoManagedObjectContext: context)
-        
-        return item
-    }
-    
     private func createItems() -> ([Item]){
         var items: [Item] = []
         
@@ -69,15 +53,15 @@ class ChannelTest: XCTestCase {
             ],
         ]
         
-        let item1 = self.createItem()
+        let item1 = CoreDataManager.sharedInstance.createItem()
         item1.parseData(data[0])
         items.append(item1)
         
-        let item2 = self.createItem()
+        let item2 = CoreDataManager.sharedInstance.createItem()
         item2.parseData(data[1])
         items.append(item2)
         
-        let item3 = self.createItem()
+        let item3 = CoreDataManager.sharedInstance.createItem()
         item3.parseData(data[2])
         items.append(item3)
         
@@ -89,12 +73,12 @@ class ChannelTest: XCTestCase {
      * Tests
      */
     func testCreateEntity() {
-        let channel = self.createChannel()
+        let channel = CoreDataManager.sharedInstance.createChannel()
         XCTAssertNotNil(channel)
     }
     
     func testAddItems() {
-        let channel = self.createChannel()
+        let channel = CoreDataManager.sharedInstance.createChannel()
         
         let items = self.createItems()
         channel.addItems(items)
@@ -103,14 +87,14 @@ class ChannelTest: XCTestCase {
     }
     
     func testGetUnreadItemCount() {
-        let channel1 = self.createChannel()
+        let channel1 = CoreDataManager.sharedInstance.createChannel()
         
         let items1 = self.createItems()
         channel1.addItems(items1)
         
         XCTAssertEqual(channel1.unreadItemCount, 3)
         
-        let channel2 = self.createChannel()
+        let channel2 = CoreDataManager.sharedInstance.createChannel()
         
         let items2 = self.createItems()
         items2[0].read = true
@@ -122,7 +106,7 @@ class ChannelTest: XCTestCase {
     }
     
     func testMarkAsReadAllItems() {
-        let channel = self.createChannel()
+        let channel = CoreDataManager.sharedInstance.createChannel()
         let items = self.createItems()
         channel.addItems(items)
         XCTAssertEqual(channel.unreadItemCount, 3)
@@ -132,7 +116,7 @@ class ChannelTest: XCTestCase {
     }
     
     func testChannelTitle() {
-        let channel = self.createChannel()
+        let channel = CoreDataManager.sharedInstance.createChannel()
         
         channel.type = ChannelType.Hot
         channel.category = HatenaCategory.All
@@ -150,7 +134,7 @@ class ChannelTest: XCTestCase {
     }
     
     func testChannelShortTitle() {
-        let channel = self.createChannel()
+        let channel = CoreDataManager.sharedInstance.createChannel()
         
         channel.type = ChannelType.Hot
         channel.category = HatenaCategory.All

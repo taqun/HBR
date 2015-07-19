@@ -93,7 +93,7 @@ class HBRAppDelegate: UIResponder, UIApplicationDelegate {
         ModelManager.sharedInstance.save()
         
         if (application.currentUserNotificationSettings().types & UIUserNotificationType.Badge) != nil {
-            UIApplication.sharedApplication().applicationIconBadgeNumber = ModelManager.sharedInstance.getAllUnreadItemCount()
+            UIApplication.sharedApplication().applicationIconBadgeNumber = ModelManager.sharedInstance.allUnreadItemCount
         }
     }
     

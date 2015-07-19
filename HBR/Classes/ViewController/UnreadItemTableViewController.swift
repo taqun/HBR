@@ -55,7 +55,7 @@ class UnreadItemTableViewController: BaseItemListTableViewController, NSFetchedR
      * Private Method
      */
     @objc internal override func feedLoaded() {
-        allItemNum = ModelManager.sharedInstance.getAllUnreadItemCount()
+        allItemNum = ModelManager.sharedInstance.allUnreadItemCount
         self.tableView.reloadData()
         self.updateTitle()
         
@@ -83,7 +83,7 @@ class UnreadItemTableViewController: BaseItemListTableViewController, NSFetchedR
         
         super.viewWillAppear(animated)
         
-        allItemNum = ModelManager.sharedInstance.getAllUnreadItemCount()
+        allItemNum = ModelManager.sharedInstance.allUnreadItemCount
         
         // tableView
         if indexPath != nil {

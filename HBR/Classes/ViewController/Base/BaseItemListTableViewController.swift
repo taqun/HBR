@@ -45,7 +45,7 @@ class BaseItemListTableViewController: SegmentedDisplayTableViewController {
     }
     
     internal func updateTitle() {
-        let unreadCount = ModelManager.sharedInstance.getAllUnreadItemCount()
+        let unreadCount = ModelManager.sharedInstance.allUnreadItemCount
         
         if unreadCount == 0 {
             self.title = feedTitle

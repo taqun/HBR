@@ -28,22 +28,10 @@ class ItemTest: XCTestCase {
     
     
     /*
-     * Private Method
-     */
-    private func createItem() -> (Item) {
-        let context = NSManagedObjectContext.MR_defaultContext()
-        let entity = NSEntityDescription.entityForName("Item", inManagedObjectContext: context)!
-        let item = Item(entity: entity, insertIntoManagedObjectContext: context)
-        
-        return item
-    }
-    
-    
-    /*
      * Tests
      */
     func testCreateEntity() {
-        let item = self.createItem()
+        let item = CoreDataManager.sharedInstance.createItem()
         
         XCTAssertNotNil(item)
     }
@@ -56,7 +44,7 @@ class ItemTest: XCTestCase {
             "hatena:bookmarkcount" : "12345"
         ]
         
-        let item = self.createItem()
+        let item = CoreDataManager.sharedInstance.createItem()
         item.parseData(data)
         
         XCTAssertEqual(item.title, "記事タイトル")
@@ -79,7 +67,7 @@ class ItemTest: XCTestCase {
         entry.addChild(name: "link", value: nil, attributes: ["type" : "text/html", "rel" : "related", "href" : "http://example.jp/foo/bar"])
         entry.addChild(name: "issued", value: "2015-04-21T23:56:20")
         
-        let item = self.createItem()
+        let item = CoreDataManager.sharedInstance.createItem()
         item.parseXMLData(entry)
         
         XCTAssertEqual(item.title, "記事タイトル")
@@ -103,7 +91,7 @@ class ItemTest: XCTestCase {
             "hatena:bookmarkcount" : "12345"
         ]
         
-        let item = self.createItem()
+        let item = CoreDataManager.sharedInstance.createItem()
         item.parseData(data)
         
         XCTAssertEqual(item.title, "変更前タイトル")

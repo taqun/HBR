@@ -37,13 +37,6 @@ class Bookmark: NSObject {
         return filteredArray[index]
     }
     
-    func getCommentItemCount() -> (Int) {
-        var predicate = NSPredicate(format: "comment != nil AND comment != ''")
-        var filteredArray = NSArray(array: items).filteredArrayUsingPredicate(predicate) as! [BookmarkItem]
-        
-        return filteredArray.count
-    }
-    
     
     /*
      * Private Method
@@ -62,4 +55,18 @@ class Bookmark: NSObject {
             self.items = sorted(self.items, bookmarkSort)
         }
     }
+    
+    
+    /*
+     * Getter, Setter
+     */
+    var commentItemCount: Int {
+        get {
+            var predicate = NSPredicate(format: "comment != nil AND comment != ''")
+            var filteredArray = NSArray(array: items).filteredArrayUsingPredicate(predicate) as! [BookmarkItem]
+            
+            return filteredArray.count
+        }
+    }
+    
 }

@@ -55,7 +55,7 @@ class AllItemTableViewController: BaseItemListTableViewController, NSFetchedResu
      * Private Method
      */
     @objc internal override func feedLoaded() {
-        allItemNum = ModelManager.sharedInstance.getAllItemCount()
+        allItemNum = ModelManager.sharedInstance.allItemCount
         self.tableView.reloadData()
         self.updateTitle()
         
@@ -91,7 +91,7 @@ class AllItemTableViewController: BaseItemListTableViewController, NSFetchedResu
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
         
-        allItemNum = ModelManager.sharedInstance.getAllItemCount()
+        allItemNum = ModelManager.sharedInstance.allItemCount
         
         Logger.sharedInstance.track("AllItemListView")
     }

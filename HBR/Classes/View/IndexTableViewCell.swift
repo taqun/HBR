@@ -78,7 +78,7 @@ class IndexTableViewCell: UITableViewCell {
             switch type {
                 case .UnreadItems:
                     iconView.image = UIImage(named: "IconInbox")
-                    numberLabel.text = String(ModelManager.sharedInstance.getAllUnreadItemCount())
+                    numberLabel.text = String(ModelManager.sharedInstance.allUnreadItemCount)
                 
                 case .AllItems:
                     iconView.image = UIImage(named: "IconInboxes")
