@@ -12,8 +12,8 @@ import CoreData
 import HatenaBookmarkSDK
 import MagicalRecord
 import iConsole
-//import Fabric
-//import Crashlytics
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class HBRAppDelegate: UIResponder, UIApplicationDelegate {
@@ -63,7 +63,7 @@ class HBRAppDelegate: UIResponder, UIApplicationDelegate {
 
         HTBHatenaBookmarkManager.sharedManager().setConsumerKey(Setting.hbConsumerKey(), consumerSecret: Setting.hbConsumerSecret())
         
-        //Fabric.with([Crashlytics()])
+        Fabric.with([Crashlytics()])
     }
     
     func configureBackgroundFetch() {
