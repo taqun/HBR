@@ -12,7 +12,8 @@ import MagicalRecord
 
 class FeedParser: NSObject, NSXMLParserDelegate {
     
-    var channel: Channel
+    private var channelID: NSManagedObjectID
+    private var channel: Channel
     
     var parser: NSXMLParser!
     var onComplete: ((parser: FeedParser) -> Void)!
@@ -23,8 +24,9 @@ class FeedParser: NSObject, NSXMLParserDelegate {
     /*
      * Initialize
      */
-    init(channel: Channel) {
-        self.channel = channel
+    init(channelID: NSManagedObjectID) {
+        self.channelID = channelID
+        self.channel = ModelManager.sharedInstance.getchannelById(self.channelID)
         
         super.init()
     }

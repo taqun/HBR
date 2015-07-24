@@ -92,7 +92,7 @@ class FeedTableViewController: SegmentedDisplayTableViewController, NSFetchedRes
     }
     
     @objc private func didRefreshControlChanged() {
-        FeedController.sharedInstance.loadFeed(channel)
+        FeedController.sharedInstance.loadFeed(channel.objectID)
     }
     
     @objc private func didCheckmark() {

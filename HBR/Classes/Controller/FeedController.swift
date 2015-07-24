@@ -44,17 +44,17 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
         }
     }
     
-    func loadFeed(channel: Channel){
+    func loadFeed(channelID: NSManagedObjectID){
         channelCounter  = 0
         channelNum      = 1
         
-        self.loadRSS(channel: channel)
+        self.loadRSS(channelID: channelID)
     }
     
-    private func loadRSS(channel: Channel! = nil){
+    private func loadRSS(channelID: NSManagedObjectID! = nil){
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        let currentChannel = (channel != nil) ? channel : ModelManager.sharedInstance.getChannel(channelCounter)
+        let currentChannel = (channelID != nil) ? ModelManager.sharedInstance.getchannelById(channelID) : ModelManager.sharedInstance.getChannel(self.channelCounter)
         let url = currentChannel.feedURL
         
         Alamofire.request(.GET, url)
@@ -73,8 +73,8 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
                     
                     let globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
                     dispatch_async(globalQueue) {
-                        let currentChannel = (channel != nil) ? channel : ModelManager.sharedInstance.getChannel(self.channelCounter)
-                        let parser = FeedParser(channel: currentChannel)
+                        let currentChannelID = currentChannel.objectID
+                        let parser = FeedParser(channelID: currentChannelID)
                         let xmlParser = NSXMLParser(data: data as! NSData)
                     
                         parser.parse(xmlParser, onComplete: self.parseComplete)
@@ -211,12 +211,8 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
                 if var objectID = NSURLProtocol.propertyForKey("objectID", inRequest: downloadTask.originalRequest) as! NSManagedObjectID! {
                     NSURLProtocol.removePropertyForKey("objectID", inRequest: downloadTask.originalRequest as! NSMutableURLRequest)
                     
-                    if var channel = ModelManager.sharedInstance.getchannelById(objectID) {
-                        let parser = FeedParser(channel: channel)
-                        parser.parse(NSXMLParser(contentsOfURL: location)!, onComplete: self.backgroundParseComplete)
-                    }else {
-                        Logger.log(" objectID is exist, but channel is nil")
-                    }
+                    let parser = FeedParser(channelID: objectID)
+                    parser.parse(NSXMLParser(contentsOfURL: location)!, onComplete: self.backgroundParseComplete)
                     
                 } else {
                     self.backgroundFetchFailed("objectID is nil")
