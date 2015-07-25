@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		315809FC1B63D34B00F754EA /* AppIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 315809FB1B63D34B00F754EA /* AppIcons.xcassets */; };
 		315EDBA41B491F3900A0DC46 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 315EDBA31B491F3900A0DC46 /* libGoogleAnalytics.a */; };
 		3167D6691B5A4DBC0010EAE0 /* ModelManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6681B5A4DBC0010EAE0 /* ModelManagerTest.swift */; };
 		3167D66A1B5A4E220010EAE0 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EC51B3E8B8B0099A9F2 /* ModelManager.swift */; };
@@ -133,6 +134,7 @@
 		01542B63AA6AC5E9873D9ED3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		14BBF0AD1F3A22A92C96683A /* Pods_HBRTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HBRTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		302E50EC42B1DAC3D542C4F5 /* Pods-HBRTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HBRTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HBRTests/Pods-HBRTests.release.xcconfig"; sourceTree = "<group>"; };
+		315809FB1B63D34B00F754EA /* AppIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = AppIcons.xcassets; path = Resources/AppIcons.xcassets; sourceTree = "<group>"; };
 		315EDBA31B491F3900A0DC46 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Pods/GoogleAnalytics/Libraries/libGoogleAnalytics.a; sourceTree = "<group>"; };
 		3167D6681B5A4DBC0010EAE0 /* ModelManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelManagerTest.swift; path = Tests/Model/ModelManagerTest.swift; sourceTree = "<group>"; };
 		3167D6741B5A51200010EAE0 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = Classes/Model/CoreDataManager.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				31C92F391B418071000C20DE /* Info.plist */,
 				31EFF24D1B3F242600EBBF72 /* HBR.xcdatamodeld */,
 				31EFF2481B3F23CF00EBBF72 /* Images */,
+				315809FB1B63D34B00F754EA /* AppIcons.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -742,6 +745,7 @@
 				31EFF26B1B4036A000EBBF72 /* LicensesViewController.storyboard in Resources */,
 				31EFF2721B4039DC00EBBF72 /* IconTitle@2x.png in Resources */,
 				31EFF2861B40544E00EBBF72 /* FeedWithChannelTableViewCell.xib in Resources */,
+				315809FC1B63D34B00F754EA /* AppIcons.xcassets in Resources */,
 				31C92F451B418D89000C20DE /* reportActivity@3x.png in Resources */,
 				31EFF2581B3F26CA00EBBF72 /* IconInboxes@2x.png in Resources */,
 				31EFF2751B4039FA00EBBF72 /* IconHotEntry@2x.png in Resources */,
