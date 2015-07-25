@@ -95,11 +95,7 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         let url = NSURL(string: item.link)!
         let safariActivity = TUSafariActivity()
         
-        let reportActivity = ReportSpamActivity()
-        
-        var activityController = UIActivityViewController(activityItems: [url], applicationActivities: [safariActivity, reportActivity])
-        reportActivity.viewController = activityController
-        
+        var activityController = UIActivityViewController(activityItems: [url], applicationActivities: [safariActivity])
         self.presentViewController(activityController, animated: true, completion: {})
     }
     

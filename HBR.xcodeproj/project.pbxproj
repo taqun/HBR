@@ -38,8 +38,6 @@
 		3189D0091B5BD4CD004F2F72 /* BookmarkTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189D0081B5BD4CD004F2F72 /* BookmarkTest.swift */; };
 		3189D00B1B5BD7A8004F2F72 /* BookmarkItemTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3189D00A1B5BD7A8004F2F72 /* BookmarkItemTest.swift */; };
 		31949AE21B3E855900D063E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31949AE11B3E855900D063E8 /* AppDelegate.swift */; };
-		31C92F441B418D89000C20DE /* reportActivity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31C92F421B418D89000C20DE /* reportActivity@2x.png */; };
-		31C92F451B418D89000C20DE /* reportActivity@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31C92F431B418D89000C20DE /* reportActivity@3x.png */; };
 		31C92F471B418DD4000C20DE /* IconCheckmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31C92F461B418DD4000C20DE /* IconCheckmark@2x.png */; };
 		31C92F491B418F13000C20DE /* IconBookmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31C92F481B418F13000C20DE /* IconBookmark@2x.png */; };
 		31C92F4D1B42C768000C20DE /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C92F4C1B42C768000C20DE /* Setting.m */; };
@@ -68,7 +66,6 @@
 		31EFF22A1B3F1C0100EBBF72 /* BookmarkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2281B3F1C0100EBBF72 /* BookmarkTableViewCell.swift */; };
 		31EFF22C1B3F1C5F00EBBF72 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF22B1B3F1C5F00EBBF72 /* UserManager.swift */; };
 		31EFF22E1B3F1D1000EBBF72 /* PurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF22D1B3F1D1000EBBF72 /* PurchaseManager.swift */; };
-		31EFF2311B3F1DCC00EBBF72 /* ReportSpamActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2301B3F1DCC00EBBF72 /* ReportSpamActivity.swift */; };
 		31EFF2331B3F201E00EBBF72 /* AllItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2321B3F201E00EBBF72 /* AllItemTableViewController.swift */; };
 		31EFF2351B3F208200EBBF72 /* MyBookmarksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2341B3F208200EBBF72 /* MyBookmarksTableViewController.swift */; };
 		31EFF2371B3F20D500EBBF72 /* MyBookmarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2361B3F20D500EBBF72 /* MyBookmarksTableViewCell.swift */; };
@@ -158,8 +155,6 @@
 		31949AE11B3E855900D063E8 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Classes/AppDelegate.swift; sourceTree = "<group>"; };
 		31C92F391B418071000C20DE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		31C92F3F1B4183A8000C20DE /* Setting.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Setting.xcconfig; path = HBR/Config/Setting.xcconfig; sourceTree = SOURCE_ROOT; };
-		31C92F421B418D89000C20DE /* reportActivity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "reportActivity@2x.png"; path = "Resources/Images/Activity/reportActivity@2x.png"; sourceTree = "<group>"; };
-		31C92F431B418D89000C20DE /* reportActivity@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "reportActivity@3x.png"; path = "Resources/Images/Activity/reportActivity@3x.png"; sourceTree = "<group>"; };
 		31C92F461B418DD4000C20DE /* IconCheckmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IconCheckmark@2x.png"; path = "Resources/Images/IconCheckmark@2x.png"; sourceTree = "<group>"; };
 		31C92F481B418F13000C20DE /* IconBookmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "IconBookmark@2x.png"; path = "Resources/Images/IconBookmark@2x.png"; sourceTree = "<group>"; };
 		31C92F4B1B42C768000C20DE /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Setting.h; path = Classes/Setting/Setting.h; sourceTree = "<group>"; };
@@ -191,7 +186,6 @@
 		31EFF2281B3F1C0100EBBF72 /* BookmarkTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarkTableViewCell.swift; path = Classes/View/BookmarkTableViewCell.swift; sourceTree = "<group>"; };
 		31EFF22B1B3F1C5F00EBBF72 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserManager.swift; path = Classes/Model/UserManager.swift; sourceTree = "<group>"; };
 		31EFF22D1B3F1D1000EBBF72 /* PurchaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PurchaseManager.swift; path = Classes/Model/PurchaseManager.swift; sourceTree = "<group>"; };
-		31EFF2301B3F1DCC00EBBF72 /* ReportSpamActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReportSpamActivity.swift; path = Classes/Activity/ReportSpamActivity.swift; sourceTree = "<group>"; };
 		31EFF2321B3F201E00EBBF72 /* AllItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AllItemTableViewController.swift; path = Classes/ViewController/AllItemTableViewController.swift; sourceTree = "<group>"; };
 		31EFF2341B3F208200EBBF72 /* MyBookmarksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyBookmarksTableViewController.swift; path = Classes/ViewController/MyBookmarksTableViewController.swift; sourceTree = "<group>"; };
 		31EFF2361B3F20D500EBBF72 /* MyBookmarksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyBookmarksTableViewCell.swift; path = Classes/View/MyBookmarksTableViewCell.swift; sourceTree = "<group>"; };
@@ -458,7 +452,6 @@
 			isa = PBXGroup;
 			children = (
 				31949AE11B3E855900D063E8 /* AppDelegate.swift */,
-				31EFF22F1B3F1DBF00EBBF72 /* Activity */,
 				31738EB21B3E88970099A9F2 /* Appearance */,
 				31C92F4E1B42C791000C20DE /* Bridge */,
 				31738EBE1B3E8AB30099A9F2 /* Controller */,
@@ -480,15 +473,6 @@
 				31C92F3F1B4183A8000C20DE /* Setting.xcconfig */,
 			);
 			name = Config;
-			sourceTree = "<group>";
-		};
-		31C92F411B418D7F000C20DE /* Activity */ = {
-			isa = PBXGroup;
-			children = (
-				31C92F421B418D89000C20DE /* reportActivity@2x.png */,
-				31C92F431B418D89000C20DE /* reportActivity@3x.png */,
-			);
-			name = Activity;
 			sourceTree = "<group>";
 		};
 		31C92F4E1B42C791000C20DE /* Bridge */ = {
@@ -525,18 +509,9 @@
 			name = Base;
 			sourceTree = "<group>";
 		};
-		31EFF22F1B3F1DBF00EBBF72 /* Activity */ = {
-			isa = PBXGroup;
-			children = (
-				31EFF2301B3F1DCC00EBBF72 /* ReportSpamActivity.swift */,
-			);
-			name = Activity;
-			sourceTree = "<group>";
-		};
 		31EFF2481B3F23CF00EBBF72 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				31C92F411B418D7F000C20DE /* Activity */,
 				31EFF27B1B404C1700EBBF72 /* IconBack@2x.png */,
 				31C92F481B418F13000C20DE /* IconBookmark@2x.png */,
 				31C92F461B418DD4000C20DE /* IconCheckmark@2x.png */,
@@ -746,7 +721,6 @@
 				31EFF2721B4039DC00EBBF72 /* IconTitle@2x.png in Resources */,
 				31EFF2861B40544E00EBBF72 /* FeedWithChannelTableViewCell.xib in Resources */,
 				315809FC1B63D34B00F754EA /* AppIcons.xcassets in Resources */,
-				31C92F451B418D89000C20DE /* reportActivity@3x.png in Resources */,
 				31EFF2581B3F26CA00EBBF72 /* IconInboxes@2x.png in Resources */,
 				31EFF2751B4039FA00EBBF72 /* IconHotEntry@2x.png in Resources */,
 				31EFF26A1B4036A000EBBF72 /* ExpireSettingViewController.storyboard in Resources */,
@@ -759,7 +733,6 @@
 				31EFF26C1B4036A000EBBF72 /* TermsViewController.storyboard in Resources */,
 				31EFF2881B40550000EBBF72 /* MyBookmarksTableViewCell.xib in Resources */,
 				31EFF2571B3F26CA00EBBF72 /* IconInbox@2x.png in Resources */,
-				31C92F441B418D89000C20DE /* reportActivity@2x.png in Resources */,
 				31EFF27C1B404C1700EBBF72 /* IconBack@2x.png in Resources */,
 				31EFF2611B40358B00EBBF72 /* AddNewChannelViewController.storyboard in Resources */,
 				31EFF2631B4035EF00EBBF72 /* SelectBookmarkNumController.storyboard in Resources */,
@@ -919,7 +892,6 @@
 				31738EB11B3E885B0099A9F2 /* NavigationControllerUtil.swift in Sources */,
 				31EFF2201B3F1AA700EBBF72 /* FeedWithChannelTableViewCell.swift in Sources */,
 				31738EBD1B3E8A650099A9F2 /* SettingViewController.swift in Sources */,
-				31EFF2311B3F1DCC00EBBF72 /* ReportSpamActivity.swift in Sources */,
 				31EFF2061B3E938300EBBF72 /* FeedURLBuilder.swift in Sources */,
 				31EFF2041B3E934D00EBBF72 /* Hatena.swift in Sources */,
 				31EFF2331B3F201E00EBBF72 /* AllItemTableViewController.swift in Sources */,
