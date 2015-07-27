@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://purl.org/rss/1.0/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:taxo="http://purl.org/rss/1.0/modules/taxonomy/" xmlns:opensearch="http://a9.com/-/spec/opensearchrss/1.0/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:hatena="http://www.hatena.ne.jp/info/xmlns#" xmlns:media="http://search.yahoo.com/mrss">
+  <channel rdf:about="http://b.hatena.ne.jp/hotentry">
+    <title>はてなブックマーク - 人気エントリー</title>
+    <link>http://b.hatena.ne.jp/hotentry</link>
+    <description>最近の人気エントリー</description>
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rdf+xml" href="http://feeds.feedburner.com/hatena/b/hotentry" />
+  <feedburner:info xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" uri="hatena/b/hotentry" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /></channel>
+
+  <item rdf:about="http://example.jp/foo">
+    <title>記事１</title>
+    <link>http://example.jp/foo</link>
+    <description>デスクリプション１</description>
+    <content:encoded><![CDATA[content1]]></content:encoded>
+    <dc:date>2015-07-27T06:15:46+09:00</dc:date>
+    <dc:subject>テクノロジー</dc:subject>
+    <hatena:bookmarkcount>716</hatena:bookmarkcount>
+  </item>
+  <item rdf:about="http://example.jp/bar">
+      <title>記事2</title>
+      <link>http://example.jp/bar</link>
+      <description>デスクリプション2</description>
+      <content:encoded><![CDATA[content1]]></content:encoded>
+      <dc:date>2015-03-27T04:20:46+09:00</dc:date>
+      <dc:subject>政治と経済</dc:subject>
+      <hatena:bookmarkcount>9999</hatena:bookmarkcount>
+  </item>
+  <item rdf:about="http://example.jp/baz">
+      <title>記事3</title>
+      <link>http://example.jp/baz</link>
+      <description>デスクリプション3</description>
+      <content:encoded><![CDATA[content1]]></content:encoded>
+      <dc:date>2015-07-25T12:15:50+09:00</dc:date>
+      <dc:subject>暮らし</dc:subject>
+      <hatena:bookmarkcount>10</hatena:bookmarkcount>
+  </item>
+  
+</rdf:RDF>

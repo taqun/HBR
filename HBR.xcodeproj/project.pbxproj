@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		315809FC1B63D34B00F754EA /* AppIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 315809FB1B63D34B00F754EA /* AppIcons.xcassets */; };
+		315809FF1B63F37A00F754EA /* FeedParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315809FE1B63F37A00F754EA /* FeedParserTest.swift */; };
+		31580A001B63F3B300F754EA /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF20E1B3F16F800EBBF72 /* FeedParser.swift */; };
+		31580A031B66969A00F754EA /* channel.xml in Resources */ = {isa = PBXBuildFile; fileRef = 31580A021B66969A00F754EA /* channel.xml */; };
 		315EDBA41B491F3900A0DC46 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 315EDBA31B491F3900A0DC46 /* libGoogleAnalytics.a */; };
 		3167D6691B5A4DBC0010EAE0 /* ModelManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6681B5A4DBC0010EAE0 /* ModelManagerTest.swift */; };
 		3167D66A1B5A4E220010EAE0 /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EC51B3E8B8B0099A9F2 /* ModelManager.swift */; };
@@ -132,6 +135,8 @@
 		14BBF0AD1F3A22A92C96683A /* Pods_HBRTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HBRTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		302E50EC42B1DAC3D542C4F5 /* Pods-HBRTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HBRTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HBRTests/Pods-HBRTests.release.xcconfig"; sourceTree = "<group>"; };
 		315809FB1B63D34B00F754EA /* AppIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = AppIcons.xcassets; path = Resources/AppIcons.xcassets; sourceTree = "<group>"; };
+		315809FE1B63F37A00F754EA /* FeedParserTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedParserTest.swift; path = Tests/Parser/FeedParserTest.swift; sourceTree = "<group>"; };
+		31580A021B66969A00F754EA /* channel.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = channel.xml; path = Resources/channel.xml; sourceTree = "<group>"; };
 		315EDBA31B491F3900A0DC46 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Pods/GoogleAnalytics/Libraries/libGoogleAnalytics.a; sourceTree = "<group>"; };
 		3167D6681B5A4DBC0010EAE0 /* ModelManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelManagerTest.swift; path = Tests/Model/ModelManagerTest.swift; sourceTree = "<group>"; };
 		3167D6741B5A51200010EAE0 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = Classes/Model/CoreDataManager.swift; sourceTree = "<group>"; };
@@ -262,6 +267,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		315809FD1B63F35F00F754EA /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				315809FE1B63F37A00F754EA /* FeedParserTest.swift */,
+			);
+			name = Parser;
+			sourceTree = "<group>";
+		};
+		31580A011B6694D600F754EA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				31580A021B66969A00F754EA /* channel.xml */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		31738EA51B3E86EA0099A9F2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,8 +455,9 @@
 		318045C51B3E820F00F331FF /* HBRTests */ = {
 			isa = PBXGroup;
 			children = (
-				405D57761B4A2D5D009C9D56 /* Tests */,
+				31580A011B6694D600F754EA /* Resources */,
 				318045C61B3E820F00F331FF /* Supporting Files */,
+				405D57761B4A2D5D009C9D56 /* Tests */,
 			);
 			path = HBRTests;
 			sourceTree = "<group>";
@@ -567,6 +589,7 @@
 			isa = PBXGroup;
 			children = (
 				40AC13AC1B54B4E100C51C98 /* Model */,
+				315809FD1B63F35F00F754EA /* Parser */,
 				405D57771B4A2D62009C9D56 /* Util */,
 			);
 			name = Tests;
@@ -747,6 +770,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31580A031B66969A00F754EA /* channel.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -926,11 +950,13 @@
 				3167D66D1B5A4E5D0010EAE0 /* BookmarkItem.swift in Sources */,
 				3167D66C1B5A4E480010EAE0 /* Bookmark.swift in Sources */,
 				3189D0071B5BCB88004F2F72 /* Channel.swift in Sources */,
+				31580A001B63F3B300F754EA /* FeedParser.swift in Sources */,
 				3167D6771B5A52BD0010EAE0 /* Setting.m in Sources */,
 				3167D66E1B5A4E6A0010EAE0 /* Logger.swift in Sources */,
 				3167D66A1B5A4E220010EAE0 /* ModelManager.swift in Sources */,
 				405D57811B4A3042009C9D56 /* FeedParserUtil.swift in Sources */,
 				3167D6691B5A4DBC0010EAE0 /* ModelManagerTest.swift in Sources */,
+				315809FF1B63F37A00F754EA /* FeedParserTest.swift in Sources */,
 				405D57791B4A2D7F009C9D56 /* FeedURLBuilderTest.swift in Sources */,
 				402E06C21B560AAA002ABF48 /* ChannelTest.swift in Sources */,
 				405D577E1B4A301F009C9D56 /* DateUtil.swift in Sources */,

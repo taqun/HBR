@@ -58,4 +58,18 @@ class CoreDataManager: NSObject {
             return item
         }
     }
+    
+    func createItemInContext(context: NSManagedObjectContext) -> (Item) {
+        let isInTests = (NSClassFromString("XCTest") != nil)
+        if isInTests {
+            let entity = NSEntityDescription.entityForName("Item", inManagedObjectContext: context)!
+            let item = Item(entity: entity, insertIntoManagedObjectContext: context)
+            
+            return item
+        } else {
+            var item = Item.MR_createInContext(context) as! Item
+            
+            return item
+        }
+    }
 }
