@@ -76,9 +76,9 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
                     dispatch_async(globalQueue) {
                         let localChannel = ModelManager.sharedInstance.getchannelById(currentChannel.objectID)
                         let parser = FeedParser(channel: localChannel)
-                        let xmlParser = NSXMLParser(data: data as! NSData)
+                        let feedData = data as! NSData
                     
-                        parser.parse(xmlParser, onComplete: self.parseComplete)
+                        parser.parse(feedData, onComplete: self.parseComplete)
                     }
                 }
         }
@@ -256,9 +256,9 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
                     
                     let localChannel = ModelManager.sharedInstance.getchannelById(objectID)
                     let parser = FeedParser(channel: localChannel)
-                    let xmlParser = NSXMLParser(contentsOfURL: location)!
+                    let feedData = NSData(contentsOfURL: location)!
                     
-                    parser.parse(xmlParser, onComplete: self.backgroundParseComplete)
+                    parser.parse(feedData, onComplete: self.backgroundParseComplete)
                     
                 } else {
                     self.backgroundFetchFailed("objectID is nil")

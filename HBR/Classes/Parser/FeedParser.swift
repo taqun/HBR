@@ -8,13 +8,11 @@
 
 import UIKit
 
-class FeedParser: NSObject, NSXMLParserDelegate {
+import AEXML
+
+class FeedParser: NSObject {
     
     var channel: Channel
-    
-    var parser: NSXMLParser!
-    var onComplete: ((parser: FeedParser) -> Void)!
-    
     var itemDatas: [[String: String!]] = []
     
     
@@ -31,53 +29,24 @@ class FeedParser: NSObject, NSXMLParserDelegate {
     /*
      * Public Method
      */
-    func parse(parser: NSXMLParser, onComplete:((parser: FeedParser) -> Void)){
-        self.onComplete = onComplete
+    func parse(data: NSData, onComplete:((parser: FeedParser) -> Void)){
+        var error: NSError?
         
-        self.parser = parser
-        self.parser.delegate = self
-        self.parser.parse()
-    }
-    
-    
-    /*
-     * NSXMLParserDelegate Protocol
-     */
-    private var isInItem = false
-    private var currentElementName: String!
-    private var currentFeed: [String: String!]!
-    
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [NSObject : AnyObject]) {
-        
-        self.currentElementName = elementName
-        
-        if elementName == "item" {
-            self.isInItem = true
-            self.currentFeed = Dictionary<String, String>()
-        }
-    }
-    
-    func parser(parser: NSXMLParser, foundCharacters string: String?) {
-        if self.isInItem {
-            var currentString: String! = self.currentFeed[self.currentElementName]
-            if currentString == nil {
-                currentString = ""
+        if let xml = AEXMLDocument(xmlData: data, error: &error) {
+            if let items = xml.root["item"].all {
+                for item in items {
+                    let children = item.children
+                    var itemData: [String: String!] = [:]
+                    
+                    for child in children{
+                        itemData[child.name] = child.value
+                    }
+                    
+                    itemDatas.append(itemData)
+                }
             }
-            self.currentFeed[self.currentElementName] = currentString + string!
         }
+        
+        onComplete(parser: self)
     }
-    
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if elementName == "item" {
-            self.itemDatas.append(self.currentFeed)
-            
-            self.isInItem = false
-            self.currentFeed = nil
-        }
-    }
-    
-    func parserDidEndDocument(parser: NSXMLParser) {
-        self.onComplete(parser: self)
-    }
-    
 }

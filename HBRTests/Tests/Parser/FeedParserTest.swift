@@ -43,11 +43,10 @@ class FeedParserTest: XCTestCase {
         let parser = FeedParser(channel: channel)
         
         let path = NSBundle(forClass: self.dynamicType).pathForResource("channel", ofType: "xml")
-        let data = NSData(contentsOfFile: path!)
+        let data = NSData(contentsOfFile: path!)!
         callbackException = self.expectationWithDescription("Callback method is called")
         
-        let xmlParser = NSXMLParser(data: data!)
-        parser.parse(xmlParser, onComplete: self.parseComplete)
+        parser.parse(data, onComplete: self.parseComplete)
         
         self.waitForExpectationsWithTimeout(0.5, handler: { (error) -> Void in
             
@@ -57,6 +56,18 @@ class FeedParserTest: XCTestCase {
     func parseComplete(parser: FeedParser) {
         XCTAssertEqual(channel, parser.channel)
         XCTAssertEqual(parser.itemDatas.count, 3)
+        
+        let item1 = parser.itemDatas[0]
+        let link1 = String(item1["link"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        XCTAssertEqual(link1, "http://example.jp/foo")
+        
+        let item2 = parser.itemDatas[1]
+        let title2 = String(item2["title"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        XCTAssertEqual(title2, "記事2")
+        
+        let item3 = parser.itemDatas[2]
+        let date3 = String(item3["dc:date"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        XCTAssertEqual(date3, "2015-07-25T12:15:50+09:00")
 
         callbackException.fulfill()
     }
