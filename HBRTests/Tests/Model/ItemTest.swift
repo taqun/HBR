@@ -49,6 +49,7 @@ class ItemTest: XCTestCase {
         
         XCTAssertEqual(item.title, "記事タイトル")
         XCTAssertEqual(item.link, "http://example.jp/foo/bar")
+        XCTAssertEqual(item.host, "example.jp")
         XCTAssertEqual(item.userNum, "12345")
         
         let formatter = NSDateFormatter()
@@ -60,18 +61,19 @@ class ItemTest: XCTestCase {
         }
     }
     
-    func testParseXMLData() {
-        let xml = AEXMLDocument()
-        let entry = xml.addChild(name: "entry")
-        entry.addChild(name: "title", value: "記事タイトル")
-        entry.addChild(name: "link", value: nil, attributes: ["type" : "text/html", "rel" : "related", "href" : "http://example.jp/foo/bar"])
-        entry.addChild(name: "issued", value: "2015-04-21T23:56:20")
+    func testParseAtomData() {
+        let data: [String: String!] = [
+            "title" : "記事タイトル",
+            "link" : "http://example.jp/foo/bar",
+            "issued" : "2015-04-21T23:56:20"
+        ]
         
         let item = CoreDataManager.sharedInstance.createItem()
-        item.parseXMLData(entry)
+        item.parseAtomData(data)
         
         XCTAssertEqual(item.title, "記事タイトル")
         XCTAssertEqual(item.link, "http://example.jp/foo/bar")
+        XCTAssertEqual(item.host, "example.jp")
         
         let formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"

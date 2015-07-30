@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<feed xmlns="http://purl.org/atom/ns#" xml:lang="ja">
+    <title>taqun のブックマーク</title>
+    <id>tag:hatena.ne.jp,2005:bookmark-taqun</id>
+    <link type="text/html" rel="alternate" href="http://b.hatena.ne.jp/taqun/" />
+    <link title="taqun のブックマーク" rel="service.post" type="application/x.atom+xml" href="http://b.hatena.ne.jp/atom/post" />
+    <entry>
+        <title>エントリー１</title>
+        <link type="text/html" rel="related" href="http://example.jp/foo" />
+        <link type="text/html" rel="alternate" href="http://b.hatena.ne.jp/taqun/20150630#bookmark-257884942" />
+        <link title="iOS - 個人用アカウントでAppGroupを用いたチーム開発を行なう - Qiita" type="application/x.atom+xml" rel="service.edit" href="http://b.hatena.ne.jp/atom/edit/257884942" />
+        <author>
+            <name>taqun</name>
+        </author>
+        <summary />
+        <id>tag:hatena.ne.jp,2005:bookmark-taqun-257884942</id>
+        <issued>2015-06-30T02:06:05</issued>
+    </entry>
+    <entry>
+        <title>エントリー２</title>
+        <link type="text/html" rel="related" href="http://example.jp/bar" />
+        <link type="text/html" rel="alternate" href="http://b.hatena.ne.jp/taqun/20150627#bookmark-257625644" />
+        <link title="Keeping Private API Keys Private — Fabián Cañas" type="application/x.atom+xml" rel="service.edit" href="http://b.hatena.ne.jp/atom/edit/257625644" />
+        <author>
+            <name>taqun</name>
+        </author>
+        <summary />
+        <id>tag:hatena.ne.jp,2005:bookmark-taqun-257625644</id>
+        <issued>2015-06-20T15:54:37</issued>
+    </entry>
+    <entry>
+        <title>エントリー３</title>
+        <link type="text/html" rel="related" href="http://example.jp/baz" />
+        <link type="text/html" rel="alternate" href="http://b.hatena.ne.jp/taqun/20150626#bookmark-257416384" />
+        <link title="君のための本 -- ソフトウェア開発を一生の仕事としていいのか悩んでいる開発者に贈りたい1冊:2015年版 - 思っているよりもずっとずっと人生は短い。" type="application/x.atom+xml" rel="service.edit" href="http://b.hatena.ne.jp/atom/edit/257416384" />
+        <author>
+            <name>taqun</name>
+        </author>
+        <summary />
+        <id>tag:hatena.ne.jp,2005:bookmark-taqun-257416384</id>
+        <issued>2015-06-26T09:36:06</issued>
+        <dc:subject xmlns:dc="http://purl.org/dc/elements/1.1/">book</dc:subject>
+    </entry>
+</feed>

@@ -51,7 +51,6 @@
 		31EFF2041B3E934D00EBBF72 /* Hatena.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2031B3E934D00EBBF72 /* Hatena.swift */; };
 		31EFF2061B3E938300EBBF72 /* FeedURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2051B3E938300EBBF72 /* FeedURLBuilder.swift */; };
 		31EFF2081B3E93C700EBBF72 /* BookmarkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2071B3E93C700EBBF72 /* BookmarkItem.swift */; };
-		31EFF20A1B3E941700EBBF72 /* FeedParserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2091B3E941700EBBF72 /* FeedParserUtil.swift */; };
 		31EFF20C1B3F167C00EBBF72 /* SelectChannelTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF20B1B3F167C00EBBF72 /* SelectChannelTypeViewController.swift */; };
 		31EFF20F1B3F16F800EBBF72 /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF20E1B3F16F800EBBF72 /* FeedParser.swift */; };
 		31EFF2111B3F178900EBBF72 /* SelectCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2101B3F178900EBBF72 /* SelectCategoryViewController.swift */; };
@@ -109,13 +108,16 @@
 		31EFF2881B40550000EBBF72 /* MyBookmarksTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31EFF2871B40550000EBBF72 /* MyBookmarksTableViewCell.xib */; };
 		402E06C21B560AAA002ABF48 /* ChannelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402E06C01B560AAA002ABF48 /* ChannelTest.swift */; };
 		402E06C31B560AAA002ABF48 /* ItemTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402E06C11B560AAA002ABF48 /* ItemTest.swift */; };
+		4036083D1B7852EB007837E0 /* atom.xml in Resources */ = {isa = PBXBuildFile; fileRef = 4036083C1B7852EB007837E0 /* atom.xml */; };
 		405D57791B4A2D7F009C9D56 /* FeedURLBuilderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405D57781B4A2D7F009C9D56 /* FeedURLBuilderTest.swift */; };
 		405D577B1B4A2F41009C9D56 /* FeedURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2051B3E938300EBBF72 /* FeedURLBuilder.swift */; };
 		405D577C1B4A2FFD009C9D56 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF1FB1B3E90FD00EBBF72 /* Item.swift */; };
 		405D577D1B4A3010009C9D56 /* Hatena.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2031B3E934D00EBBF72 /* Hatena.swift */; };
 		405D577E1B4A301F009C9D56 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF1FD1B3E912F00EBBF72 /* DateUtil.swift */; };
 		405D577F1B4A302E009C9D56 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF1FF1B3E915F00EBBF72 /* AppConstant.swift */; };
-		405D57811B4A3042009C9D56 /* FeedParserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF2091B3E941700EBBF72 /* FeedParserUtil.swift */; };
+		407968671B69E4E7007A2BDB /* AtomFeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407968661B69E4E7007A2BDB /* AtomFeedParser.swift */; };
+		4079686A1B69E54A007A2BDB /* AtomFeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407968661B69E4E7007A2BDB /* AtomFeedParser.swift */; };
+		4079686C1B69E592007A2BDB /* AtomFeedParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4079686B1B69E592007A2BDB /* AtomFeedParserTest.swift */; };
 		51A16CBC827A2C65B3CD703E /* Pods_HBRTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BBF0AD1F3A22A92C96683A /* Pods_HBRTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		568CBC93F1FBC6B80C0756DD /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F0B1909FABF551575B4F7A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -173,7 +175,6 @@
 		31EFF2031B3E934D00EBBF72 /* Hatena.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Hatena.swift; path = Classes/Model/Hatena.swift; sourceTree = "<group>"; };
 		31EFF2051B3E938300EBBF72 /* FeedURLBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedURLBuilder.swift; path = Classes/Util/FeedURLBuilder.swift; sourceTree = "<group>"; };
 		31EFF2071B3E93C700EBBF72 /* BookmarkItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarkItem.swift; path = Classes/Model/BookmarkItem.swift; sourceTree = "<group>"; };
-		31EFF2091B3E941700EBBF72 /* FeedParserUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedParserUtil.swift; path = Classes/Util/FeedParserUtil.swift; sourceTree = "<group>"; };
 		31EFF20B1B3F167C00EBBF72 /* SelectChannelTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectChannelTypeViewController.swift; path = Classes/ViewController/AddChannel/SelectChannelTypeViewController.swift; sourceTree = "<group>"; };
 		31EFF20E1B3F16F800EBBF72 /* FeedParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedParser.swift; path = Classes/Parser/FeedParser.swift; sourceTree = "<group>"; };
 		31EFF2101B3F178900EBBF72 /* SelectCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectCategoryViewController.swift; path = Classes/ViewController/AddChannel/SelectCategoryViewController.swift; sourceTree = "<group>"; };
@@ -231,7 +232,10 @@
 		31EFF2871B40550000EBBF72 /* MyBookmarksTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MyBookmarksTableViewCell.xib; path = Assets/View/MyBookmarksTableViewCell.xib; sourceTree = "<group>"; };
 		402E06C01B560AAA002ABF48 /* ChannelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChannelTest.swift; path = Tests/Model/ChannelTest.swift; sourceTree = "<group>"; };
 		402E06C11B560AAA002ABF48 /* ItemTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemTest.swift; path = Tests/Model/ItemTest.swift; sourceTree = "<group>"; };
+		4036083C1B7852EB007837E0 /* atom.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = atom.xml; path = Resources/atom.xml; sourceTree = "<group>"; };
 		405D57781B4A2D7F009C9D56 /* FeedURLBuilderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedURLBuilderTest.swift; path = Tests/Util/FeedURLBuilderTest.swift; sourceTree = "<group>"; };
+		407968661B69E4E7007A2BDB /* AtomFeedParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtomFeedParser.swift; path = Classes/Parser/AtomFeedParser.swift; sourceTree = "<group>"; };
+		4079686B1B69E592007A2BDB /* AtomFeedParserTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtomFeedParserTest.swift; path = Tests/Parser/AtomFeedParserTest.swift; sourceTree = "<group>"; };
 		951D2CB1D7C374DCA9BC4EE2 /* Pods-HBRTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HBRTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HBRTests/Pods-HBRTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A0F0B1909FABF551575B4F7A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6C5927BC050807B0DD23B9C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -270,6 +274,7 @@
 		315809FD1B63F35F00F754EA /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				4079686B1B69E592007A2BDB /* AtomFeedParserTest.swift */,
 				315809FE1B63F37A00F754EA /* FeedParserTest.swift */,
 			);
 			name = Parser;
@@ -279,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				31580A021B66969A00F754EA /* channel.xml */,
+				4036083C1B7852EB007837E0 /* atom.xml */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -336,7 +342,6 @@
 			isa = PBXGroup;
 			children = (
 				31EFF1FD1B3E912F00EBBF72 /* DateUtil.swift */,
-				31EFF2091B3E941700EBBF72 /* FeedParserUtil.swift */,
 				31EFF2051B3E938300EBBF72 /* FeedURLBuilder.swift */,
 				31EFF2011B3E920700EBBF72 /* Logger.swift */,
 				31738EB01B3E885B0099A9F2 /* NavigationControllerUtil.swift */,
@@ -517,6 +522,7 @@
 		31EFF20D1B3F16EB00EBBF72 /* Parser */ = {
 			isa = PBXGroup;
 			children = (
+				407968661B69E4E7007A2BDB /* AtomFeedParser.swift */,
 				31EFF20E1B3F16F800EBBF72 /* FeedParser.swift */,
 			);
 			name = Parser;
@@ -770,6 +776,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4036083D1B7852EB007837E0 /* atom.xml in Resources */,
 				31580A031B66969A00F754EA /* channel.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -902,7 +909,6 @@
 				31C92F4D1B42C768000C20DE /* Setting.m in Sources */,
 				31EFF1FE1B3E912F00EBBF72 /* DateUtil.swift in Sources */,
 				31EFF2001B3E915F00EBBF72 /* AppConstant.swift in Sources */,
-				31EFF20A1B3E941700EBBF72 /* FeedParserUtil.swift in Sources */,
 				3167D6751B5A51200010EAE0 /* CoreDataManager.swift in Sources */,
 				31EFF2351B3F208200EBBF72 /* MyBookmarksTableViewController.swift in Sources */,
 				31EFF2021B3E920700EBBF72 /* Logger.swift in Sources */,
@@ -925,6 +931,7 @@
 				31EFF21A1B3F18FC00EBBF72 /* BaseItemListTableViewController.swift in Sources */,
 				31738EB41B3E88A80099A9F2 /* AppAppearance.swift in Sources */,
 				31EFF2291B3F1C0100EBBF72 /* BookmarkNoDataCell.swift in Sources */,
+				407968671B69E4E7007A2BDB /* AtomFeedParser.swift in Sources */,
 				31EFF2111B3F178900EBBF72 /* SelectCategoryViewController.swift in Sources */,
 				31EFF21C1B3F191B00EBBF72 /* SegmentedDisplayTableViewController.swift in Sources */,
 				31EFF21E1B3F1A7200EBBF72 /* FeedTableViewCell.swift in Sources */,
@@ -941,6 +948,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				402E06C31B560AAA002ABF48 /* ItemTest.swift in Sources */,
+				4079686A1B69E54A007A2BDB /* AtomFeedParser.swift in Sources */,
 				405D577D1B4A3010009C9D56 /* Hatena.swift in Sources */,
 				3189D00B1B5BD7A8004F2F72 /* BookmarkItemTest.swift in Sources */,
 				405D577C1B4A2FFD009C9D56 /* Item.swift in Sources */,
@@ -952,9 +960,9 @@
 				3189D0071B5BCB88004F2F72 /* Channel.swift in Sources */,
 				31580A001B63F3B300F754EA /* FeedParser.swift in Sources */,
 				3167D6771B5A52BD0010EAE0 /* Setting.m in Sources */,
+				4079686C1B69E592007A2BDB /* AtomFeedParserTest.swift in Sources */,
 				3167D66E1B5A4E6A0010EAE0 /* Logger.swift in Sources */,
 				3167D66A1B5A4E220010EAE0 /* ModelManager.swift in Sources */,
-				405D57811B4A3042009C9D56 /* FeedParserUtil.swift in Sources */,
 				3167D6691B5A4DBC0010EAE0 /* ModelManagerTest.swift in Sources */,
 				315809FF1B63F37A00F754EA /* FeedParserTest.swift in Sources */,
 				405D57791B4A2D7F009C9D56 /* FeedURLBuilderTest.swift in Sources */,

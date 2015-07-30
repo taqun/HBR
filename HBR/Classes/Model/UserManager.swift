@@ -66,53 +66,58 @@ class UserManager: NSObject {
                     println(response)
                     println(error?.localizedDescription)
                     
-                    self.loadMyBookmarksFailed()
+                    self.loadMyBookmarksComplete()
                     
                 } else {
                     
-                    var newItems = [Item]()
-                    var error: NSError?
-                    
-                    if let data = data as? NSData {
-                        if let xml = AEXMLDocument(xmlData: data, error: &error) {
-                            if let entries = xml.root["entry"].all {
-                                let myBookmarks = ModelManager.sharedInstance.myBookmarksChannel
-                                let context = myBookmarks.managedObjectContext
-                                
-                                for entry in entries {
-                                    let link = FeedParserUtil.getHrefLinkFromAtomData(entry)
-                                    
-                                    var predicate = NSPredicate(format: "ANY channels = %@ AND link == %@", myBookmarks, link)
-                                    var items = Item.MR_findAllWithPredicate(predicate, inContext: myBookmarks.managedObjectContext) as! [Item]
-                                    
-                                    if items.count == 0 {
-                                        var item = Item.MR_createInContext(context) as! Item
-                                        item.parseXMLData(entry)
-                                        newItems.append(item)
-                                    }
-                                }
-                            }
-                        }
+                    let globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+                    dispatch_async(globalQueue) {
+                        let parser = AtomFeedParser()
+                        let atomData = data as! NSData
+                        
+                        parser.parse(atomData, onComplete: self.parseComplete)
                     }
-                    
-                    self.loadMyBookmarksComplete(newItems)
                 }
             }
     }
     
-    private func loadMyBookmarksComplete(newItems: [Item]) {
+    private func parseComplete(parser: AtomFeedParser) {
+        let itemDatas = parser.itemDatas
+        let myBookmarks = ModelManager.sharedInstance.myBookmarksChannel
+        var newItems = [Item]()
+        
+        for data in itemDatas {
+            let link = data["link"]!
+            
+            var predicate = NSPredicate(format: "ANY channels = %@ AND link == %@", myBookmarks, link)
+            var items = Item.MR_findAllWithPredicate(predicate, inContext: myBookmarks.managedObjectContext) as! [Item]
+            
+            if items.count == 0 {
+                var item = CoreDataManager.sharedInstance.createItemInContext(myBookmarks.managedObjectContext!)
+                item.parseAtomData(data)
+                println(item)
+                newItems.append(item)
+            }
+        }
+        
+        self.parseMyBookmarksComplete(newItems)
+    }
+    
+    private func parseMyBookmarksComplete(newItems: [Item]) {
         let myBookmarks = ModelManager.sharedInstance.myBookmarksChannel
         
         MagicalRecord.saveUsingCurrentThreadContextWithBlock({ (localContext) -> Void in
             var localChannel = myBookmarks.MR_inContext(localContext) as! Channel
             localChannel.addItems(newItems)
         }, completion: { (success, error) -> Void in
-            NSNotificationCenter.defaultCenter().postNotificationName("MyBookmarksLoadedNotification", object: nil)
+            self.loadMyBookmarksComplete()
         })
     }
     
-    private func loadMyBookmarksFailed() {
-        NSNotificationCenter.defaultCenter().postNotificationName("MyBookmarksLoadedNotification", object: nil)
+    private func loadMyBookmarksComplete() {
+        dispatch_async(dispatch_get_main_queue()) {
+            NSNotificationCenter.defaultCenter().postNotificationName("MyBookmarksLoadedNotification", object: nil)
+        }
     }
     
     

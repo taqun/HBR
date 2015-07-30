@@ -46,18 +46,15 @@ class Item: NSManagedObject {
         self.host = url.host!
     }
     
-    func parseXMLData(entry: AEXMLElement) {
-        if let title = entry["title"].value {
-            self.title = title
-        }
+    func parseAtomData(data: [String: String!]) {
+        self.title = data["title"]!
         
-        if let dateValue = entry["issued"].value {
-            let dateString = dateValue.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-            self.date       = DateUtil.dateFromDateString(dateString, inputFormat: "yyyy-MM-dd'T'HH:mm:ss")
-            self.dateString = DateUtil.stringFromDateString(dateString, inputFormat: "yyyy-MM-dd'T'HH:mm:ss")
-        }
+        let dateValue = data["issued"]!
+        let dateString = dateValue.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        self.date       = DateUtil.dateFromDateString(dateString, inputFormat: "yyyy-MM-dd'T'HH:mm:ss")
+        self.dateString = DateUtil.stringFromDateString(dateString, inputFormat: "yyyy-MM-dd'T'HH:mm:ss")
         
-        self.link = FeedParserUtil.getHrefLinkFromAtomData(entry)
+        self.link = data["link"]!
         
         let url = NSURL(string: self.link)!
         self.host = url.host!
