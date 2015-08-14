@@ -9,9 +9,6 @@ PODS:
   - HatenaBookmarkSDK (1.2):
     - SFHFKeychainUtils
   - iConsole (1.5.3)
-  - MagicalRecord (2.2):
-    - MagicalRecord/Core (= 2.2)
-  - MagicalRecord/Core (2.2)
   - MBProgressHUD (0.9.1)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
@@ -27,7 +24,6 @@ DEPENDENCIES:
   - GoogleAnalytics (~> 3.12)
   - HatenaBookmarkSDK (from `https://github.com/hatena/Hatena-Bookmark-iOS-SDK.git`)
   - iConsole (~> 1.5)
-  - MagicalRecord (= 2.2)
   - MBProgressHUD (~> 0.9)
   - SDWebImage (~> 3.7)
   - TUSafariActivity (~> 1.0)
@@ -44,12 +40,11 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AEXML: 01da6ad603b1db797f0c5476da40db4ca11bdbdd
   Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
-  Crashlytics: ef9a58a4e806b316a1748c06432f6f847ba09ac6
+  Crashlytics: 93e2f86363d53c002c6366a9d87e41f2eaee87c3
   Fabric: a9eabe53915e9f1db55a84dd2838737928675878
   GoogleAnalytics: ef2e0b800ef3c1e62688cdfc959e0d3132bc246c
   HatenaBookmarkSDK: 832cad8358ab6cf246ca1aa3e3ca6e6df7e78eb4
   iConsole: 823d9b14ac90f0a2a4fc9bf6a973a03ba9c4c7eb
-  MagicalRecord: f8a56bb87ab6552f20c4bb8681a1958a197ea3cd
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   SFHFKeychainUtils: 9576b411a79a058f4d5381ace6f3242b9a62e664

@@ -7,7 +7,6 @@ use_frameworks!
 pod 'Alamofire', '~> 1.2'
 pod 'HatenaBookmarkSDK', :git => 'https://github.com/hatena/Hatena-Bookmark-iOS-SDK.git'
 pod 'SDWebImage', '~> 3.7'
-pod 'MagicalRecord', '2.2'
 pod 'GoogleAnalytics', '~> 3.12'
 pod 'MBProgressHUD', '~> 0.9'
 pod 'TUSafariActivity', '~> 1.0'
@@ -17,5 +16,5 @@ pod 'Fabric'
 pod 'Crashlytics'
 
 target "HBRTests" do
-  pod 'MagicalRecord', '2.2'
+
 end
