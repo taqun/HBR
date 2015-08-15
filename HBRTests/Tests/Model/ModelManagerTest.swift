@@ -50,14 +50,11 @@ class ModelManagerTest: XCTestCase {
         
         XCTAssertEqual(ModelManager.sharedInstance.channelCount, 0)
         
-        // Following tests are not working because of swift namespace issue
-        /*
         ModelManager.sharedInstance.createChannel()
         XCTAssertEqual(ModelManager.sharedInstance.channelCount, 1)
         
         ModelManager.sharedInstance.createChannel()
         XCTAssertEqual(ModelManager.sharedInstance.channelCount, 2)
-        */
     }
     
     
