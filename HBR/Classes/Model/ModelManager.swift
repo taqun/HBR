@@ -39,7 +39,7 @@ class ModelManager: NSObject {
     }
     
     private func initMyBookmarks() {
-        let myBookmarksChannels = MyBookmarks.MR_findAll() as! [MyBookmarks]
+        let myBookmarksChannels = MyBookmarks.findAll()
         if myBookmarksChannels.count == 0 {
             myBookmarksChannel = CoreDataManager.sharedInstance.createMyBookmarksChannel()
             
@@ -59,10 +59,13 @@ class ModelManager: NSObject {
     }
     
     func getChannel(index: Int) -> (Channel!){
-        var request = Channel.MR_requestAllSortedBy("typeValue,categoryValue,keyword", ascending: true)
-        request.predicate = NSPredicate(format: "self != %@", ModelManager.sharedInstance.myBookmarksChannel)
+        let context = CoreDataManager.sharedInstance.managedObjectContext!
+        let predicate = NSPredicate(format: "self != %@", ModelManager.sharedInstance.myBookmarksChannel)
+        let sort = NSSortDescriptor(key: "typeValue,categoryValue,keyword", ascending: true)
         
-        if let channels = Channel.MR_executeFetchRequest(request) as? [Channel] {
+        let channels = Channel.findAllWithPredicateAndSort(predicate, sort: sort, context: context)
+        
+        if channels.count > index {
             return channels[index]
         } else {
             return nil
@@ -70,7 +73,8 @@ class ModelManager: NSObject {
     }
 
     func getchannelById(id: NSManagedObjectID) -> (Channel!){
-        let context = NSManagedObjectContext.MR_contextForCurrentThread()
+        //let context = NSManagedObjectContext.MR_contextForCurrentThread()
+        let context = CoreDataManager.sharedInstance.managedObjectContext!
         
         var error: NSError?
         let channel = context.existingObjectWithID(id, error: &error) as! Channel
@@ -79,10 +83,13 @@ class ModelManager: NSObject {
     }
 
     func getOldestChannel() -> (Channel!){
-        var request = Channel.MR_requestAllSortedBy("updatedAt", ascending: true)
-        request.predicate = NSPredicate(format: "self != %@", ModelManager.sharedInstance.myBookmarksChannel)
+        let context = CoreDataManager.sharedInstance.managedObjectContext!
+        let predicate = NSPredicate(format: "self != %@", ModelManager.sharedInstance.myBookmarksChannel)
+        let sort = NSSortDescriptor(key: "updatedAt", ascending: true)
         
-        if let channels = Channel.MR_executeFetchRequest(request) as? [Channel] {
+        let channels = Channel.findAllWithPredicateAndSort(predicate, sort: sort, context: context)
+        
+        if channels.count > 0 {
             return channels[0]
         } else {
             return nil
@@ -91,14 +98,12 @@ class ModelManager: NSObject {
 
     var channelCount: Int {
         get {
-            var request = Channel.MR_requestAll()
-            request.predicate = NSPredicate(format: "self != %@", ModelManager.sharedInstance.myBookmarksChannel)
+            let context = CoreDataManager.sharedInstance.managedObjectContext!
+            let predicate = NSPredicate(format: "self != %@", ModelManager.sharedInstance.myBookmarksChannel)
             
-            if let channels = Channel.MR_executeFetchRequest(request) as? [Channel] {
-                return channels.count
-            } else {
-                return 0
-            }
+            let channels = Channel.findAllWithPredicate(predicate, context: context)
+            
+            return channels.count
         }
     }
     
@@ -108,7 +113,7 @@ class ModelManager: NSObject {
      */
     func deleteFeedChannel(index: Int) {
         var channel = self.getChannel(index)
-        channel.MR_deleteEntity()
+        channel.deleteEntity()
     }
     
     
@@ -117,10 +122,9 @@ class ModelManager: NSObject {
      */
     var allItemCount: Int {
         get {
-            var fetchRequest = Item.MR_requestAll()
-            fetchRequest.predicate = NSPredicate(format: "NOT (ANY channels == %@)", ModelManager.sharedInstance.myBookmarksChannel)
-            
-            var items = Item.MR_executeFetchRequest(fetchRequest)
+            let context = CoreDataManager.sharedInstance.managedObjectContext!
+            let predicate = NSPredicate(format: "NOT (ANY channels == %@)", ModelManager.sharedInstance.myBookmarksChannel)
+            var items = Item.findAllWithPredicate(predicate, context: context)
             
             return items.count
         }
@@ -128,11 +132,10 @@ class ModelManager: NSObject {
     
     var allUnreadItemCount: Int {
         get {
-            var fetchRequest = Item.MR_requestAll()
-            fetchRequest.predicate = NSPredicate(format: "NOT (ANY channels == %@) AND read = false", ModelManager.sharedInstance.myBookmarksChannel)
-            
-            var items = Item.MR_executeFetchRequest(fetchRequest)
-            
+            let context = CoreDataManager.sharedInstance.managedObjectContext!
+            let predicate = NSPredicate(format: "NOT (ANY channels == %@) AND read = false", ModelManager.sharedInstance.myBookmarksChannel)
+            var items = Item.findAllWithPredicate(predicate, context: context)
+
             return items.count
         }
     }
@@ -214,18 +217,19 @@ class ModelManager: NSObject {
      * CoreData
      */
     func save() {
-        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+       // NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+        CoreDataManager.sharedInstance.saveContext()
     }
     
     func clearCache() {
-        Item.MR_truncateAll()
+        Item.truncateAll()
         
         self.save()
     }
     
     func truncateAll() {
-        Channel.MR_truncateAll()
-        Item.MR_truncateAll()
+        Channel.truncateAll()
+        Item.truncateAll()
         
         self.initMyBookmarks()
         
@@ -233,7 +237,6 @@ class ModelManager: NSObject {
     }
     
     func truncateExpiredEntries() {
-        var request = Item.MR_requestAll()
         var today = NSDate(timeIntervalSinceNow: NSTimeInterval(NSTimeZone.systemTimeZone().secondsFromGMT))
         
         var interval = ModelManager.sharedInstance.entryExpireInterval
@@ -250,16 +253,18 @@ class ModelManager: NSObject {
         
         var expireDate = NSDate(timeInterval: NSTimeInterval(60 * 60 * 24 * intervalValue * -1), sinceDate: today)
 
-        request.predicate = NSPredicate(format: "date < %@ AND ANY channels != %@", expireDate, ModelManager.sharedInstance.myBookmarksChannel)
+        let context = CoreDataManager.sharedInstance.managedObjectContext!
+        let predicate = NSPredicate(format: "date < %@ AND ANY channels != %@", expireDate, ModelManager.sharedInstance.myBookmarksChannel)
         
-        var items = Item.MR_executeFetchRequest(request) as! [Item]
+        var items = Item.findAllWithPredicate(predicate, context: context)
         var deleteNum = items.count
         
         for item in items {
-            item.MR_deleteEntity()
+            item.deleteEntity()
         }
         
-        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreWithCompletion(nil)
+        //NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreWithCompletion(nil)
+        CoreDataManager.sharedInstance.saveContext()
         
         Logger.log("+++++++++++++++++++++++++++++++++")
         Logger.log("Expire Date = \(expireDate)")

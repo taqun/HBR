@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 
 import HatenaBookmarkSDK
-import MagicalRecord
 import iConsole
 import Fabric
 import Crashlytics
@@ -59,7 +58,7 @@ class HBRAppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func configureLibraries() {
-        MagicalRecord.setupCoreDataStackWithAutoMigratingSqliteStoreNamed("HBR.sqlite")
+        CoreDataManager.sharedInstance.setUpCoreDataStack()
 
         HTBHatenaBookmarkManager.sharedManager().setConsumerKey(Setting.hbConsumerKey(), consumerSecret: Setting.hbConsumerSecret())
         
@@ -113,7 +112,7 @@ class HBRAppDelegate: UIResponder, UIApplicationDelegate {
             return
         }
         
-        MagicalRecord.cleanUp()
+        CoreDataManager.sharedInstance.cleanUp()
     }
     
     

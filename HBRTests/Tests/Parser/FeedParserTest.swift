@@ -9,18 +9,16 @@
 import UIKit
 import XCTest
 
-import MagicalRecord
-
 class FeedParserTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
         
-        MagicalRecord.setupCoreDataStackWithInMemoryStore()
+        CoreDataManager.sharedInstance.setUpInMemoryCoreDataStack()
     }
     
     override func tearDown() {
-        MagicalRecord.cleanUp()
+        CoreDataManager.sharedInstance.cleanUp()
         
         super.tearDown()
     }

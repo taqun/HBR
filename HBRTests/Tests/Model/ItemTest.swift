@@ -9,7 +9,6 @@
 import UIKit
 import XCTest
 
-import MagicalRecord
 import AEXML
 
 class ItemTest: XCTestCase {
@@ -17,11 +16,11 @@ class ItemTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        MagicalRecord.setupCoreDataStackWithInMemoryStore()
+        CoreDataManager.sharedInstance.setUpInMemoryCoreDataStack()
     }
     
     override func tearDown() {
-        MagicalRecord.cleanUp()
+        CoreDataManager.sharedInstance.cleanUp()
         
         super.tearDown()
     }

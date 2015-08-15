@@ -18,7 +18,7 @@ enum ChannelType: String {
     case Mine   = "mine"
 }
 
-@objc(Channel)
+
 class Channel: NSManagedObject {
     
     @NSManaged var keyword: String
@@ -29,6 +29,45 @@ class Channel: NSManagedObject {
     @NSManaged private var categoryValue: String
     
     @NSManaged var items: NSMutableSet
+    
+    
+    /*
+     * Static Method
+     */
+    static func findAllWithPredicate(predicate: NSPredicate, context: NSManagedObjectContext) -> ([Channel]) {
+        var request = NSFetchRequest()
+        request.entity = CoreDataManager.sharedInstance.getEntityByName("Channel", context: context)
+        request.predicate = predicate
+        
+        var error: NSError? = nil
+        
+        if var results = context.executeFetchRequest(request, error: &error) as? [Channel] {
+            return results
+        } else {
+            return []
+        }
+    }
+    
+    static func findAllWithPredicateAndSort(predicate: NSPredicate, sort:NSSortDescriptor, context: NSManagedObjectContext) -> ([Channel]) {
+        var request = NSFetchRequest()
+        request.entity = CoreDataManager.sharedInstance.getEntityByName("Channel", context: context)
+        request.predicate = predicate
+        request.sortDescriptors = [sort]
+        
+        var error: NSError? = nil
+        
+        if var results = context.executeFetchRequest(request, error: &error) as? [Channel] {
+            return results
+        } else {
+            return []
+        }
+    }
+    
+    static func truncateAll() {
+        
+    }
+    
+    
     
     
     /*
@@ -50,6 +89,15 @@ class Channel: NSManagedObject {
         for item: Item in items {
             item.read = true
         }
+    }
+    
+    
+    func inContext(context: NSManagedObjectContext) -> (Channel) {
+        return self
+    }
+    
+    func deleteEntity() {
+        
     }
     
     
@@ -117,12 +165,13 @@ class Channel: NSManagedObject {
     
     var unreadItemCount: Int {
         get {
-            var fetchRequest = Item.MR_requestAll()
-            fetchRequest.predicate = NSPredicate(format: "ANY channels == %@ AND read = false", self)
+            let predicate = NSPredicate(format: "ANY channels == %@ AND read = false", self)
+            let context = CoreDataManager.sharedInstance.managedObjectContext!
             
-            var items = Item.MR_executeFetchRequest(fetchRequest)
+            let items = Item.findAllWithPredicate(predicate, context: context)
             
             return items.count
         }
     }
+
 }

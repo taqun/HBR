@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 
 import Alamofire
-import MagicalRecord
 
 class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelegate {
     
@@ -93,7 +92,7 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
             var link = String(data["link"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
             
             var predicate = NSPredicate(format: "link == %@", link)
-            var items = Item.MR_findAllWithPredicate(predicate, inContext: channel.managedObjectContext) as! [Item]
+            var items = Item.findAllWithPredicate(predicate, context: channel.managedObjectContext!)
             
             if items.count != 0 {
                 assert(items.count < 2, "A item in channel should be unique")
@@ -103,9 +102,9 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
                     
                 if let channels = item.channels.allObjects as? [Channel] {
                     if !contains(channels, channel) {
-                        MagicalRecord.saveWithBlock({ (localContext) -> Void in
-                            var localChannel = channel.MR_inContext(localContext) as! Channel
-                            var localItem = item.MR_inContext(localContext) as! Item
+                        CoreDataManager.sharedInstance.saveWithBlock({ (localContext) -> (Void) in
+                            var localChannel = channel.inContext(localContext)
+                            var localItem = item.inContext(localContext)
                             localChannel.addItems([localItem])
                         })
                     }
@@ -118,9 +117,9 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
                 newItems.append(item)
             }
         }
-            
-        MagicalRecord.saveUsingCurrentThreadContextWithBlock({ (localContext) -> Void in
-            var localChannel = channel.MR_inContext(localContext) as! Channel
+        
+        CoreDataManager.sharedInstance.saveWithBlock({ (localContext) -> (Void) in
+            var localChannel = channel.inContext(localContext)
             localChannel.addItems(newItems)
         }, completion: { (success, error) -> Void in
             self.loadRSSComplete()
@@ -294,8 +293,9 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
         for data in itemDatas {
             var link = String(data["link"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
             
-            var predicate = NSPredicate(format: "link == %@", link)
-            var items = Item.MR_findAllWithPredicate(predicate, inContext: channel.managedObjectContext) as! [Item]
+            let predicate = NSPredicate(format: "link == %@", link)
+            let context = CoreDataManager.sharedInstance.managedObjectContext!
+            var items = Item.findAllWithPredicate(predicate, context: context)
             
             if items.count != 0 {
                 assert(items.count < 2, "A item in channel should be unique")
@@ -305,9 +305,9 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
                 
                 if let channels = item.channels.allObjects as? [Channel] {
                     if !contains(channels, channel) {
-                        MagicalRecord.saveWithBlock({ (localContext) -> Void in
-                            var localChannel = channel.MR_inContext(localContext) as! Channel
-                            var localItem = item.MR_inContext(localContext) as! Item
+                        CoreDataManager.sharedInstance.saveWithBlock({ (localContext) -> (Void) in
+                            var localChannel = channel.inContext(localContext)
+                            var localItem = item.inContext(localContext)
                             localChannel.addItems([localItem])
                         })
                     }
@@ -332,11 +332,11 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
         var remaining = round(UIApplication.sharedApplication().backgroundTimeRemaining)
         Logger.log("  remaining = \(remaining)s")
         
-        MagicalRecord.saveUsingCurrentThreadContextWithBlock({ (localContext) -> Void in
-            var localChannel = channel.MR_inContext(localContext) as! Channel
+        CoreDataManager.sharedInstance.saveWithBlock({ (localContext) -> (Void) in
+            var localChannel = channel.inContext(localContext)
             localChannel.addItems(newItems)
-            }, completion: { (success, error) -> Void in
-                self.backgroundFetchComplete(addedItemNum: addedItemNum)
+        }, completion: { (success, error) -> Void in
+            self.backgroundFetchComplete(addedItemNum: addedItemNum)
         })
     }
 

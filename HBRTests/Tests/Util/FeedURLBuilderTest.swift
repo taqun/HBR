@@ -9,18 +9,16 @@
 import UIKit
 import XCTest
 
-import MagicalRecord
-
 class FeedURLBuilderTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
-
-        MagicalRecord.setupCoreDataStackWithInMemoryStore()
+        
+        CoreDataManager.sharedInstance.setUpInMemoryCoreDataStack()
     }
     
     override func tearDown() {
-        MagicalRecord.cleanUp()
+        CoreDataManager.sharedInstance.cleanUp()
         
         super.tearDown()
     }
@@ -30,10 +28,7 @@ class FeedURLBuilderTest: XCTestCase {
      * Private Method
      */
     private func createChannel() -> (Channel) {
-        let context = NSManagedObjectContext.MR_defaultContext()
-        let entity = NSEntityDescription.entityForName("Channel", inManagedObjectContext: context)!
-        let channel = Channel(entity: entity, insertIntoManagedObjectContext: context)
-        
+        let channel = CoreDataManager.sharedInstance.createChannel()
         return channel
     }
     

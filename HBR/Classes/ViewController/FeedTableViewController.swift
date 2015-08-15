@@ -9,8 +9,6 @@
 import UIKit
 import CoreData
 
-import MagicalRecord
-
 class FeedTableViewController: SegmentedDisplayTableViewController, NSFetchedResultsControllerDelegate {
     
     var channel: Channel!
@@ -75,10 +73,12 @@ class FeedTableViewController: SegmentedDisplayTableViewController, NSFetchedRes
             return
         }
         
-        var fetchRequest = Item.MR_requestAllSortedBy("date", ascending: false)
+        var fetchRequest = Item.requestAllSortBy("date", ascending: false)
         fetchRequest.predicate = NSPredicate(format: "ANY channels = %@", self.channel)
         
-        self.fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: NSManagedObjectContext.MR_defaultContext(), sectionNameKeyPath: nil, cacheName: self.channel.title + "Cache")
+        let context = CoreDataManager.sharedInstance.managedObjectContext!
+        
+        self.fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: self.channel.title + "Cache")
         self.fetchedResultController.delegate = self
     }
     

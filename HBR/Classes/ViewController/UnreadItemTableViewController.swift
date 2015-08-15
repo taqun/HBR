@@ -9,8 +9,6 @@
 import UIKit
 import CoreData
 
-import MagicalRecord
-
 class UnreadItemTableViewController: BaseItemListTableViewController, NSFetchedResultsControllerDelegate {
     
     private var fetchedResultController: NSFetchedResultsController!
@@ -67,10 +65,12 @@ class UnreadItemTableViewController: BaseItemListTableViewController, NSFetchedR
             return
         }
         
-        var fetchRequest = Item.MR_requestAllSortedBy("date", ascending: false)
+        var fetchRequest = Item.requestAllSortBy("date", ascending: false)
         fetchRequest.predicate = NSPredicate(format: "NOT (ANY channels == %@) AND read = false", ModelManager.sharedInstance.myBookmarksChannel)
         
-        self.fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: NSManagedObjectContext.MR_defaultContext(), sectionNameKeyPath: nil, cacheName: "UnreadItemCache")
+        let context = CoreDataManager.sharedInstance.managedObjectContext!
+        
+        self.fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: "UnreadItemCache")
         self.fetchedResultController.delegate = self
     }
     
