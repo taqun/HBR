@@ -113,6 +113,17 @@ class ChannelTest: XCTestCase {
         XCTAssertEqual(channel.unreadItemCount, 0)
     }
     
+    
+    func testDeleteEntity() {
+        let channel = CoreDataManager.sharedInstance.createChannel()
+        XCTAssertNotNil(channel)
+        XCTAssertEqual(ModelManager.sharedInstance.channelCount, 1)
+        
+        channel.deleteEntity()
+        
+        XCTAssertEqual(ModelManager.sharedInstance.channelCount, 0)
+    }
+    
     func testChannelTitle() {
         let channel = CoreDataManager.sharedInstance.createChannel()
         
