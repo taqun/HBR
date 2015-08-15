@@ -48,11 +48,11 @@ class Channel: NSManagedObject {
         }
     }
     
-    static func findAllWithPredicateAndSort(predicate: NSPredicate, sort:NSSortDescriptor, context: NSManagedObjectContext) -> ([Channel]) {
+    static func findAllWithPredicateAndSort(predicate: NSPredicate, sorts:[NSSortDescriptor], context: NSManagedObjectContext) -> ([Channel]) {
         var request = NSFetchRequest()
         request.entity = CoreDataManager.sharedInstance.getEntityByName("Channel", context: context)
         request.predicate = predicate
-        request.sortDescriptors = [sort]
+        request.sortDescriptors = sorts
         
         var error: NSError? = nil
         

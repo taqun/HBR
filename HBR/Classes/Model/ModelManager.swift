@@ -61,9 +61,14 @@ class ModelManager: NSObject {
     func getChannel(index: Int) -> (Channel!){
         let context = CoreDataManager.sharedInstance.managedObjectContext!
         let predicate = NSPredicate(format: "self != %@", ModelManager.sharedInstance.myBookmarksChannel)
-        let sort = NSSortDescriptor(key: "typeValue,categoryValue,keyword", ascending: true)
+        let sorts = [
+            NSSortDescriptor(key: "typeValue", ascending: true),
+            NSSortDescriptor(key: "categoryValue", ascending: true),
+            NSSortDescriptor(key: "keyword", ascending: true)
+            
+        ]
         
-        let channels = Channel.findAllWithPredicateAndSort(predicate, sort: sort, context: context)
+        let channels = Channel.findAllWithPredicateAndSort(predicate, sorts: sorts, context: context)
         
         if channels.count > index {
             return channels[index]
@@ -87,7 +92,7 @@ class ModelManager: NSObject {
         let predicate = NSPredicate(format: "self != %@", ModelManager.sharedInstance.myBookmarksChannel)
         let sort = NSSortDescriptor(key: "updatedAt", ascending: true)
         
-        let channels = Channel.findAllWithPredicateAndSort(predicate, sort: sort, context: context)
+        let channels = Channel.findAllWithPredicateAndSort(predicate, sorts: [sort], context: context)
         
         if channels.count > 0 {
             return channels[0]
