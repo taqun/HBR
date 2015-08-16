@@ -66,13 +66,23 @@ class CoreDataManager: NSObject {
     }
     
     func saveWithBlock(block: ((localContext: NSManagedObjectContext) -> (Void))) {
-        
+        println("Not implemented")
+        abort()
     }
     
     func saveWithBlock(block: ((localContext: NSManagedObjectContext) -> (Void)), completion: ((success: Bool, error: NSError?) -> Void)) {
+        let localContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+        localContext.parentContext = CoreDataManager.sharedInstance.managedObjectContext
         
+        localContext.performBlock { () -> Void in
+            block(localContext: localContext)
+            
+            var error: NSError? = nil
+            localContext.save(&error)
+            
+            completion(success: (error == nil), error: error)
+        }
     }
-    
     
     func getEntityByName(name: String, context: NSManagedObjectContext) -> (NSEntityDescription?) {
         let entity = NSEntityDescription.entityForName(name, inManagedObjectContext: context)
@@ -100,7 +110,7 @@ class CoreDataManager: NSObject {
         
         self.persistentStoreCoordinator = coordinator
         
-        self.managedObjectContext = NSManagedObjectContext()
+        self.managedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
         self.managedObjectContext?.persistentStoreCoordinator = self.persistentStoreCoordinator
     }
     
@@ -116,7 +126,7 @@ class CoreDataManager: NSObject {
         
         self.persistentStoreCoordinator = coordinator
         
-        self.managedObjectContext = NSManagedObjectContext()
+        self.managedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
         self.managedObjectContext?.persistentStoreCoordinator = self.persistentStoreCoordinator
     }
     

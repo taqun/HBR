@@ -78,7 +78,6 @@ class ModelManager: NSObject {
     }
 
     func getchannelById(id: NSManagedObjectID) -> (Channel!){
-        //let context = NSManagedObjectContext.MR_contextForCurrentThread()
         let context = CoreDataManager.sharedInstance.managedObjectContext!
         
         var error: NSError?
