@@ -54,13 +54,25 @@ class CoreDataManager: NSObject {
     }
     
     func saveContext () {
-        if let moc = self.managedObjectContext {
-            var error: NSError? = nil
-            if moc.hasChanges && !moc.save(&error) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
-                abort()
+        if let mainContext = self.managedObjectContext {
+            if mainContext.hasChanges {
+                mainContext.performBlock({ () -> Void in
+                    var error: NSError? = nil
+                    if !mainContext.save(&error) {
+                        println(error)
+                    }
+                    
+                    if let savingContext = self.savingContext {
+                        if savingContext.hasChanges {
+                            savingContext.performBlock({ () -> Void in
+                                var error: NSError? = nil
+                                if !savingContext.save(&error) {
+                                    println(error)
+                                }
+                            })
+                        }
+                    }
+                })
             }
         }
     }
@@ -78,7 +90,9 @@ class CoreDataManager: NSObject {
             block(localContext: localContext)
             
             var error: NSError? = nil
-            localContext.save(&error)
+            if !localContext.save(&error) {
+                println(error)
+            }
             
             completion(success: (error == nil), error: error)
         }
@@ -95,6 +109,7 @@ class CoreDataManager: NSObject {
      */
     private var persistentStoreCoordinator: NSPersistentStoreCoordinator!
     
+    var savingContext: NSManagedObjectContext?
     var managedObjectContext: NSManagedObjectContext?
     
     func setUpCoreDataStack() {
@@ -110,8 +125,11 @@ class CoreDataManager: NSObject {
         
         self.persistentStoreCoordinator = coordinator
         
+        self.savingContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+        self.savingContext?.persistentStoreCoordinator = self.persistentStoreCoordinator
+        
         self.managedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
-        self.managedObjectContext?.persistentStoreCoordinator = self.persistentStoreCoordinator
+        self.managedObjectContext?.parentContext = self.savingContext
     }
     
     func setUpInMemoryCoreDataStack() {
@@ -126,8 +144,11 @@ class CoreDataManager: NSObject {
         
         self.persistentStoreCoordinator = coordinator
         
+        self.savingContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+        self.savingContext?.persistentStoreCoordinator = self.persistentStoreCoordinator
+        
         self.managedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
-        self.managedObjectContext?.persistentStoreCoordinator = self.persistentStoreCoordinator
+        self.managedObjectContext?.parentContext = self.savingContext
     }
     
     func cleanUp() {
