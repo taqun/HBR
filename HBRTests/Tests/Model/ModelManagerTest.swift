@@ -57,6 +57,80 @@ class ModelManagerTest: XCTestCase {
         XCTAssertEqual(ModelManager.sharedInstance.channelCount, 2)
     }
     
+    func testDeleteFeedChannel() {
+        let channel1 = ModelManager.sharedInstance.createChannel()
+        channel1.keyword = "channel3"
+        let channel2 = ModelManager.sharedInstance.createChannel()
+        channel2.keyword = "channel2"
+        let channel3 = ModelManager.sharedInstance.createChannel()
+        channel3.keyword = "channel1"
+        
+        XCTAssertEqual(ModelManager.sharedInstance.channelCount, 3)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(0), channel3)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(2), channel1)
+        
+        ModelManager.sharedInstance.deleteFeedChannel(1)
+        XCTAssertEqual(ModelManager.sharedInstance.channelCount, 2)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(0), channel3)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(1), channel1)
+    }
+    
+    func testDeleteFeedChannelWithItems() {
+        let channel = ModelManager.sharedInstance.createChannel()
+        
+        let item1 = CoreDataManager.sharedInstance.createItem()
+        let item2 = CoreDataManager.sharedInstance.createItem()
+        channel.addItems([item1, item2])
+        
+        let otherItem = CoreDataManager.sharedInstance.createItem()
+        
+        XCTAssertEqual(ModelManager.sharedInstance.channelCount, 1)
+        XCTAssertEqual(channel.items.count, 2)
+        
+        let predicate = NSPredicate(format: "1 = 1")
+        let context = CoreDataManager.sharedInstance.managedObjectContext!
+        XCTAssertEqual(Item.findAllWithPredicate(predicate, context: context).count, 3)
+        
+        
+        ModelManager.sharedInstance.deleteFeedChannel(0)
+        
+        XCTAssertEqual(ModelManager.sharedInstance.channelCount, 0)
+        XCTAssertEqual(Item.findAllWithPredicate(predicate, context: context).count, 1)
+    }
+    
+    func testDeleteFeedChannelWithItemIsHoldByMultipleChannels() {
+        let channel1 = ModelManager.sharedInstance.createChannel()
+        channel1.keyword = "channel2"
+        let channel2 = ModelManager.sharedInstance.createChannel()
+        channel2.keyword = "channel1"
+        
+        let item = CoreDataManager.sharedInstance.createItem()
+        
+        channel1.addItems([item])
+        channel2.addItems([item])
+        
+        XCTAssertEqual(ModelManager.sharedInstance.channelCount, 2)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(0), channel2)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(1), channel1)
+        XCTAssertEqual(channel1.items.count, 1)
+        XCTAssertEqual(channel2.items.count, 1)
+        XCTAssertEqual(item.channels.count, 2)
+        
+        let predicate = NSPredicate(format: "1 = 1")
+        let context = CoreDataManager.sharedInstance.managedObjectContext!
+        XCTAssertEqual(Item.findAllWithPredicate(predicate, context: context).count, 1)
+        
+        
+        ModelManager.sharedInstance.deleteFeedChannel(0)
+        XCTAssertEqual(ModelManager.sharedInstance.channelCount, 1)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(0), channel1)
+        XCTAssertEqual(channel1.items.count, 1)
+        XCTAssertEqual(item.channels.count, 1)
+        XCTAssertEqual(item.channels.allObjects[0] as! Channel, channel1)
+
+        XCTAssertEqual(Item.findAllWithPredicate(predicate, context: context).count, 1)
+    }
+    
     
     // Item
     

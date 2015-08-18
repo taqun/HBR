@@ -78,8 +78,17 @@ class CoreDataManager: NSObject {
     }
     
     func saveWithBlock(block: ((localContext: NSManagedObjectContext) -> (Void))) {
-        println("Not implemented")
-        abort()
+        let localContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.PrivateQueueConcurrencyType)
+        localContext.parentContext = CoreDataManager.sharedInstance.managedObjectContext
+        
+        localContext.performBlock { () -> Void in
+            block(localContext: localContext)
+            
+            var error: NSError? = nil
+            if !localContext.save(&error) {
+                println(error)
+            }
+        }
     }
     
     func saveWithBlock(block: ((localContext: NSManagedObjectContext) -> (Void)), completion: ((success: Bool, error: NSError?) -> Void)) {

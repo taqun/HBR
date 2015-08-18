@@ -117,6 +117,23 @@ class ModelManager: NSObject {
      */
     func deleteFeedChannel(index: Int) {
         var channel = self.getChannel(index)
+        
+        let predicate = NSPredicate(format: "ANY channels = %@", channel)
+        let context = CoreDataManager.sharedInstance.managedObjectContext!
+        
+        let items = Item.findAllWithPredicate(predicate, context: context)
+        
+        for item in items {
+            if item.channels.count == 1 {
+                item.deleteEntity()
+            } else {
+                var channels = item.channels
+                channels.removeObject(channel)
+                
+                item.channels = channels
+            }
+        }
+        
         channel.deleteEntity()
     }
     

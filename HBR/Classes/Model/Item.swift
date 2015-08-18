@@ -115,7 +115,8 @@ class Item: NSManagedObject {
     }
     
     func deleteEntity() {
-        
+        let context = CoreDataManager.sharedInstance.managedObjectContext
+        context?.deleteObject(self)
     }
     
 }
