@@ -63,14 +63,14 @@ class CoreDataManager: NSObject {
                     }
                     
                     if let savingContext = self.savingContext {
-                        if savingContext.hasChanges {
-                            savingContext.performBlock({ () -> Void in
+                        savingContext.performBlock({ () -> Void in
+                            if savingContext.hasChanges {
                                 var error: NSError? = nil
                                 if !savingContext.save(&error) {
                                     println(error)
                                 }
-                            })
-                        }
+                            }
+                        })
                     }
                 })
             }
