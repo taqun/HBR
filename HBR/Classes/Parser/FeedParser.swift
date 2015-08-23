@@ -7,20 +7,21 @@
 //
 
 import UIKit
+import CoreData
 
 import AEXML
 
 class FeedParser: NSObject {
     
-    var channel: Channel
+    var channelObjectID: NSManagedObjectID
     var itemDatas: [[String: String!]] = []
     
     
     /*
      * Initialize
      */
-    init(channel: Channel) {
-        self.channel = channel
+    init(objectID: NSManagedObjectID) {
+        self.channelObjectID = objectID
         
         super.init()
     }

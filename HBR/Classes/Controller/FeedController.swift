@@ -73,8 +73,7 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
                     
                     let globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
                     dispatch_async(globalQueue) {
-                        let localChannel = ModelManager.sharedInstance.getchannelById(currentChannel.objectID)
-                        let parser = FeedParser(channel: localChannel)
+                        let parser = FeedParser(objectID: currentChannel.objectID)
                         let feedData = data as! NSData
                     
                         parser.parse(feedData, onComplete: self.parseComplete)
@@ -84,7 +83,7 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
     }
     
     private func parseComplete(parser: FeedParser) {
-        let channel = parser.channel
+        let channel = ModelManager.sharedInstance.getchannelById(parser.channelObjectID)
         let itemDatas = parser.itemDatas
         var newItems: [Item] = []
             
@@ -254,7 +253,7 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
                     NSURLProtocol.removePropertyForKey("objectID", inRequest: downloadTask.originalRequest as! NSMutableURLRequest)
                     
                     let localChannel = ModelManager.sharedInstance.getchannelById(objectID)
-                    let parser = FeedParser(channel: localChannel)
+                    let parser = FeedParser(objectID: objectID)
                     let feedData = NSData(contentsOfURL: location)!
                     
                     parser.parse(feedData, onComplete: self.backgroundParseComplete)
@@ -286,7 +285,7 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
     }
     
     func backgroundParseComplete(parser: FeedParser) {
-        let channel = parser.channel
+        let channel = ModelManager.sharedInstance.getchannelById(parser.channelObjectID)
         let itemDatas = parser.itemDatas
         var newItems: [Item] = []
         
