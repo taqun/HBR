@@ -83,43 +83,46 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
     }
     
     private func parseComplete(parser: FeedParser) {
-        let channel = ModelManager.sharedInstance.getchannelById(parser.channelObjectID)
-        let itemDatas = parser.itemDatas
-        var newItems: [Item] = []
-            
-        for data in itemDatas {
-            var link = String(data["link"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-            
-            var predicate = NSPredicate(format: "link == %@", link)
-            var items = Item.findAllWithPredicate(predicate, context: channel.managedObjectContext!)
-            
-            if items.count != 0 {
-                assert(items.count < 2, "A item in channel should be unique")
-                    
-                let item = items[0]
-                item.updateData(data)
-                    
-                if let channels = item.channels.allObjects as? [Channel] {
-                    if !contains(channels, channel) {
-                        CoreDataManager.sharedInstance.saveWithBlock({ (localContext) -> (Void) in
-                            var localChannel = channel.inContext(localContext)
-                            var localItem = item.inContext(localContext)
-                            localChannel.addItems([localItem])
-                        })
-                    }
-                }
-                    
-            } else {
-                var context = channel.managedObjectContext
-                var item = CoreDataManager.sharedInstance.createItemInContext(context!)
-                item.parseData(data)
-                newItems.append(item)
-            }
-        }
-        
         CoreDataManager.sharedInstance.saveWithBlock({ (localContext) -> (Void) in
-            var localChannel = channel.inContext(localContext)
-            localChannel.addItems(newItems)
+            
+            var error: NSError?
+            let channel = localContext.existingObjectWithID(parser.channelObjectID, error: &error) as! Channel
+            
+            let itemDatas = parser.itemDatas
+            var newItems: [Item] = []
+            
+            for data in itemDatas {
+                var link = String(data["link"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                
+                var predicate = NSPredicate(format: "link == %@", link)
+                var items = Item.findAllWithPredicate(predicate, context: channel.managedObjectContext!)
+                
+                if items.count != 0 {
+                    assert(items.count < 2, "A item in channel should be unique")
+                    
+                    let item = items[0]
+                    item.updateData(data)
+                    
+                    if let channels = item.channels.allObjects as? [Channel] {
+                        if !contains(channels, channel) {
+                            CoreDataManager.sharedInstance.saveWithBlock({ (localContext) -> (Void) in
+                                var localChannel = channel.inContext(localContext)
+                                var localItem = item.inContext(localContext)
+                                localChannel.addItems([localItem])
+                            })
+                        }
+                    }
+                    
+                } else {
+                    var context = channel.managedObjectContext
+                    var item = CoreDataManager.sharedInstance.createItemInContext(context!)
+                    item.parseData(data)
+                    newItems.append(item)
+                }
+            }
+            
+            channel.addItems(newItems)
+            
         }, completion: { (success, error) -> Void in
             self.loadRSSComplete()
         })
@@ -252,7 +255,6 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
                 if var objectID = NSURLProtocol.propertyForKey("objectID", inRequest: downloadTask.originalRequest) as! NSManagedObjectID! {
                     NSURLProtocol.removePropertyForKey("objectID", inRequest: downloadTask.originalRequest as! NSMutableURLRequest)
                     
-                    let localChannel = ModelManager.sharedInstance.getchannelById(objectID)
                     let parser = FeedParser(objectID: objectID)
                     let feedData = NSData(contentsOfURL: location)!
                     
@@ -285,57 +287,59 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
     }
     
     func backgroundParseComplete(parser: FeedParser) {
-        let channel = ModelManager.sharedInstance.getchannelById(parser.channelObjectID)
-        let itemDatas = parser.itemDatas
-        var newItems: [Item] = []
-        
-        for data in itemDatas {
-            var link = String(data["link"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-            
-            let predicate = NSPredicate(format: "link == %@", link)
-            let context = CoreDataManager.sharedInstance.managedObjectContext!
-            var items = Item.findAllWithPredicate(predicate, context: context)
-            
-            if items.count != 0 {
-                assert(items.count < 2, "A item in channel should be unique")
-                
-                let item = items[0]
-                item.updateData(data)
-                
-                if let channels = item.channels.allObjects as? [Channel] {
-                    if !contains(channels, channel) {
-                        CoreDataManager.sharedInstance.saveWithBlock({ (localContext) -> (Void) in
-                            var localChannel = channel.inContext(localContext)
-                            var localItem = item.inContext(localContext)
-                            localChannel.addItems([localItem])
-                        })
-                    }
-                }
-                
-            } else {
-                var context = channel.managedObjectContext
-                var item = CoreDataManager.sharedInstance.createItemInContext(context!)
-                item.parseData(data)
-                newItems.append(item)
-            }
-        }
-        
-        var addedItemNum: Int = newItems.count
-        
-        if addedItemNum == 0 {
-            Logger.log("  => no update")
-        } else {
-            Logger.log("  => add +" + String(addedItemNum))
-        }
-        
-        var remaining = round(UIApplication.sharedApplication().backgroundTimeRemaining)
-        Logger.log("  remaining = \(remaining)s")
+        var addedItemNum: Int = 0
         
         CoreDataManager.sharedInstance.saveWithBlock({ (localContext) -> (Void) in
-            var localChannel = channel.inContext(localContext)
-            localChannel.addItems(newItems)
+            
+            var error: NSError?
+            let channel = localContext.existingObjectWithID(parser.channelObjectID, error: &error) as! Channel
+            
+            let itemDatas = parser.itemDatas
+            var newItems: [Item] = []
+            
+            for data in itemDatas {
+                var link = String(data["link"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                
+                let predicate = NSPredicate(format: "link == %@", link)
+                var items = Item.findAllWithPredicate(predicate, context: channel.managedObjectContext!)
+                
+                if items.count != 0 {
+                    assert(items.count < 2, "A item in channel should be unique")
+                    
+                    let item = items[0]
+                    item.updateData(data)
+                    
+                    if let channels = item.channels.allObjects as? [Channel] {
+                        if !contains(channels, channel) {
+                            channel.addItems([item])
+                        }
+                    }
+                    
+                } else {
+                    var context = channel.managedObjectContext
+                    var item = CoreDataManager.sharedInstance.createItemInContext(context!)
+                    item.parseData(data)
+                    newItems.append(item)
+                }
+            }
+            
+            addedItemNum = newItems.count
+            
+            if addedItemNum == 0 {
+                Logger.log("  => no update")
+            } else {
+                Logger.log("  => add +" + String(addedItemNum))
+            }
+            
+            var remaining = round(UIApplication.sharedApplication().backgroundTimeRemaining)
+            Logger.log("  remaining = \(remaining)s")
+            
+            channel.addItems(newItems)
+            
         }, completion: { (success, error) -> Void in
+            
             self.backgroundFetchComplete(addedItemNum: addedItemNum)
+            
         })
     }
 
