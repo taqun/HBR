@@ -121,10 +121,6 @@ class Item: NSManagedObject {
         }
     }
     
-    func inContext(context: NSManagedObjectContext) -> (Item) {
-        return self
-    }
-    
     func deleteEntity() {
         let context = CoreDataManager.sharedInstance.managedObjectContext
         context?.deleteObject(self)

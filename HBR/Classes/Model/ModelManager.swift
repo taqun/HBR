@@ -238,7 +238,6 @@ class ModelManager: NSObject {
      * CoreData
      */
     func save() {
-       // NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
         CoreDataManager.sharedInstance.saveContext()
     }
     
@@ -284,7 +283,6 @@ class ModelManager: NSObject {
             item.deleteEntity()
         }
         
-        //NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreWithCompletion(nil)
         CoreDataManager.sharedInstance.saveContext()
         
         Logger.log("+++++++++++++++++++++++++++++++++")

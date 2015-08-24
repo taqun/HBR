@@ -39,7 +39,6 @@ class SelectCategoryViewController: UITableViewController {
         channel.category = self.category
         
         let context = channel.managedObjectContext
-        //context?.MR_saveOnlySelfAndWait()
         CoreDataManager.sharedInstance.saveContext()
         
         self.onComplete()
