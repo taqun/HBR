@@ -92,10 +92,10 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
             var newItems: [Item] = []
             
             for data in itemDatas {
-                var link = String(data["link"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                let link = String(data["link"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                 
-                var predicate = NSPredicate(format: "link == %@", link)
-                var items = Item.findAllWithPredicate(predicate, context: channel.managedObjectContext!)
+                let predicate = NSPredicate(format: "link == %@", link)
+                let items = Item.findAllWithPredicate(predicate, context: channel.managedObjectContext!)
                 
                 if items.count != 0 {
                     assert(items.count < 2, "A item in channel should be unique")
@@ -105,11 +105,7 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
                     
                     if let channels = item.channels.allObjects as? [Channel] {
                         if !contains(channels, channel) {
-                            CoreDataManager.sharedInstance.saveWithBlock({ (localContext) -> (Void) in
-                                var localChannel = channel.inContext(localContext)
-                                var localItem = item.inContext(localContext)
-                                localChannel.addItems([localItem])
-                            })
+                            channel.addItems([item])
                         }
                     }
                     
