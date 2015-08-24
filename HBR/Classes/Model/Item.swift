@@ -55,7 +55,18 @@ class Item: NSManagedObject {
     }
     
     static func truncateAll() {
+        let context = CoreDataManager.sharedInstance.managedObjectContext
         
+        var request = NSFetchRequest()
+        request.entity = CoreDataManager.sharedInstance.getEntityByName("Item", context: context!)
+        
+        var error: NSError? = nil
+        
+        if let items = context?.executeFetchRequest(request, error: &error) as? [Item] {
+            for item in items {
+                item.deleteEntity()
+            }
+        }
     }
     
     

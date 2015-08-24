@@ -108,5 +108,17 @@ class ItemTest: XCTestCase {
         XCTAssertEqual(item.title, "変更後タイトル")
         XCTAssertEqual(item.userNum, "98765")
     }
+    
+    func testTruncateAll() {
+        let item1 = CoreDataManager.sharedInstance.createItem()
+        let item2 = CoreDataManager.sharedInstance.createItem()
+        let item3 = CoreDataManager.sharedInstance.createItem()
+        
+        XCTAssertEqual(ModelManager.sharedInstance.allItemCount, 3)
+        
+        Item.truncateAll()
+        
+        XCTAssertEqual(ModelManager.sharedInstance.allItemCount, 0)
+    }
 
 }
