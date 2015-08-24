@@ -9,7 +9,6 @@
 import UIKit
 import XCTest
 
-import MagicalRecord
 import AEXML
 
 class ItemTest: XCTestCase {
@@ -17,11 +16,11 @@ class ItemTest: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        MagicalRecord.setupCoreDataStackWithInMemoryStore()
+        CoreDataManager.sharedInstance.setUpInMemoryCoreDataStack()
     }
     
     override func tearDown() {
-        MagicalRecord.cleanUp()
+        CoreDataManager.sharedInstance.cleanUp()
         
         super.tearDown()
     }
@@ -108,6 +107,18 @@ class ItemTest: XCTestCase {
         
         XCTAssertEqual(item.title, "変更後タイトル")
         XCTAssertEqual(item.userNum, "98765")
+    }
+    
+    func testTruncateAll() {
+        let item1 = CoreDataManager.sharedInstance.createItem()
+        let item2 = CoreDataManager.sharedInstance.createItem()
+        let item3 = CoreDataManager.sharedInstance.createItem()
+        
+        XCTAssertEqual(ModelManager.sharedInstance.allItemCount, 3)
+        
+        Item.truncateAll()
+        
+        XCTAssertEqual(ModelManager.sharedInstance.allItemCount, 0)
     }
 
 }

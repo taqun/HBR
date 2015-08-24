@@ -50,10 +50,12 @@ class MyBookmarksTableViewController: SegmentedDisplayTableViewController, NSFet
         }
         
         let channel = ModelManager.sharedInstance.myBookmarksChannel
-        var fetchRequest = Item.MR_requestAllSortedBy("date", ascending: false)
+        var fetchRequest = Item.requestAllSortBy("date", ascending: false)
         fetchRequest.predicate = NSPredicate(format: "ANY channels = %@", channel)
         
-        self.fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: NSManagedObjectContext.MR_defaultContext(), sectionNameKeyPath: nil, cacheName: "MyBookmarksCache")
+        let context = CoreDataManager.sharedInstance.managedObjectContext!
+        
+        self.fetchedResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: "MyBookmarksCache")
         self.fetchedResultController.delegate = self
     }
     

@@ -10,7 +10,6 @@ import UIKit
 
 import Alamofire
 import AEXML
-import MagicalRecord
 import HatenaBookmarkSDK
 
 class UserManager: NSObject {
@@ -82,33 +81,30 @@ class UserManager: NSObject {
     }
     
     private func parseComplete(parser: AtomFeedParser) {
-        let itemDatas = parser.itemDatas
-        let myBookmarks = ModelManager.sharedInstance.myBookmarksChannel
-        var newItems = [Item]()
-        
-        for data in itemDatas {
-            let link = data["link"]!
+        CoreDataManager.sharedInstance.saveWithBlock({ (localContext) -> (Void) in
             
-            var predicate = NSPredicate(format: "ANY channels = %@ AND link == %@", myBookmarks, link)
-            var items = Item.MR_findAllWithPredicate(predicate, inContext: myBookmarks.managedObjectContext) as! [Item]
+            let itemDatas = parser.itemDatas
+            let myBookmarksOnMainContext = ModelManager.sharedInstance.myBookmarksChannel
+            var error: NSError? = nil
+            let myBookmarks = localContext.existingObjectWithID(myBookmarksOnMainContext.objectID, error: &error) as! MyBookmarks
             
-            if items.count == 0 {
-                var item = CoreDataManager.sharedInstance.createItemInContext(myBookmarks.managedObjectContext!)
-                item.parseAtomData(data)
-                println(item)
-                newItems.append(item)
+            var newItems = [Item]()
+            
+            for data in itemDatas {
+                let link = data["link"]!
+                
+                var predicate = NSPredicate(format: "ANY channels = %@ AND link == %@", myBookmarks, link)
+                var items = Item.findAllWithPredicate(predicate, context: myBookmarks.managedObjectContext!)
+                
+                if items.count == 0 {
+                    var item = CoreDataManager.sharedInstance.createItemInContext(myBookmarks.managedObjectContext!)
+                    item.parseAtomData(data)
+                    newItems.append(item)
+                }
             }
-        }
-        
-        self.parseMyBookmarksComplete(newItems)
-    }
-    
-    private func parseMyBookmarksComplete(newItems: [Item]) {
-        let myBookmarks = ModelManager.sharedInstance.myBookmarksChannel
-        
-        MagicalRecord.saveUsingCurrentThreadContextWithBlock({ (localContext) -> Void in
-            var localChannel = myBookmarks.MR_inContext(localContext) as! Channel
-            localChannel.addItems(newItems)
+            
+            myBookmarks.addItems(newItems)
+            
         }, completion: { (success, error) -> Void in
             self.loadMyBookmarksComplete()
         })

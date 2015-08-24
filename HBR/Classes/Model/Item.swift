@@ -11,7 +11,7 @@ import CoreData
 
 import AEXML
 
-@objc(Item)
+
 class Item: NSManagedObject {
     
     @NSManaged var rawData: NSData
@@ -25,6 +25,49 @@ class Item: NSManagedObject {
     @NSManaged var read: NSNumber
     
     @NSManaged var channels: NSMutableSet
+    
+    
+    /*
+     * Static Method
+     */
+    static func findAllWithPredicate(predicate: NSPredicate, context: NSManagedObjectContext) -> ([Item]) {
+        var request = NSFetchRequest()
+        request.entity = CoreDataManager.sharedInstance.getEntityByName("Item", context: context)
+        request.predicate = predicate
+        
+        var error: NSError? = nil
+        
+        if var results = context.executeFetchRequest(request, error: &error) as? [Item] {
+            return results
+        } else {
+            return []
+        }
+    }
+    
+    static func requestAllSortBy(key: String, ascending: Bool) -> (NSFetchRequest) {
+        let context = CoreDataManager.sharedInstance.managedObjectContext!
+        
+        var request = NSFetchRequest()
+        request.entity = CoreDataManager.sharedInstance.getEntityByName("Item", context: context)
+        request.sortDescriptors = [NSSortDescriptor(key: key, ascending: ascending)]
+        
+        return request
+    }
+    
+    static func truncateAll() {
+        let context = CoreDataManager.sharedInstance.managedObjectContext
+        
+        var request = NSFetchRequest()
+        request.entity = CoreDataManager.sharedInstance.getEntityByName("Item", context: context!)
+        
+        var error: NSError? = nil
+        
+        if let items = context?.executeFetchRequest(request, error: &error) as? [Item] {
+            for item in items {
+                item.deleteEntity()
+            }
+        }
+    }
     
     
     /*
@@ -77,4 +120,10 @@ class Item: NSManagedObject {
             }
         }
     }
+    
+    func deleteEntity() {
+        let context = CoreDataManager.sharedInstance.managedObjectContext
+        context?.deleteObject(self)
+    }
+    
 }

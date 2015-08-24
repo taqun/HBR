@@ -9,18 +9,16 @@
 import UIKit
 import XCTest
 
-import MagicalRecord
-
 class ChannelTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
         
-        MagicalRecord.setupCoreDataStackWithInMemoryStore()
+        CoreDataManager.sharedInstance.setUpInMemoryCoreDataStack()
     }
     
     override func tearDown() {
-        MagicalRecord.cleanUp()
+        CoreDataManager.sharedInstance.cleanUp()
         
         super.tearDown()
     }
@@ -113,6 +111,17 @@ class ChannelTest: XCTestCase {
         
         channel.markAsReadAllItems()
         XCTAssertEqual(channel.unreadItemCount, 0)
+    }
+    
+    
+    func testDeleteEntity() {
+        let channel = CoreDataManager.sharedInstance.createChannel()
+        XCTAssertNotNil(channel)
+        XCTAssertEqual(ModelManager.sharedInstance.channelCount, 1)
+        
+        channel.deleteEntity()
+        
+        XCTAssertEqual(ModelManager.sharedInstance.channelCount, 0)
     }
     
     func testChannelTitle() {

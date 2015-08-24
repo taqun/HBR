@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 
 import Alamofire
-import MagicalRecord
 
 class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelegate {
     
@@ -74,8 +73,7 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
                     
                     let globalQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
                     dispatch_async(globalQueue) {
-                        let localChannel = ModelManager.sharedInstance.getchannelById(currentChannel.objectID)
-                        let parser = FeedParser(channel: localChannel)
+                        let parser = FeedParser(objectID: currentChannel.objectID)
                         let feedData = data as! NSData
                     
                         parser.parse(feedData, onComplete: self.parseComplete)
@@ -85,43 +83,42 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
     }
     
     private func parseComplete(parser: FeedParser) {
-        let channel = parser.channel
-        let itemDatas = parser.itemDatas
-        var newItems: [Item] = []
+        CoreDataManager.sharedInstance.saveWithBlock({ (localContext) -> (Void) in
             
-        for data in itemDatas {
-            var link = String(data["link"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+            var error: NSError?
+            let channel = localContext.existingObjectWithID(parser.channelObjectID, error: &error) as! Channel
             
-            var predicate = NSPredicate(format: "link == %@", link)
-            var items = Item.MR_findAllWithPredicate(predicate, inContext: channel.managedObjectContext) as! [Item]
+            let itemDatas = parser.itemDatas
+            var newItems: [Item] = []
             
-            if items.count != 0 {
-                assert(items.count < 2, "A item in channel should be unique")
+            for data in itemDatas {
+                let link = String(data["link"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                
+                let predicate = NSPredicate(format: "link == %@", link)
+                let items = Item.findAllWithPredicate(predicate, context: channel.managedObjectContext!)
+                
+                if items.count != 0 {
+                    assert(items.count < 2, "A item in channel should be unique")
                     
-                let item = items[0]
-                item.updateData(data)
+                    let item = items[0]
+                    item.updateData(data)
                     
-                if let channels = item.channels.allObjects as? [Channel] {
-                    if !contains(channels, channel) {
-                        MagicalRecord.saveWithBlock({ (localContext) -> Void in
-                            var localChannel = channel.MR_inContext(localContext) as! Channel
-                            var localItem = item.MR_inContext(localContext) as! Item
-                            localChannel.addItems([localItem])
-                        })
+                    if let channels = item.channels.allObjects as? [Channel] {
+                        if !contains(channels, channel) {
+                            channel.addItems([item])
+                        }
                     }
-                }
                     
-            } else {
-                var context = channel.managedObjectContext
-                var item = CoreDataManager.sharedInstance.createItemInContext(context!)
-                item.parseData(data)
-                newItems.append(item)
+                } else {
+                    var context = channel.managedObjectContext
+                    var item = CoreDataManager.sharedInstance.createItemInContext(context!)
+                    item.parseData(data)
+                    newItems.append(item)
+                }
             }
-        }
             
-        MagicalRecord.saveUsingCurrentThreadContextWithBlock({ (localContext) -> Void in
-            var localChannel = channel.MR_inContext(localContext) as! Channel
-            localChannel.addItems(newItems)
+            channel.addItems(newItems)
+            
         }, completion: { (success, error) -> Void in
             self.loadRSSComplete()
         })
@@ -254,8 +251,7 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
                 if var objectID = NSURLProtocol.propertyForKey("objectID", inRequest: downloadTask.originalRequest) as! NSManagedObjectID! {
                     NSURLProtocol.removePropertyForKey("objectID", inRequest: downloadTask.originalRequest as! NSMutableURLRequest)
                     
-                    let localChannel = ModelManager.sharedInstance.getchannelById(objectID)
-                    let parser = FeedParser(channel: localChannel)
+                    let parser = FeedParser(objectID: objectID)
                     let feedData = NSData(contentsOfURL: location)!
                     
                     parser.parse(feedData, onComplete: self.backgroundParseComplete)
@@ -287,56 +283,59 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
     }
     
     func backgroundParseComplete(parser: FeedParser) {
-        let channel = parser.channel
-        let itemDatas = parser.itemDatas
-        var newItems: [Item] = []
+        var addedItemNum: Int = 0
         
-        for data in itemDatas {
-            var link = String(data["link"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        CoreDataManager.sharedInstance.saveWithBlock({ (localContext) -> (Void) in
             
-            var predicate = NSPredicate(format: "link == %@", link)
-            var items = Item.MR_findAllWithPredicate(predicate, inContext: channel.managedObjectContext) as! [Item]
+            var error: NSError?
+            let channel = localContext.existingObjectWithID(parser.channelObjectID, error: &error) as! Channel
             
-            if items.count != 0 {
-                assert(items.count < 2, "A item in channel should be unique")
+            let itemDatas = parser.itemDatas
+            var newItems: [Item] = []
+            
+            for data in itemDatas {
+                var link = String(data["link"]!).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                 
-                let item = items[0]
-                item.updateData(data)
+                let predicate = NSPredicate(format: "link == %@", link)
+                var items = Item.findAllWithPredicate(predicate, context: channel.managedObjectContext!)
                 
-                if let channels = item.channels.allObjects as? [Channel] {
-                    if !contains(channels, channel) {
-                        MagicalRecord.saveWithBlock({ (localContext) -> Void in
-                            var localChannel = channel.MR_inContext(localContext) as! Channel
-                            var localItem = item.MR_inContext(localContext) as! Item
-                            localChannel.addItems([localItem])
-                        })
+                if items.count != 0 {
+                    assert(items.count < 2, "A item in channel should be unique")
+                    
+                    let item = items[0]
+                    item.updateData(data)
+                    
+                    if let channels = item.channels.allObjects as? [Channel] {
+                        if !contains(channels, channel) {
+                            channel.addItems([item])
+                        }
                     }
+                    
+                } else {
+                    var context = channel.managedObjectContext
+                    var item = CoreDataManager.sharedInstance.createItemInContext(context!)
+                    item.parseData(data)
+                    newItems.append(item)
                 }
-                
-            } else {
-                var context = channel.managedObjectContext
-                var item = CoreDataManager.sharedInstance.createItemInContext(context!)
-                item.parseData(data)
-                newItems.append(item)
             }
-        }
-        
-        var addedItemNum: Int = newItems.count
-        
-        if addedItemNum == 0 {
-            Logger.log("  => no update")
-        } else {
-            Logger.log("  => add +" + String(addedItemNum))
-        }
-        
-        var remaining = round(UIApplication.sharedApplication().backgroundTimeRemaining)
-        Logger.log("  remaining = \(remaining)s")
-        
-        MagicalRecord.saveUsingCurrentThreadContextWithBlock({ (localContext) -> Void in
-            var localChannel = channel.MR_inContext(localContext) as! Channel
-            localChannel.addItems(newItems)
-            }, completion: { (success, error) -> Void in
-                self.backgroundFetchComplete(addedItemNum: addedItemNum)
+            
+            addedItemNum = newItems.count
+            
+            if addedItemNum == 0 {
+                Logger.log("  => no update")
+            } else {
+                Logger.log("  => add +" + String(addedItemNum))
+            }
+            
+            var remaining = round(UIApplication.sharedApplication().backgroundTimeRemaining)
+            Logger.log("  remaining = \(remaining)s")
+            
+            channel.addItems(newItems)
+            
+        }, completion: { (success, error) -> Void in
+            
+            self.backgroundFetchComplete(addedItemNum: addedItemNum)
+            
         })
     }
 

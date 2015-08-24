@@ -8,7 +8,22 @@
 
 import CoreData
 
-@objc(MyBookmarks)
+
 class MyBookmarks: Channel {
+    
+    static func findAll() -> ([MyBookmarks]) {
+        let context = CoreDataManager.sharedInstance.managedObjectContext!
+        
+        var request = NSFetchRequest()
+        request.entity = CoreDataManager.sharedInstance.getEntityByName("MyBookmarks", context: context)
+        
+        var error: NSError? = nil
+        
+        if let results = context.executeFetchRequest(request, error: &error) as? [MyBookmarks] {
+            return results
+        } else {
+            return []
+        }
+    }
     
 }

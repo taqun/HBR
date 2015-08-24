@@ -9,18 +9,16 @@
 import UIKit
 import XCTest
 
-import MagicalRecord
-
 class FeedParserTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
         
-        MagicalRecord.setupCoreDataStackWithInMemoryStore()
+        CoreDataManager.sharedInstance.setUpInMemoryCoreDataStack()
     }
     
     override func tearDown() {
-        MagicalRecord.cleanUp()
+        CoreDataManager.sharedInstance.cleanUp()
         
         super.tearDown()
     }
@@ -31,7 +29,7 @@ class FeedParserTest: XCTestCase {
      */
     func testCreateInstance() {
         let channel = CoreDataManager.sharedInstance.createChannel()
-        let parser = FeedParser(channel: channel)
+        let parser = FeedParser(objectID: channel.objectID)
         XCTAssertNotNil(parser)
     }
     
@@ -40,7 +38,7 @@ class FeedParserTest: XCTestCase {
     
     func testParse() {
         channel = CoreDataManager.sharedInstance.createChannel()
-        let parser = FeedParser(channel: channel)
+        let parser = FeedParser(objectID: channel.objectID)
         
         let path = NSBundle(forClass: self.dynamicType).pathForResource("channel", ofType: "xml")
         let data = NSData(contentsOfFile: path!)!
@@ -54,7 +52,7 @@ class FeedParserTest: XCTestCase {
     }
     
     func parseComplete(parser: FeedParser) {
-        XCTAssertEqual(channel, parser.channel)
+        XCTAssertEqual(channel.objectID, parser.channelObjectID)
         XCTAssertEqual(parser.itemDatas.count, 3)
         
         let item1 = parser.itemDatas[0]
