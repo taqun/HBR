@@ -63,12 +63,6 @@ class Channel: NSManagedObject {
         }
     }
     
-    static func truncateAll() {
-        
-    }
-    
-    
-    
     
     /*
      * Public Method

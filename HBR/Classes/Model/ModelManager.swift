@@ -247,15 +247,6 @@ class ModelManager: NSObject {
         self.save()
     }
     
-    func truncateAll() {
-        Channel.truncateAll()
-        Item.truncateAll()
-        
-        self.initMyBookmarks()
-        
-        self.save()
-    }
-    
     func truncateExpiredEntries() {
         var today = NSDate(timeIntervalSinceNow: NSTimeInterval(NSTimeZone.systemTimeZone().secondsFromGMT))
         
