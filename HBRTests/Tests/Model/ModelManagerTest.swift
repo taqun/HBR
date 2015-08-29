@@ -45,6 +45,66 @@ class ModelManagerTest: XCTestCase {
         XCTAssertNotNil(channel)
     }
     
+    func testGetChannel() {
+        let channel1 = ModelManager.sharedInstance.createChannel()
+        channel1.index = 1
+        let channel2 = ModelManager.sharedInstance.createChannel()
+        channel2.index = 2
+        let channel3 = ModelManager.sharedInstance.createChannel()
+        channel3.index = 0
+        
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(0), channel3)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(1), channel1)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(2), channel2)
+    }
+    
+    func testMoveChannel() {
+        let channel0 = ModelManager.sharedInstance.createChannel()
+        channel0.keyword = "channel0"
+        channel0.index = 0
+        let channel1 = ModelManager.sharedInstance.createChannel()
+        channel1.keyword = "channel1"
+        channel1.index = 1
+        let channel2 = ModelManager.sharedInstance.createChannel()
+        channel2.keyword = "channel2"
+        channel2.index = 2
+        let channel3 = ModelManager.sharedInstance.createChannel()
+        channel3.keyword = "channel3"
+        channel3.index = 3
+        
+        // 0, 1, 2, 3 => 3, 0, 1, 2
+        ModelManager.sharedInstance.moveChannel(3, toIndex: 0)
+        
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(0), channel3)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(1), channel0)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(2), channel1)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(3), channel2)
+        
+        // 3, 0, 1, 2 => 0, 1, 2, 3
+        ModelManager.sharedInstance.moveChannel(0, toIndex: 3)
+        
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(0), channel0)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(1), channel1)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(2), channel2)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(3), channel3)
+        
+        // 0, 1, 2, 3 => 0, 1, 3, 2
+        ModelManager.sharedInstance.moveChannel(3, toIndex: 2)
+        
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(0), channel0)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(1), channel1)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(2), channel3)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(3), channel2)
+        
+        // 0, 1, 3, 2 => 0, 1, 2, 3
+        ModelManager.sharedInstance.moveChannel(2, toIndex: 3)
+        
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(0), channel0)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(1), channel1)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(2), channel2)
+        XCTAssertEqual(ModelManager.sharedInstance.getChannel(3), channel3)
+    }
+    
     func testChannelCount() {
         XCTAssertNotNil(ModelManager.sharedInstance.myBookmarksChannel)
         
@@ -59,11 +119,11 @@ class ModelManagerTest: XCTestCase {
     
     func testDeleteFeedChannel() {
         let channel1 = ModelManager.sharedInstance.createChannel()
-        channel1.keyword = "channel3"
+        channel1.index = 3
         let channel2 = ModelManager.sharedInstance.createChannel()
-        channel2.keyword = "channel2"
+        channel2.index = 2
         let channel3 = ModelManager.sharedInstance.createChannel()
-        channel3.keyword = "channel1"
+        channel3.index = 1
         
         XCTAssertEqual(ModelManager.sharedInstance.channelCount, 3)
         XCTAssertEqual(ModelManager.sharedInstance.getChannel(0), channel3)
@@ -101,8 +161,10 @@ class ModelManagerTest: XCTestCase {
     func testDeleteFeedChannelWithItemIsHoldByMultipleChannels() {
         let channel1 = ModelManager.sharedInstance.createChannel()
         channel1.keyword = "channel2"
+        channel1.index = 1
         let channel2 = ModelManager.sharedInstance.createChannel()
         channel2.keyword = "channel1"
+        channel2.index = 0
         
         let item = CoreDataManager.sharedInstance.createItem()
         

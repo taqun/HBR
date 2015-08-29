@@ -54,10 +54,13 @@ class AddNewChannelViewController: UITableViewController, UITextFieldDelegate{
         if channelKeyword == nil || channelKeyword == "" {
             //self.onCancel()
         } else {
+            let channelCount = ModelManager.sharedInstance.channelCount
+            
             var channel = ModelManager.sharedInstance.createChannel()
             channel.keyword = channelKeyword
             channel.type = channelType
             channel.bookmarkNum = bookmarkNum
+            channel.index = channelCount
             
             var context = channel.managedObjectContext
             CoreDataManager.sharedInstance.saveContext()

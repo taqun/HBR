@@ -24,6 +24,7 @@ class Channel: NSManagedObject {
     @NSManaged var keyword: String
     @NSManaged var bookmarkNum: NSNumber
     @NSManaged var updatedAt: NSDate
+    @NSManaged var index: NSNumber
     
     @NSManaged private var typeValue: String
     @NSManaged private var categoryValue: String

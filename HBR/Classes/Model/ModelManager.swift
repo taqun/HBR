@@ -62,10 +62,7 @@ class ModelManager: NSObject {
         let context = CoreDataManager.sharedInstance.managedObjectContext!
         let predicate = NSPredicate(format: "self != %@", ModelManager.sharedInstance.myBookmarksChannel)
         let sorts = [
-            NSSortDescriptor(key: "typeValue", ascending: true),
-            NSSortDescriptor(key: "categoryValue", ascending: true),
-            NSSortDescriptor(key: "keyword", ascending: true)
-            
+            NSSortDescriptor(key: "index", ascending: true)
         ]
         
         let channels = Channel.findAllWithPredicateAndSort(predicate, sorts: sorts, context: context)
@@ -75,6 +72,50 @@ class ModelManager: NSObject {
         } else {
             return nil
         }
+    }
+    
+    func moveChannel(fromIndex: Int, toIndex: Int) {
+        let targetChannel = self.getChannel(fromIndex)
+        
+        let effectedChannels: [Channel]
+        if fromIndex < toIndex {
+            effectedChannels = self.getChannelByRange(fromIndex, to: toIndex)
+        } else {
+            effectedChannels = self.getChannelByRange(toIndex, to: fromIndex)
+        }
+        
+        targetChannel.index = toIndex
+        
+        
+        var start: Int, end: Int, delta: Int, offset: Int
+        
+        if fromIndex < toIndex {
+            start   = fromIndex + 1
+            end     = toIndex
+            delta   = -1
+            offset  = fromIndex
+        } else {
+            start   = toIndex
+            end     = fromIndex - 1
+            delta   = 1
+            offset  = toIndex
+        }
+        
+        for var i = start; i <= end; i++ {
+            var channel = effectedChannels[i - offset]
+            channel.index = i + delta
+        }
+    }
+    
+    private func getChannelByRange(from: Int, to: Int) -> ([Channel]) {
+        let context = CoreDataManager.sharedInstance.managedObjectContext!
+        let predicate = NSPredicate(format: "self != %@", ModelManager.sharedInstance.myBookmarksChannel)
+        let sorts = [
+            NSSortDescriptor(key: "index", ascending: true)
+        ]
+        
+        let channels = Channel.findAllWithPredicateAndSort(predicate, sorts: sorts, context: context)
+        return Array(channels[from...to])
     }
 
     func getchannelById(id: NSManagedObjectID) -> (Channel!){

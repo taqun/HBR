@@ -11,8 +11,9 @@ import iAd
 
 class IndexViewController: UITableViewController {
     
-    @IBOutlet var btnAdd: UIBarButtonItem!
     @IBOutlet var btnSettings: UIBarButtonItem!
+    
+    private var addNewFeedCellIsShowing: Bool = false
     
     
     /*
@@ -24,13 +25,12 @@ class IndexViewController: UITableViewController {
         // tableView
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.allowsSelectionDuringEditing = true
         self.tableView.registerNib(UINib(nibName: "IndexTableViewCell", bundle: nil), forCellReuseIdentifier: "IndexTableViewCell")
+        self.tableView.registerNib(UINib(nibName: "AddNewFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "AddNewFeedTableViewCell")
         
         let backBtn = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: self, action: nil)
         self.navigationItem.backBarButtonItem = backBtn
-        
-        btnAdd.target = self
-        btnAdd.action = Selector("didAdd")
         
         btnSettings.target = self
         btnSettings.action = Selector("didSettings")
@@ -58,7 +58,7 @@ class IndexViewController: UITableViewController {
             self.tableView.reloadData()
         })
     }
-    
+
     private func cancelAdd() {
         self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -99,8 +99,9 @@ class IndexViewController: UITableViewController {
         // navigationbar
         self.title = "HBR"
         
-        self.navigationItem.rightBarButtonItem = btnAdd
-        self.navigationItem.leftBarButtonItem = btnSettings
+        //self.navigationItem.rightBarButtonItem  = btnEdit
+        self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.navigationItem.leftBarButtonItem   = btnSettings
         
         // toolbar
         self.navigationController?.toolbarHidden = true
@@ -111,9 +112,11 @@ class IndexViewController: UITableViewController {
             self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
         
-        var cells = self.tableView.visibleCells() as! [IndexTableViewCell]
+        var cells = self.tableView.visibleCells() as! [UITableViewCell]
         for cell in cells {
-            cell.updateView()
+            if let indexCell = cell as? IndexTableViewCell {
+                indexCell.updateView()
+            }
         }
         
         // Ads
@@ -131,6 +134,28 @@ class IndexViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        self.editing = false
+    }
+    
+    
+    override func setEditing(editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        let channelNum = ModelManager.sharedInstance.channelCount
+        let indexPath = NSIndexPath(forRow: channelNum, inSection: 1)
+        
+        if self.editing == true && addNewFeedCellIsShowing == false {
+            addNewFeedCellIsShowing = true
+            self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Middle)
+        } else if self.editing == false && addNewFeedCellIsShowing == true {
+            addNewFeedCellIsShowing = false
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Middle)
+        }
+    }
+    
     
     /*
      * UITableViewDataSource Protocol
@@ -144,7 +169,13 @@ class IndexViewController: UITableViewController {
             case 0:
                 return 3
             case 1:
-                return ModelManager.sharedInstance.channelCount
+                var channelNum = ModelManager.sharedInstance.channelCount
+                
+                if self.editing == true {
+                    return channelNum + 1
+                } else {
+                    return channelNum
+                }
             default:
                 return 0
         }
@@ -164,13 +195,14 @@ class IndexViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("IndexTableViewCell") as! IndexTableViewCell
         
         let section = indexPath.indexAtPosition(0)
         let index = indexPath.indexAtPosition(1)
 
         switch section {
             case 0:
+                var cell = tableView.dequeueReusableCellWithIdentifier("IndexTableViewCell") as! IndexTableViewCell
+                
                 switch index {
                     case 0:
                         cell.type = IndexTableViewCellType.UnreadItems
@@ -187,16 +219,29 @@ class IndexViewController: UITableViewController {
                         break
                 }
             
+                return cell
+            
             case 1:
-                let channel = ModelManager.sharedInstance.getChannel(index)
-                cell.type = IndexTableViewCellType.Feed
-                cell.channel = channel
+                let channelNum = ModelManager.sharedInstance.channelCount
+                
+                if self.editing == true && index == channelNum {
+                    var cell = tableView.dequeueReusableCellWithIdentifier("AddNewFeedTableViewCell") as! UITableViewCell
+                    return cell
+                    
+                } else {
+                    var cell = tableView.dequeueReusableCellWithIdentifier("IndexTableViewCell") as! IndexTableViewCell
+                    
+                    let channel = ModelManager.sharedInstance.getChannel(index)
+                    cell.type = IndexTableViewCellType.Feed
+                    cell.channel = channel
+                    
+                    return cell
+                }
 
             default:
-                break
+                var cell = tableView.dequeueReusableCellWithIdentifier("IndexTableViewCell") as! IndexTableViewCell
+                return cell
         }
-
-        return cell
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -212,9 +257,53 @@ class IndexViewController: UITableViewController {
         let section = indexPath.indexAtPosition(0)
         
         if section == 1 {
-            return UITableViewCellEditingStyle.Delete
+            if self.editing == true {
+                return UITableViewCellEditingStyle.Delete
+            } else {
+                return UITableViewCellEditingStyle.None
+            }
         } else {
             return UITableViewCellEditingStyle.None
+        }
+    }
+    
+    override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        let fromIndex   = sourceIndexPath.row
+        let toIndex     = destinationIndexPath.row
+        
+        ModelManager.sharedInstance.moveChannel(fromIndex, toIndex: toIndex)
+    }
+    
+    override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
+        
+        if proposedDestinationIndexPath.section == 1 && proposedDestinationIndexPath.row == ModelManager.sharedInstance.channelCount {
+            return sourceIndexPath
+        } else {
+            return proposedDestinationIndexPath
+        }
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.section == 0 {
+            return false
+        } else {
+            if indexPath.section == 1 && indexPath.row == ModelManager.sharedInstance.channelCount {
+                return false
+            } else {
+                return true
+            }
+        }
+    }
+    
+    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.section == 0 {
+            return false
+        } else {
+            if indexPath.section == 1 && indexPath.row == ModelManager.sharedInstance.channelCount {
+                return false
+            } else {
+                return true
+            }
         }
     }
     
@@ -246,9 +335,14 @@ class IndexViewController: UITableViewController {
             }
             
             case 1:
-                let channel = ModelManager.sharedInstance.getChannel(index)
-                let feedTableViewController = FeedTableViewController(channel: channel)
-                self.navigationController?.pushViewController(feedTableViewController, animated: true)
+                
+                if self.editing == true && index == ModelManager.sharedInstance.channelCount {
+                    self.didAdd()
+                } else {
+                    let channel = ModelManager.sharedInstance.getChannel(index)
+                    let feedTableViewController = FeedTableViewController(channel: channel)
+                    self.navigationController?.pushViewController(feedTableViewController, animated: true)
+                }
             
             default:
                 break

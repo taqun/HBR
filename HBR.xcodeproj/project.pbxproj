@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		314FE26C1B91B04F00FDC66D /* AddNewFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 314FE26B1B91B04F00FDC66D /* AddNewFeedTableViewCell.xib */; };
 		315809FC1B63D34B00F754EA /* AppIcons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 315809FB1B63D34B00F754EA /* AppIcons.xcassets */; };
 		315809FF1B63F37A00F754EA /* FeedParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315809FE1B63F37A00F754EA /* FeedParserTest.swift */; };
 		31580A001B63F3B300F754EA /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EFF20E1B3F16F800EBBF72 /* FeedParser.swift */; };
@@ -136,6 +137,7 @@
 		01542B63AA6AC5E9873D9ED3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		14BBF0AD1F3A22A92C96683A /* Pods_HBRTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HBRTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		302E50EC42B1DAC3D542C4F5 /* Pods-HBRTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HBRTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HBRTests/Pods-HBRTests.release.xcconfig"; sourceTree = "<group>"; };
+		314FE26B1B91B04F00FDC66D /* AddNewFeedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddNewFeedTableViewCell.xib; path = Assets/View/AddNewFeedTableViewCell.xib; sourceTree = "<group>"; };
 		315809FB1B63D34B00F754EA /* AppIcons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = AppIcons.xcassets; path = Resources/AppIcons.xcassets; sourceTree = "<group>"; };
 		315809FE1B63F37A00F754EA /* FeedParserTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedParserTest.swift; path = Tests/Parser/FeedParserTest.swift; sourceTree = "<group>"; };
 		31580A021B66969A00F754EA /* channel.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = channel.xml; path = Resources/channel.xml; sourceTree = "<group>"; };
@@ -558,6 +560,7 @@
 		31EFF2501B3F249300EBBF72 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				314FE26B1B91B04F00FDC66D /* AddNewFeedTableViewCell.xib */,
 				31EFF27F1B404C8E00EBBF72 /* BookmarkNoDataCell.xib */,
 				31EFF2801B404C8E00EBBF72 /* BookmarkReadMoreCell.xib */,
 				31EFF2811B404C8E00EBBF72 /* BookmarkTableViewCell.xib */,
@@ -767,6 +770,7 @@
 				31EFF2631B4035EF00EBBF72 /* SelectBookmarkNumController.storyboard in Resources */,
 				31738EAC1B3E87F80099A9F2 /* IndexViewController.storyboard in Resources */,
 				31EFF2521B3F249E00EBBF72 /* IndexTableViewCell.xib in Resources */,
+				314FE26C1B91B04F00FDC66D /* AddNewFeedTableViewCell.xib in Resources */,
 				31EFF24B1B3F23E900EBBF72 /* IconSearch@2x.png in Resources */,
 				31EFF2841B404C8E00EBBF72 /* BookmarkTableViewCell.xib in Resources */,
 			);
