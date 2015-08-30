@@ -116,7 +116,7 @@ class AddNewChannelViewController: UITableViewController, UITextFieldDelegate{
         
         self.updateBtnDone()
         
-        Logger.sharedInstance.track("AddNewChannelView")
+        Logger.sharedInstance.track("AddNewChannelView/Keyword")
     }
     
     override func viewDidAppear(animated: Bool) {

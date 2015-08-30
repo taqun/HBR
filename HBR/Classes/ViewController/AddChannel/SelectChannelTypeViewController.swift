@@ -47,6 +47,8 @@ class SelectChannelTypeViewController: UITableViewController {
         self.title = "フィードタイプ選択"
         
         self.navigationItem.leftBarButtonItem = btnCancel
+        
+        Logger.sharedInstance.track("AddNewChannelView")
     }
     
     

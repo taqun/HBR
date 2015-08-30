@@ -32,7 +32,7 @@ class SelectBookmarkNumController: UITableViewController {
         
         self.title = "ブックマーク数"
         
-        Logger.sharedInstance.track("AddNewChannelView/SelectBookmarkNumView")
+        Logger.sharedInstance.track("AddNewChannelView/Keyword/SelectBookmarkNum")
     }
     
     

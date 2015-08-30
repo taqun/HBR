@@ -59,6 +59,8 @@ class SelectCategoryViewController: UITableViewController {
         self.category = HatenaCategory.All
         
         self.navigationItem.rightBarButtonItem = btnDone
+        
+        Logger.sharedInstance.track("AddNewChannelView/SelectCategory")
     }
     
     

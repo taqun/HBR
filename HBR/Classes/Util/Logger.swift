@@ -45,17 +45,20 @@ class Logger: NSObject {
         
         switch channel.type {
             case ChannelType.Hot:
-                screenName = "HotEntryItemListView"
+                screenName = "HotEntryItemListView/\(channel.category.rawValue)"
                 
             case ChannelType.New:
-                screenName = "NewEntryItemListView"
+                screenName = "NewEntryItemListView/\(channel.category.rawValue)"
                 
             case ChannelType.Tag:
                 screenName = "FeedItemListView/Tag"
+            
             case ChannelType.Title:
                 screenName = "FeedItemListView/Title"
+            
             case ChannelType.Text:
                 screenName = "FeedItemListView/Text"
+            
             default:
                 screenName = "FeedItemListView/(not set)"
         }
