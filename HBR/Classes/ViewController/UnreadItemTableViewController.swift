@@ -87,11 +87,16 @@ class UnreadItemTableViewController: BaseItemListTableViewController, NSFetchedR
         
         // tableView
         if indexPath != nil {
-            if allItemNum > currentRowNum {
-                currentRowNum -= 1
-            }
+            let selectedCell = self.tableView.cellForRowAtIndexPath(indexPath) as! FeedWithChannelTableViewCell
+            let itemIsRead = selectedCell.item.read
             
-            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            if itemIsRead == true {
+                if allItemNum > currentRowNum {
+                    currentRowNum -= 1
+                }
+            
+                self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            }
         }
         
         Logger.sharedInstance.track("UnreadItemListView")
