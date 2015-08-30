@@ -13,7 +13,7 @@ pod 'TUSafariActivity', '~> 1.0'
 pod 'iConsole', '~> 1.5'
 pod 'AEXML', '~> 1.2'
 pod 'Fabric'
-pod 'Crashlytics'
+pod 'Crashlytics', '~> 3.1.1'
 
 target "HBRTests" do
 
