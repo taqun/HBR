@@ -26,6 +26,7 @@
 		3167D6751B5A51200010EAE0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6741B5A51200010EAE0 /* CoreDataManager.swift */; };
 		3167D6761B5A526E0010EAE0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6741B5A51200010EAE0 /* CoreDataManager.swift */; };
 		3167D6771B5A52BD0010EAE0 /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C92F4C1B42C768000C20DE /* Setting.m */; };
+		316F0A1B1B9372CC004C2E65 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 316F0A1A1B9372CC004C2E65 /* LaunchScreen.xib */; };
 		31738EA81B3E87750099A9F2 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EA71B3E87750099A9F2 /* IndexViewController.swift */; };
 		31738EAC1B3E87F80099A9F2 /* IndexViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31738EAB1B3E87F80099A9F2 /* IndexViewController.storyboard */; };
 		31738EB11B3E885B0099A9F2 /* NavigationControllerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EB01B3E885B0099A9F2 /* NavigationControllerUtil.swift */; };
@@ -141,6 +142,7 @@
 		315EDBA31B491F3900A0DC46 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Pods/GoogleAnalytics/Libraries/libGoogleAnalytics.a; sourceTree = "<group>"; };
 		3167D6681B5A4DBC0010EAE0 /* ModelManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelManagerTest.swift; path = Tests/Model/ModelManagerTest.swift; sourceTree = "<group>"; };
 		3167D6741B5A51200010EAE0 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = Classes/Model/CoreDataManager.swift; sourceTree = "<group>"; };
+		316F0A1A1B9372CC004C2E65 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Assets/LaunchScreen.xib; sourceTree = "<group>"; };
 		31738EA71B3E87750099A9F2 /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IndexViewController.swift; path = Classes/ViewController/IndexViewController.swift; sourceTree = "<group>"; };
 		31738EAB1B3E87F80099A9F2 /* IndexViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = IndexViewController.storyboard; path = Assets/ViewController/IndexViewController.storyboard; sourceTree = "<group>"; };
 		31738EB01B3E885B0099A9F2 /* NavigationControllerUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationControllerUtil.swift; path = Classes/Util/NavigationControllerUtil.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 		31738EA91B3E87E00099A9F2 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				316F0A1A1B9372CC004C2E65 /* LaunchScreen.xib */,
 				31EFF2501B3F249300EBBF72 /* View */,
 				31738EAA1B3E87ED0099A9F2 /* ViewController */,
 			);
@@ -743,6 +746,7 @@
 				31EFF2721B4039DC00EBBF72 /* IconTitle@2x.png in Resources */,
 				31EFF2861B40544E00EBBF72 /* FeedWithChannelTableViewCell.xib in Resources */,
 				315809FC1B63D34B00F754EA /* AppIcons.xcassets in Resources */,
+				316F0A1B1B9372CC004C2E65 /* LaunchScreen.xib in Resources */,
 				31EFF2581B3F26CA00EBBF72 /* IconInboxes@2x.png in Resources */,
 				31EFF2751B4039FA00EBBF72 /* IconHotEntry@2x.png in Resources */,
 				31EFF26A1B4036A000EBBF72 /* ExpireSettingViewController.storyboard in Resources */,
