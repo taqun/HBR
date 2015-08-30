@@ -206,8 +206,8 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
         
         if backgroundSession == nil {
             var sessionConfig = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier("net.envoix.app.HBR")
-            sessionConfig.timeoutIntervalForRequest     = 15.0
-            sessionConfig.timeoutIntervalForResource    = 20.0
+            sessionConfig.timeoutIntervalForRequest     = 25.0
+            sessionConfig.timeoutIntervalForResource    = 28.0
             
             backgroundSession = NSURLSession(configuration: sessionConfig, delegate: self, delegateQueue: nil)
         }
