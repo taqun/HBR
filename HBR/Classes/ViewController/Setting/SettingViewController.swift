@@ -318,20 +318,6 @@ class SettingViewController: UITableViewController {
                         // version
                         break
                     
-                    case 1:
-                        // terms
-                        let storyBoard = UIStoryboard(name: "TermsViewController", bundle: nil)
-                        let termsViewController = storyBoard.instantiateInitialViewController() as! UIViewController
-                    
-                        self.navigationController?.pushViewController(termsViewController, animated: true)
-
-                    case 2:
-                        // license
-                        let storyBoard = UIStoryboard(name: "LicensesViewController", bundle: nil)
-                        let licenseViewController = storyBoard.instantiateInitialViewController() as! UIViewController
-                        
-                        self.navigationController?.pushViewController(licenseViewController, animated: true)
-                    
                     default:
                         break
                     
