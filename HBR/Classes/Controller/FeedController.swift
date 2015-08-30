@@ -54,7 +54,7 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
     private func loadRSS(channelID: NSManagedObjectID! = nil){
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        let currentChannel = (channelID != nil) ? ModelManager.sharedInstance.getchannelById(channelID) : ModelManager.sharedInstance.getChannel(self.channelCounter)
+        let currentChannel = (channelID != nil) ? ModelManager.sharedInstance.getChannelById(channelID) : ModelManager.sharedInstance.getChannel(self.channelCounter)
         let url = currentChannel.feedURL
         
         Alamofire.request(.GET, url)

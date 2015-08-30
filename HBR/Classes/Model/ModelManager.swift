@@ -118,7 +118,7 @@ class ModelManager: NSObject {
         return Array(channels[from...to])
     }
 
-    func getchannelById(id: NSManagedObjectID) -> (Channel!){
+    func getChannelById(id: NSManagedObjectID) -> (Channel!){
         let context = CoreDataManager.sharedInstance.managedObjectContext!
         
         var error: NSError?
