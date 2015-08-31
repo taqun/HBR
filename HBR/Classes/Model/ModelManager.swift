@@ -359,6 +359,6 @@ class ModelManager: NSObject {
     }
     
     private func updateBookmarkCountComplete() {
-        NSNotificationCenter.defaultCenter().postNotificationName("BookmarkCountUpdated", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(Notification.BOOKMARK_COUNT_UPDATED, object: nil)
     }
 }

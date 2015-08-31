@@ -166,12 +166,12 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
      */
     func loadBookmarks(url: String){
         if ModelManager.sharedInstance.getBookmark(url) != nil {
-            NSNotificationCenter.defaultCenter().postNotificationName("BookmarkLoadedNotification", object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(Notification.BOOKMARK_LOADED, object: nil)
             
             return
         }
         
-        NSNotificationCenter.defaultCenter().postNotificationName("BookmarkLoadStartNotification", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(Notification.BOOKMARK_LOAD_START, object: nil)
         
         let url = "http://b.hatena.ne.jp/entry/jsonlite/" + url
         
@@ -201,12 +201,12 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
         ModelManager.sharedInstance.addBookmark(url, bookmark: bookmark)
         
         dispatch_async(dispatch_get_main_queue()) {
-            NSNotificationCenter.defaultCenter().postNotificationName("BookmarkLoadedNotification", object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(Notification.BOOKMARK_LOADED, object: nil)
         }
     }
     
     private func loadBookmarksError() {
-        NSNotificationCenter.defaultCenter().postNotificationName("BookmarkLoadedNotification", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(Notification.BOOKMARK_LOADED, object: nil)
     }
     
     

@@ -215,7 +215,7 @@ class WebViewController: UIViewController, UIWebViewDelegate {
             self.btnUserNum.action = Selector("didUserNum")
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("bookmarkCountUpdated"), name: "BookmarkCountUpdated", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("bookmarkCountUpdated"), name: Notification.BOOKMARK_COUNT_UPDATED, object: nil)
         
         if self.item.userNum == nil {
             ModelManager.sharedInstance.updateBookmarkCount(self.item.link)

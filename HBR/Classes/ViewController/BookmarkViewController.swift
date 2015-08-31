@@ -84,8 +84,8 @@ class BookmarkViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("didLoadBookmarks"), name: "BookmarkLoadStartNotification", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("bookmarkLoaded"), name: "BookmarkLoadedNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("didLoadBookmarks"), name: Notification.BOOKMARK_LOAD_START, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("bookmarkLoaded"), name: Notification.BOOKMARK_LOADED, object: nil)
         
         FeedController.sharedInstance.loadBookmarks(self.url)
         

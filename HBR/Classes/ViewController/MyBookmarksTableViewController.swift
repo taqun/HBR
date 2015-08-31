@@ -97,7 +97,7 @@ class MyBookmarksTableViewController: SegmentedDisplayTableViewController, NSFet
         let channel = ModelManager.sharedInstance.myBookmarksChannel
         self.allItemNum = channel.items.count
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("myBookmarksLoaded"), name: "MyBookmarksLoadedNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("myBookmarksLoaded"), name: Notification.MY_BOOKMARKS_LOADED, object: nil)
         
         Logger.sharedInstance.track("MyBookmarkItemListView")
     }

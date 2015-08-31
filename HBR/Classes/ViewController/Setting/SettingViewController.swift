@@ -194,10 +194,10 @@ class SettingViewController: UITableViewController {
         self.updateProductLabels()
         
         NSNotificationCenter.defaultCenter().removeObserver(self)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("showOAuthView"), name: "readyOAuthNotification", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateProductLabels"), name: "GetProductInfoNotification", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("paymentStateChanged"), name: "TransactionStateChangedNotification", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("restoreStateChanged"), name: "RestoreTransactionStateChangedNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("showOAuthView"), name: Notification.READY_OAUTH, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("updateProductLabels"), name: Notification.GET_PRODUCT_INFO, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("paymentStateChanged"), name: Notification.TRANSACTION_STATE_CHANGED, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("restoreStateChanged"), name: Notification.RESTORE_TRANSACTION_STATE_CHANGED, object: nil)
         
         Logger.sharedInstance.track("SettingView")
     }
@@ -211,7 +211,7 @@ class SettingViewController: UITableViewController {
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("oauthComplete"), name: "OAuthCompleteNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("oauthComplete"), name: Notification.OAUTH_COMPLETE, object: nil)
     }
     
     

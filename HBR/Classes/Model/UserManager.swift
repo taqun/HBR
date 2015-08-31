@@ -43,7 +43,7 @@ class UserManager: NSObject {
     }
     
     private func loginComplete() {
-        NSNotificationCenter.defaultCenter().postNotificationName("OAuthCompleteNotification", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(Notification.OAUTH_COMPLETE, object: nil)
     }
     
     func logout() {
@@ -112,7 +112,7 @@ class UserManager: NSObject {
     
     private func loadMyBookmarksComplete() {
         dispatch_async(dispatch_get_main_queue()) {
-            NSNotificationCenter.defaultCenter().postNotificationName("MyBookmarksLoadedNotification", object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(Notification.MY_BOOKMARKS_LOADED, object: nil)
         }
     }
     
@@ -126,7 +126,7 @@ class UserManager: NSObject {
         if let request = notification.object as? NSURLRequest {
             self.oauthRequest = request
             
-            NSNotificationCenter.defaultCenter().postNotificationName("readyOAuthNotification", object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(Notification.READY_OAUTH, object: nil)
         }
     }
     

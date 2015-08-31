@@ -28,6 +28,7 @@
 		3167D6771B5A52BD0010EAE0 /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C92F4C1B42C768000C20DE /* Setting.m */; };
 		316F0A1B1B9372CC004C2E65 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 316F0A1A1B9372CC004C2E65 /* LaunchScreen.xib */; };
 		316F0A1D1B943521004C2E65 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316F0A1C1B943521004C2E65 /* Notification.swift */; };
+		316F0A1E1B94439C004C2E65 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316F0A1C1B943521004C2E65 /* Notification.swift */; };
 		31738EA81B3E87750099A9F2 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EA71B3E87750099A9F2 /* IndexViewController.swift */; };
 		31738EAC1B3E87F80099A9F2 /* IndexViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31738EAB1B3E87F80099A9F2 /* IndexViewController.storyboard */; };
 		31738EB11B3E885B0099A9F2 /* NavigationControllerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EB01B3E885B0099A9F2 /* NavigationControllerUtil.swift */; };
@@ -967,6 +968,7 @@
 				315809FF1B63F37A00F754EA /* FeedParserTest.swift in Sources */,
 				405D57791B4A2D7F009C9D56 /* FeedURLBuilderTest.swift in Sources */,
 				402E06C21B560AAA002ABF48 /* ChannelTest.swift in Sources */,
+				316F0A1E1B94439C004C2E65 /* Notification.swift in Sources */,
 				405D577E1B4A301F009C9D56 /* DateUtil.swift in Sources */,
 				3167D66B1B5A4E3C0010EAE0 /* MyBookmarks.swift in Sources */,
 				405D577F1B4A302E009C9D56 /* AppConstant.swift in Sources */,

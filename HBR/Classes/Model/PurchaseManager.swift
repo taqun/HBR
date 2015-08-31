@@ -88,7 +88,7 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
             _transactionState = newState
             
             if stateChanged {
-                NSNotificationCenter.defaultCenter().postNotificationName("TransactionStateChangedNotification", object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName(Notification.TRANSACTION_STATE_CHANGED, object: nil)
             }
         }
         
@@ -103,7 +103,7 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
             _restoreState = newState
             
             if stateChanged {
-                NSNotificationCenter.defaultCenter().postNotificationName("RestoreTransactionStateChangedNotification", object: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName(Notification.RESTORE_TRANSACTION_STATE_CHANGED, object: nil)
             }
         }
         
@@ -129,7 +129,7 @@ class PurchaseManager: NSObject, SKProductsRequestDelegate, SKPaymentTransaction
                 if products.count > 0 {
                     self.product = products[0]
                     
-                    NSNotificationCenter.defaultCenter().postNotificationName("GetProductInfoNotification", object: nil)
+                    NSNotificationCenter.defaultCenter().postNotificationName(Notification.GET_PRODUCT_INFO, object: nil)
                }
             }
         }
