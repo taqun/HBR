@@ -38,7 +38,10 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
         channelNum      = ModelManager.sharedInstance.channelCount
         
         if channelNum == 0 {
-            NSNotificationCenter.defaultCenter().postNotificationName("FeedLoadedNotification", object: nil)
+            var userInfo = [NSObject: AnyObject]()
+            userInfo["isComplete"]  = true
+            
+            NSNotificationCenter.defaultCenter().postNotificationName(Notification.FEED_LOADED, object: nil, userInfo: userInfo)
         } else {
             self.loadRSS()
         }
@@ -67,7 +70,7 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
                     println(request)
                     println(error?.localizedDescription)
                     
-                    self.loadRSSComplete()
+                    self.loadRSSComplete(nil)
                     
                 } else {
                     
@@ -120,24 +123,38 @@ class FeedController: NSObject, NSURLSessionDelegate, NSURLSessionDownloadDelega
             channel.addItems(newItems)
             
         }, completion: { (success, error) -> Void in
-            self.loadRSSComplete()
+            self.loadRSSComplete(parser.channelObjectID)
         })
     }
     
-    private func loadRSSComplete() {
+    private func loadRSSComplete(channelID: NSManagedObjectID?) {
         channelCounter = channelCounter + 1
         
         if channelNum == channelCounter {
             dispatch_async(dispatch_get_main_queue()) {
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 
-                NSNotificationCenter.defaultCenter().postNotificationName("FeedLoadedNotification", object: nil)
+                var userInfo = [NSObject: AnyObject]()
+                if let objectID = channelID {
+                    userInfo["channelID"]   = objectID
+                    userInfo["isComplete"]  = true
+                }
+                
+                NSNotificationCenter.defaultCenter().postNotificationName(Notification.FEED_LOADED, object: nil, userInfo: userInfo)
             }
             
             channelCounter = 0
             
         } else {
             dispatch_async(dispatch_get_main_queue()) {
+                
+                var userInfo = [NSObject: AnyObject]()
+                if let objectID = channelID {
+                    userInfo["channelID"] = objectID
+                }
+                
+                NSNotificationCenter.defaultCenter().postNotificationName(Notification.FEED_LOADED, object: nil, userInfo: userInfo)
+                
                 self.loadRSS()
             }
         }

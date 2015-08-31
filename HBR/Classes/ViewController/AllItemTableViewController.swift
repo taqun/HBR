@@ -52,12 +52,18 @@ class AllItemTableViewController: BaseItemListTableViewController, NSFetchedResu
     /*
      * Private Method
      */
-    @objc internal override func feedLoaded() {
+    @objc internal override func feedLoaded(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            if let complete = userInfo["isComplete"] as? Bool {                
+                if refreshControl?.refreshing == true {
+                    refreshControl?.endRefreshing()
+                }
+            }
+        }
+        
         allItemNum = ModelManager.sharedInstance.allItemCount
         self.tableView.reloadData()
         self.updateTitle()
-        
-        self.refreshControl?.endRefreshing()
     }
     
     private func initFetchedResultController() {

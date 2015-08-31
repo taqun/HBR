@@ -27,6 +27,7 @@
 		3167D6761B5A526E0010EAE0 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3167D6741B5A51200010EAE0 /* CoreDataManager.swift */; };
 		3167D6771B5A52BD0010EAE0 /* Setting.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C92F4C1B42C768000C20DE /* Setting.m */; };
 		316F0A1B1B9372CC004C2E65 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 316F0A1A1B9372CC004C2E65 /* LaunchScreen.xib */; };
+		316F0A1D1B943521004C2E65 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316F0A1C1B943521004C2E65 /* Notification.swift */; };
 		31738EA81B3E87750099A9F2 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EA71B3E87750099A9F2 /* IndexViewController.swift */; };
 		31738EAC1B3E87F80099A9F2 /* IndexViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31738EAB1B3E87F80099A9F2 /* IndexViewController.storyboard */; };
 		31738EB11B3E885B0099A9F2 /* NavigationControllerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EB01B3E885B0099A9F2 /* NavigationControllerUtil.swift */; };
@@ -143,6 +144,7 @@
 		3167D6681B5A4DBC0010EAE0 /* ModelManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModelManagerTest.swift; path = Tests/Model/ModelManagerTest.swift; sourceTree = "<group>"; };
 		3167D6741B5A51200010EAE0 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = Classes/Model/CoreDataManager.swift; sourceTree = "<group>"; };
 		316F0A1A1B9372CC004C2E65 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Assets/LaunchScreen.xib; sourceTree = "<group>"; };
+		316F0A1C1B943521004C2E65 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Classes/Model/Notification.swift; sourceTree = "<group>"; };
 		31738EA71B3E87750099A9F2 /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IndexViewController.swift; path = Classes/ViewController/IndexViewController.swift; sourceTree = "<group>"; };
 		31738EAB1B3E87F80099A9F2 /* IndexViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = IndexViewController.storyboard; path = Assets/ViewController/IndexViewController.storyboard; sourceTree = "<group>"; };
 		31738EB01B3E885B0099A9F2 /* NavigationControllerUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationControllerUtil.swift; path = Classes/Util/NavigationControllerUtil.swift; sourceTree = "<group>"; };
@@ -413,13 +415,14 @@
 				31738ECC1B3E8D580099A9F2 /* Bookmark.swift */,
 				31EFF2071B3E93C700EBBF72 /* BookmarkItem.swift */,
 				31738EC81B3E8C910099A9F2 /* Channel.swift */,
+				3167D6741B5A51200010EAE0 /* CoreDataManager.swift */,
 				31EFF2031B3E934D00EBBF72 /* Hatena.swift */,
 				31EFF1FB1B3E90FD00EBBF72 /* Item.swift */,
 				31738EC51B3E8B8B0099A9F2 /* ModelManager.swift */,
 				31738ECA1B3E8CEA0099A9F2 /* MyBookmarks.swift */,
+				316F0A1C1B943521004C2E65 /* Notification.swift */,
 				31EFF22D1B3F1D1000EBBF72 /* PurchaseManager.swift */,
 				31EFF22B1B3F1C5F00EBBF72 /* UserManager.swift */,
-				3167D6741B5A51200010EAE0 /* CoreDataManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -917,6 +920,7 @@
 				31EFF22C1B3F1C5F00EBBF72 /* UserManager.swift in Sources */,
 				31738EB11B3E885B0099A9F2 /* NavigationControllerUtil.swift in Sources */,
 				31EFF2201B3F1AA700EBBF72 /* FeedWithChannelTableViewCell.swift in Sources */,
+				316F0A1D1B943521004C2E65 /* Notification.swift in Sources */,
 				31738EBD1B3E8A650099A9F2 /* SettingViewController.swift in Sources */,
 				31EFF2061B3E938300EBBF72 /* FeedURLBuilder.swift in Sources */,
 				31EFF2041B3E934D00EBBF72 /* Hatena.swift in Sources */,

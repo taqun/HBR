@@ -83,7 +83,15 @@ class FeedTableViewController: SegmentedDisplayTableViewController, NSFetchedRes
     }
     
     
-    @objc private func feedLoaded(){
+    @objc private func feedLoaded(notification: NSNotification){
+        if let userInfo = notification.userInfo {
+            if let channelID = userInfo["channelID"] as? NSManagedObjectID {
+                if self.channel.objectID != channelID {
+                    return
+                }
+            }
+        }
+        
         allItemNum = channel.items.count
         self.tableView.reloadData()
         self.updateTitle()
@@ -141,7 +149,7 @@ class FeedTableViewController: SegmentedDisplayTableViewController, NSFetchedRes
         
         allItemNum = channel.items.count
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("feedLoaded"), name: "FeedLoadedNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("feedLoaded:"), name: Notification.FEED_LOADED, object: nil)
         
         Logger.sharedInstance.trackFeedList(self.channel)
     }

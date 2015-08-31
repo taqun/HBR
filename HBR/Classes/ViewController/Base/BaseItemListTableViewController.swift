@@ -38,9 +38,15 @@ class BaseItemListTableViewController: SegmentedDisplayTableViewController {
      */
     @objc private func didRefreshControlChanged() {
         FeedController.sharedInstance.loadFeeds()
+        
+        let delay   = 0.5 * Double(NSEC_PER_SEC)
+        let time    = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
+            refreshControl?.endRefreshing()
+        }
     }
     
-    @objc internal func feedLoaded() {
+    @objc internal func feedLoaded(notification: NSNotification) {
         println("HBRBaseItemListTableViewController#feedLoaded is called. This method should be override.")
     }
     
@@ -67,7 +73,7 @@ class BaseItemListTableViewController: SegmentedDisplayTableViewController {
         // toolbar
         self.navigationController?.toolbarHidden = true
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("feedLoaded"), name: "FeedLoadedNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("feedLoaded:"), name: Notification.FEED_LOADED, object: nil)
     }
     
     override func viewWillDisappear(animated: Bool) {

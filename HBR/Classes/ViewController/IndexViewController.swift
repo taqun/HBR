@@ -78,10 +78,24 @@ class IndexViewController: UITableViewController {
     
     @objc private func didRefreshControlChanged() {
         FeedController.sharedInstance.loadFeeds()
+        
+        let delay   = 0.5 * Double(NSEC_PER_SEC)
+        let time    = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue()) { () -> Void in
+            refreshControl?.endRefreshing()
+        }
     }
     
-    @objc private func feedLoaded() {
-        refreshControl?.endRefreshing()
+    @objc private func feedLoaded(notification: NSNotification?) {
+        if let notification = notification {
+            if let userInfo = notification.userInfo {
+                if let complete = userInfo["isComplete"] as? Bool {                    
+                    if refreshControl?.refreshing == true {
+                        refreshControl?.endRefreshing()
+                    }
+                }
+            }
+        }
         
         var cells = self.tableView.visibleCells() as! [IndexTableViewCell]
         for cell: IndexTableViewCell in cells {
@@ -122,7 +136,7 @@ class IndexViewController: UITableViewController {
         // Ads
         self.canDisplayBannerAds = ModelManager.sharedInstance.adsEnabled
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("feedLoaded"), name: "FeedLoadedNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("feedLoaded:"), name: Notification.FEED_LOADED, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("viewWillAppear:"), name: UIApplicationWillEnterForegroundNotification, object: nil)
         
         Logger.sharedInstance.track("IndexView")
