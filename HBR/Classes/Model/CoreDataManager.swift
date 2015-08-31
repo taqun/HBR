@@ -68,6 +68,8 @@ class CoreDataManager: NSObject {
                                 var error: NSError? = nil
                                 if !savingContext.save(&error) {
                                     println(error)
+                                } else {
+                                    println("=== Save changes to persistent store ===")
                                 }
                             }
                         })

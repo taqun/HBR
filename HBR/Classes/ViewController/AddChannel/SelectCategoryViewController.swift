@@ -41,8 +41,7 @@ class SelectCategoryViewController: UITableViewController {
         channel.category = self.category
         channel.index = channelCount
         
-        let context = channel.managedObjectContext
-        CoreDataManager.sharedInstance.saveContext()
+        ModelManager.sharedInstance.save()
         
         self.onComplete()
     }

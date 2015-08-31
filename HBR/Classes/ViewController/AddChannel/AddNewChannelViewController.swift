@@ -62,8 +62,7 @@ class AddNewChannelViewController: UITableViewController, UITextFieldDelegate{
             channel.bookmarkNum = bookmarkNum
             channel.index = channelCount
             
-            var context = channel.managedObjectContext
-            CoreDataManager.sharedInstance.saveContext()
+            ModelManager.sharedInstance.save()
             
             self.onComplete()
         }
