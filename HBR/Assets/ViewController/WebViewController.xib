@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -47,7 +47,6 @@
                 <barButtonItem style="plain" systemItem="flexibleSpace" id="gC4-hJ-eXv"/>
                 <barButtonItem systemItem="compose" id="3q5-Qs-nQb"/>
                 <barButtonItem style="plain" systemItem="flexibleSpace" id="2VY-v5-2CC"/>
-                <barButtonItem title="100 users" style="plain" id="x30-LZ-cWK"/>
             </items>
             <point key="canvasLocation" x="820" y="1379"/>
         </toolbar>

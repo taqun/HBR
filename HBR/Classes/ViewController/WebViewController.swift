@@ -25,7 +25,11 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     var btnReload: UIBarButtonItem!
     var btnStop: UIBarButtonItem!
     var btnBookmark: UIBarButtonItem!
-    var btnUserNum: UIBarButtonItem!
+    
+    var btnSpaceAdjusterLeft: UIBarButtonItem!
+    var btnSpaceAdjusterRight: UIBarButtonItem!
+    var btnBookmarkCount: BookmarkCountButton!
+    var btnBookmarkCountContainer: UIBarButtonItem!
     
     var bookmarkViewController: BookmarkViewController!
     var bookmarkListIsShowed = false
@@ -53,6 +57,18 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         self.webView.delegate = self
         self.webView.scalesPageToFit = true
         self.webView.loadRequest(NSURLRequest(URL: NSURL(string: self.item.link)!))
+        
+        btnBookmarkCount = BookmarkCountButton()
+        btnBookmarkCount.tintColor = self.view.tintColor
+        btnBookmarkCount.addTarget(self, action: Selector("didUserNum"), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        btnSpaceAdjusterLeft = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        btnSpaceAdjusterLeft.width = -20.0
+        
+        btnSpaceAdjusterRight = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
+        btnSpaceAdjusterRight.width = -10.0
+        
+        btnBookmarkCountContainer = UIBarButtonItem(customView: btnBookmarkCount)
     }
     
     
@@ -63,12 +79,12 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         let bookmarkCount = ModelManager.sharedInstance.currentBookmarkCount
         
         if bookmarkCount == 0 {
-            self.btnUserNum.enabled = false
+            btnBookmarkCount.enabled = false
         } else {
-            self.btnUserNum.enabled = true
+            btnBookmarkCount.enabled = true
         }
         
-        self.btnUserNum.title = String(bookmarkCount) + " users"
+        btnBookmarkCount.title = String(bookmarkCount) + " users"
     }
     
     @objc private func didBack(){
@@ -114,6 +130,8 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         }else{
             self.showBookmarkList()
         }
+        
+        btnBookmarkCount.selected = self.bookmarkListIsShowed
     }
     
     private func showBookmarkList(){
@@ -186,10 +204,12 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         // toolbar
         self.navigationController?.toolbarHidden = false
         
-        let toolbaItems = self.dummyToolBar.items
-        self.setToolbarItems(toolbaItems, animated: false)
+        var items = self.dummyToolBar.items as! [UIBarButtonItem]
+        items += [btnSpaceAdjusterLeft, btnBookmarkCountContainer, btnSpaceAdjusterRight]
         
-        if let tbItems = toolbarItems as? [UIBarButtonItem] {
+        self.setToolbarItems(items, animated: false)
+        
+        if let tbItems = self.toolbarItems as? [UIBarButtonItem] {
             self.btnBack = tbItems[0]
             self.btnBack.target = self
             self.btnBack.action = Selector("didBack")
@@ -206,13 +226,6 @@ class WebViewController: UIViewController, UIWebViewDelegate {
             self.btnBookmark = tbItems[6]
             self.btnBookmark.target = self
             self.btnBookmark.action = Selector("didBookmark")
-            
-            self.btnUserNum = tbItems[8]
-            if self.item.userNum != nil {
-                self.btnUserNum.title = self.item.userNum + " users"
-            }
-            self.btnUserNum.target = self
-            self.btnUserNum.action = Selector("didUserNum")
         }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("bookmarkCountUpdated"), name: Notification.BOOKMARK_COUNT_UPDATED, object: nil)

@@ -29,6 +29,7 @@
 		316F0A1B1B9372CC004C2E65 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 316F0A1A1B9372CC004C2E65 /* LaunchScreen.xib */; };
 		316F0A1D1B943521004C2E65 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316F0A1C1B943521004C2E65 /* Notification.swift */; };
 		316F0A1E1B94439C004C2E65 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316F0A1C1B943521004C2E65 /* Notification.swift */; };
+		316F0A221B9741E0004C2E65 /* BookmarkCountButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 316F0A211B9741E0004C2E65 /* BookmarkCountButton.swift */; };
 		31738EA81B3E87750099A9F2 /* IndexViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EA71B3E87750099A9F2 /* IndexViewController.swift */; };
 		31738EAC1B3E87F80099A9F2 /* IndexViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31738EAB1B3E87F80099A9F2 /* IndexViewController.storyboard */; };
 		31738EB11B3E885B0099A9F2 /* NavigationControllerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31738EB01B3E885B0099A9F2 /* NavigationControllerUtil.swift */; };
@@ -146,6 +147,7 @@
 		3167D6741B5A51200010EAE0 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = Classes/Model/CoreDataManager.swift; sourceTree = "<group>"; };
 		316F0A1A1B9372CC004C2E65 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LaunchScreen.xib; path = Assets/LaunchScreen.xib; sourceTree = "<group>"; };
 		316F0A1C1B943521004C2E65 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = Classes/Model/Notification.swift; sourceTree = "<group>"; };
+		316F0A211B9741E0004C2E65 /* BookmarkCountButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BookmarkCountButton.swift; path = Classes/View/BookmarkCountButton.swift; sourceTree = "<group>"; };
 		31738EA71B3E87750099A9F2 /* IndexViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IndexViewController.swift; path = Classes/ViewController/IndexViewController.swift; sourceTree = "<group>"; };
 		31738EAB1B3E87F80099A9F2 /* IndexViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = IndexViewController.storyboard; path = Assets/ViewController/IndexViewController.storyboard; sourceTree = "<group>"; };
 		31738EB01B3E885B0099A9F2 /* NavigationControllerUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationControllerUtil.swift; path = Classes/Util/NavigationControllerUtil.swift; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 		31738EC11B3E8B0E0099A9F2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				316F0A211B9741E0004C2E65 /* BookmarkCountButton.swift */,
 				31EFF2271B3F1C0100EBBF72 /* BookmarkNoDataCell.swift */,
 				31EFF2251B3F1BBA00EBBF72 /* BookmarkReadMoreCell.swift */,
 				31EFF2281B3F1C0100EBBF72 /* BookmarkTableViewCell.swift */,
@@ -896,6 +899,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				31949AE21B3E855900D063E8 /* AppDelegate.swift in Sources */,
+				316F0A221B9741E0004C2E65 /* BookmarkCountButton.swift in Sources */,
 				31EFF20C1B3F167C00EBBF72 /* SelectChannelTypeViewController.swift in Sources */,
 				31EFF22E1B3F1D1000EBBF72 /* PurchaseManager.swift in Sources */,
 				31EFF2151B3F183A00EBBF72 /* SelectBookmarkNumController.swift in Sources */,
