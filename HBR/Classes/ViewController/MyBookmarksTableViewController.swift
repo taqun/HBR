@@ -9,14 +9,14 @@
 import UIKit
 import CoreData
 
-class MyBookmarksTableViewController: SegmentedDisplayTableViewController, NSFetchedResultsControllerDelegate {
+class MyBookmarksTableViewController: SegmentedDisplayTableViewController, NSFetchedResultsControllerDelegate, UIAlertViewDelegate {
 
     
     private var fetchedResultController: NSFetchedResultsController!
     
-    /*
-     * Initialize
-     */
+
+    // MARK: - Initialize
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,9 +41,8 @@ class MyBookmarksTableViewController: SegmentedDisplayTableViewController, NSFet
     }
     
     
-    /*
-     * Private Method
-     */
+    // MARK: - Private Method
+
     private func initFetchedResultsController() {
         if self.fetchedResultController != nil{
             return
@@ -79,9 +78,8 @@ class MyBookmarksTableViewController: SegmentedDisplayTableViewController, NSFet
     }
     
     
-    /*
-     * UIViewController Method
-     */
+    // MARK: - UIViewController Method
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -106,7 +104,8 @@ class MyBookmarksTableViewController: SegmentedDisplayTableViewController, NSFet
         super.viewDidAppear(animated)
         
         if !UserManager.sharedInstance.isLoggedIn {
-            // TODO show alert
+            let alert = UIAlertView(title: "はてなブックーマークに\nログインしていません。", message: "設定画面からログインしてください。", delegate: self, cancelButtonTitle: "OK")
+            alert.show()
         }
     }
     
@@ -117,9 +116,8 @@ class MyBookmarksTableViewController: SegmentedDisplayTableViewController, NSFet
     }
     
     
-    /*
-     * UITableViewDataSource Protocol
-     */
+    // MARK: - UITableViewDataSource Protocol
+
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -137,9 +135,9 @@ class MyBookmarksTableViewController: SegmentedDisplayTableViewController, NSFet
         return cell
     }
     
-    /*
-     * UITableViewDelegate Protocol
-     */
+    
+    // MARK: - UITableViewDelegate Protocol
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 80
     }
@@ -152,15 +150,21 @@ class MyBookmarksTableViewController: SegmentedDisplayTableViewController, NSFet
     }
     
     
-    /*
-     * NSFetchedResultsControllerDelegate Protocol
-     */
+    // MARK: - NSFetchedResultsControllerDelegate Protocol
+
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         self.tableView.beginUpdates()
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         self.tableView.endUpdates()
+    }
+    
+    
+    // MARK: - UIAlertViewDelegate Protocol
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
 }
