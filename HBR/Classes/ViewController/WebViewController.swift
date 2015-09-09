@@ -228,6 +228,8 @@ class WebViewController: UIViewController, UIWebViewDelegate {
             self.btnBookmark.action = Selector("didBookmark")
         }
         
+        self.bookmarkCountUpdated()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("bookmarkCountUpdated"), name: Notification.BOOKMARK_COUNT_UPDATED, object: nil)
         
         if self.item.userNum == nil {
