@@ -117,6 +117,9 @@
 		407968671B69E4E7007A2BDB /* AtomFeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407968661B69E4E7007A2BDB /* AtomFeedParser.swift */; };
 		4079686A1B69E54A007A2BDB /* AtomFeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407968661B69E4E7007A2BDB /* AtomFeedParser.swift */; };
 		4079686C1B69E592007A2BDB /* AtomFeedParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4079686B1B69E592007A2BDB /* AtomFeedParserTest.swift */; };
+		40E5F4CF1BA1585E00980200 /* ItemFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E5F4CE1BA1585E00980200 /* ItemFilter.swift */; };
+		40E5F4D01BA159C600980200 /* ItemFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E5F4CE1BA1585E00980200 /* ItemFilter.swift */; };
+		40E5F4D21BA15A9E00980200 /* ItemFilterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E5F4D11BA15A9E00980200 /* ItemFilterTest.swift */; };
 		51A16CBC827A2C65B3CD703E /* Pods_HBRTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BBF0AD1F3A22A92C96683A /* Pods_HBRTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		568CBC93F1FBC6B80C0756DD /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0F0B1909FABF551575B4F7A /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -234,6 +237,8 @@
 		405D57781B4A2D7F009C9D56 /* FeedURLBuilderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedURLBuilderTest.swift; path = Tests/Util/FeedURLBuilderTest.swift; sourceTree = "<group>"; };
 		407968661B69E4E7007A2BDB /* AtomFeedParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtomFeedParser.swift; path = Classes/Parser/AtomFeedParser.swift; sourceTree = "<group>"; };
 		4079686B1B69E592007A2BDB /* AtomFeedParserTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AtomFeedParserTest.swift; path = Tests/Parser/AtomFeedParserTest.swift; sourceTree = "<group>"; };
+		40E5F4CE1BA1585E00980200 /* ItemFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemFilter.swift; path = Classes/Util/ItemFilter.swift; sourceTree = "<group>"; };
+		40E5F4D11BA15A9E00980200 /* ItemFilterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemFilterTest.swift; path = Tests/Util/ItemFilterTest.swift; sourceTree = "<group>"; };
 		951D2CB1D7C374DCA9BC4EE2 /* Pods-HBRTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HBRTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HBRTests/Pods-HBRTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A0F0B1909FABF551575B4F7A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6C5927BC050807B0DD23B9C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -342,6 +347,7 @@
 			children = (
 				31EFF1FD1B3E912F00EBBF72 /* DateUtil.swift */,
 				31EFF2051B3E938300EBBF72 /* FeedURLBuilder.swift */,
+				40E5F4CE1BA1585E00980200 /* ItemFilter.swift */,
 				31EFF2011B3E920700EBBF72 /* Logger.swift */,
 				31738EB01B3E885B0099A9F2 /* NavigationControllerUtil.swift */,
 			);
@@ -602,6 +608,7 @@
 			isa = PBXGroup;
 			children = (
 				405D57781B4A2D7F009C9D56 /* FeedURLBuilderTest.swift */,
+				40E5F4D11BA15A9E00980200 /* ItemFilterTest.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -913,6 +920,7 @@
 				31738EB71B3E88F90099A9F2 /* UIColorExtension.swift in Sources */,
 				31EFF2081B3E93C700EBBF72 /* BookmarkItem.swift in Sources */,
 				31EFF2171B3F18C200EBBF72 /* UnreadItemTableViewController.swift in Sources */,
+				40E5F4CF1BA1585E00980200 /* ItemFilter.swift in Sources */,
 				31EFF2371B3F20D500EBBF72 /* MyBookmarksTableViewCell.swift in Sources */,
 				31EFF22C1B3F1C5F00EBBF72 /* UserManager.swift in Sources */,
 				31738EB11B3E885B0099A9F2 /* NavigationControllerUtil.swift in Sources */,
@@ -955,10 +963,12 @@
 				3167D66C1B5A4E480010EAE0 /* Bookmark.swift in Sources */,
 				3189D0071B5BCB88004F2F72 /* Channel.swift in Sources */,
 				31580A001B63F3B300F754EA /* FeedParser.swift in Sources */,
+				40E5F4D21BA15A9E00980200 /* ItemFilterTest.swift in Sources */,
 				3167D6771B5A52BD0010EAE0 /* Setting.m in Sources */,
 				4079686C1B69E592007A2BDB /* AtomFeedParserTest.swift in Sources */,
 				3167D66E1B5A4E6A0010EAE0 /* Logger.swift in Sources */,
 				3167D66A1B5A4E220010EAE0 /* ModelManager.swift in Sources */,
+				40E5F4D01BA159C600980200 /* ItemFilter.swift in Sources */,
 				3167D6691B5A4DBC0010EAE0 /* ModelManagerTest.swift in Sources */,
 				315809FF1B63F37A00F754EA /* FeedParserTest.swift in Sources */,
 				405D57791B4A2D7F009C9D56 /* FeedURLBuilderTest.swift in Sources */,

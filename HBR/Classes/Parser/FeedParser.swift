@@ -43,7 +43,9 @@ class FeedParser: NSObject {
                         itemData[child.name] = child.value
                     }
                     
-                    itemDatas.append(itemData)
+                    if ItemFilter.isValid(itemData) {
+                        itemDatas.append(itemData)
+                    }
                 }
             }
         }
